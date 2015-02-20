@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FA2301E7-0FB1-4C20-8C7A-4853BF9B52F5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Sandy Springs</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>89CCAD4F2B8240512FBCEC926B39957253E60077</key>
+		<string>https://github.com/aidancbrady/Sandy-Springs-Conservancy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Sandy Springs.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>89CCAD4F2B8240512FBCEC926B39957253E60077</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aidancbrady/Sandy-Springs-Conservancy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>89CCAD4F2B8240512FBCEC926B39957253E60077</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>89CCAD4F2B8240512FBCEC926B39957253E60077</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Sandy%20Springs</string>
+		</dict>
+	</array>
+</dict>
+</plist>

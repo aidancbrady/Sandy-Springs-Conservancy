@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113CDC531A9769390024DBC7 /* ParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113CDC521A9769390024DBC7 /* ParkController.swift */; };
 		113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DC419F8762600CE4B16 /* AppDelegate.swift */; };
-		113F6DC719F8762600CE4B16 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DC619F8762600CE4B16 /* MasterViewController.swift */; };
-		113F6DC919F8762600CE4B16 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DC819F8762600CE4B16 /* DetailViewController.swift */; };
 		113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCA19F8762600CE4B16 /* Main.storyboard */; };
 		113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCD19F8762600CE4B16 /* Images.xcassets */; };
 		113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */; };
 		113F6DDD19F8762600CE4B16 /* Sandy_SpringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */; };
+		11ABFE101A93C1390085490B /* greenway.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 11ABFE0F1A93C1390085490B /* greenway.jpeg */; };
+		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
+		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
+		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
+		11AEAE081A7677D7008414A9 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE071A7677D7008414A9 /* MenuTableController.swift */; };
+		11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE091A7679BC008414A9 /* MenuController.swift */; };
+		11EF28B81A8E33AE00237B0C /* menu48-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EF28B71A8E33AE00237B0C /* menu48-3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +33,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		113CDC521A9769390024DBC7 /* ParkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkController.swift; sourceTree = "<group>"; };
 		113F6DBF19F8762600CE4B16 /* Sandy Springs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sandy Springs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DC319F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113F6DC419F8762600CE4B16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		113F6DC619F8762600CE4B16 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		113F6DC819F8762600CE4B16 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		113F6DCB19F8762600CE4B16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		113F6DCD19F8762600CE4B16 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		113F6DD019F8762600CE4B16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		113F6DD619F8762600CE4B16 /* Sandy SpringsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sandy SpringsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DDB19F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandy_SpringsTests.swift; sourceTree = "<group>"; };
+		11ABFE0F1A93C1390085490B /* greenway.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenway.jpeg; sourceTree = "<group>"; };
+		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
+		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
+		11AEAE071A7677D7008414A9 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
+		11AEAE091A7679BC008414A9 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		11EF28B71A8E33AE00237B0C /* menu48-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu48-3.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +91,17 @@
 		113F6DC119F8762600CE4B16 /* Sandy Springs */ = {
 			isa = PBXGroup;
 			children = (
+				11AEAE011A7676D4008414A9 /* ENSideMenu.swift */,
+				11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */,
 				113F6DC419F8762600CE4B16 /* AppDelegate.swift */,
-				113F6DC619F8762600CE4B16 /* MasterViewController.swift */,
-				113F6DC819F8762600CE4B16 /* DetailViewController.swift */,
 				113F6DCA19F8762600CE4B16 /* Main.storyboard */,
 				113F6DCD19F8762600CE4B16 /* Images.xcassets */,
 				113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */,
 				113F6DC219F8762600CE4B16 /* Supporting Files */,
+				11AEAE051A767796008414A9 /* MenuNavigation.swift */,
+				11AEAE071A7677D7008414A9 /* MenuTableController.swift */,
+				11AEAE091A7679BC008414A9 /* MenuController.swift */,
+				113CDC521A9769390024DBC7 /* ParkController.swift */,
 			);
 			path = "Sandy Springs";
 			sourceTree = "<group>";
@@ -93,6 +109,8 @@
 		113F6DC219F8762600CE4B16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11ABFE0F1A93C1390085490B /* greenway.jpeg */,
+				11EF28B71A8E33AE00237B0C /* menu48-3.png */,
 				113F6DC319F8762600CE4B16 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -164,6 +182,11 @@
 				TargetAttributes = {
 					113F6DBE19F8762600CE4B16 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					113F6DD519F8762600CE4B16 = {
 						CreatedOnToolsVersion = 6.1;
@@ -195,8 +218,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11EF28B81A8E33AE00237B0C /* menu48-3.png in Resources */,
 				113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */,
 				113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */,
+				11ABFE101A93C1390085490B /* greenway.jpeg in Resources */,
 				113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,9 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113F6DC919F8762600CE4B16 /* DetailViewController.swift in Sources */,
-				113F6DC719F8762600CE4B16 /* MasterViewController.swift in Sources */,
+				11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */,
+				11AEAE081A7677D7008414A9 /* MenuTableController.swift in Sources */,
+				11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */,
+				11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */,
+				11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */,
 				113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */,
+				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +440,7 @@
 				113F6DE219F8762600CE4B16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		113F6DE319F8762600CE4B16 /* Build configuration list for PBXNativeTarget "Sandy SpringsTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +449,7 @@
 				113F6DE519F8762600CE4B16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
