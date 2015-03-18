@@ -28,7 +28,7 @@ class MenuTableController: UITableViewController
         menuData.append("Abernathy Greenway", false, "ParkController")
         menuData.append("Abernathy Park", false, "ParkController")
         menuData.append("Allen Road", false, "ParkController")
-        menuData.append("Big Trees Preserve", false, "ParkController")
+        menuData.append("Big Trees Forest Preserve", false, "ParkController")
         menuData.append("Chattahoochee River: Island Ford", false, "ParkController")
         menuData.append("Chattahoochee River: Powers Island", false, "ParkController")
         menuData.append("Chattahoochee River: East Palisades", false, "ParkController")

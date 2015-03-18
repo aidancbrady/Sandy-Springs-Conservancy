@@ -11,9 +11,10 @@ import UIKit
 class ParkController: UIViewController
 {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var phoneLabel: UILabel!
     
     var parkName: String!
-    var park: Park!
+    var park: ParkData!
     
     override func viewDidLoad()
     {
@@ -24,9 +25,10 @@ class ParkController: UIViewController
     
     func setParkData()
     {
-        park = Park.parkData[parkName]
+        park = Parks.parkData[parkName]
         self.navigationItem.title = parkName
         imageView.image = UIImage(named: park.imageUrl)
+        phoneLabel.text = park.phone
     }
     
     @IBAction func menuPressed(sender: AnyObject)
@@ -34,43 +36,53 @@ class ParkController: UIViewController
         toggleSideMenuView()
     }
     
-    struct Park
+    struct Parks
     {
-        static var parkData = [String: Park]()
+        static var parkData = [String: ParkData]()
         
+        static func checkParkData()
+        {
+            if Parks.parkData.count == 0
+            {
+                Parks.parkData["Abernathy Greenway"] = ParkData(imageUrl: "greenway.jpeg").setPhone("(770) 730-5600").setAmenities("Pavilion", "Picnic Tables", "Playground", "Restrooms")
+                Parks.parkData["Abernathy Park"] = ParkData(imageUrl: "abernathy.jpeg").setPhone("(770) 730-5600").setAmenities("Playground", "Tennis Courts")
+                Parks.parkData["Allen Road"] = ParkData(imageUrl: "allen.jpeg").setPhone("(770) 730-5600").setAmenities("Basketball", "Courts", "Picnic Tables", "Playground", "Sports Field", "Walking/Hiking", "Trails")
+                Parks.parkData["Big Trees Forest Preserve"] = ParkData(imageUrl: "trees.jpeg").setPhone("(770) 730-5600").setAmenities("Restrooms", "Walking/Hiking", "Trails")
+                Parks.parkData["Chattahoochee River: East Palisades"] = ParkData(imageUrl: "river_palisades.jpeg").setPhone("(770) 952-0370").setAmenities("Walking/Hiking", "Trails")
+                Parks.parkData["Chattahoochee River: Island Ford"] = ParkData(imageUrl: "river_ford.jpeg").setPhone("(770) 730-5600").setAmenities("Fishing", "Walking/Hiking", "Trails")
+                Parks.parkData["Chattahoochee River: Powers Island"] = ParkData(imageUrl: "river_powers.jpeg").setPhone("(770) 952-0370").setAmenities("Walking/Hiking", "Trails")
+                Parks.parkData["Hammond Park"] = ParkData(imageUrl: "hammond.jpeg").setPhone("(770) 206-2035").setAmenities("Basketball", "Courts", "Gymnastics", "Center", "Pavilion", "Picnic Tables", "Playground", "Restrooms", "Sports Field", "Tennis Courts")
+                Parks.parkData["Morgan Falls Ball Fields"] = ParkData(imageUrl: "morgan_fields.jpeg").setPhone("(770) 730-5600").setAmenities("Pavilion", "Picnic Tables", "Playground", "Restrooms", "Sports Field")
+                Parks.parkData["Morgan Falls Overlook Park"] = ParkData(imageUrl: "morgan_overlook.jpeg").setPhone("(770) 730-5600").setAmenities("Fishing", "Picnic Tables", "Playground", "Restrooms", "Walking/Hiking", "Trails")
+                Parks.parkData["Morgan Falls River Park"] = ParkData(imageUrl: "morgan_river.jpeg").setPhone("(770) 730-5600").setAmenities("Boat Ramp", "Dog Park", "Fishing")
+                Parks.parkData["Ridgeview Park"] = ParkData(imageUrl: "ridgeview.jpeg").setPhone("(770) 730-5600").setAmenities("Pavilion", "Picnic Tables", "Playground", "Walking/Hiking", "Trails")
+                Parks.parkData["Sandy Springs Tennis Center"] = ParkData(imageUrl: "tennis_center.jpeg").setPhone("(404) 851-1911").setAmenities("Walking/Hiking", "Trails")
+                Parks.parkData["Sandy Springs Historical Site"] = ParkData(imageUrl: "historical_site.jpeg").setPhone("(404) 303-6182").setAmenities("Restrooms", "Tennis Courts", "Walking/Hiking", "Trails")
+            }
+        }
+    }
+    
+    class ParkData
+    {
         var imageUrl: String!
-        var desc: String!
+        var phone: String!
+        var amenities: [String] = [String]()
         
         init(imageUrl: String)
         {
             self.imageUrl = imageUrl
         }
         
-        init(imageUrl: String, desc: String)
+        func setPhone(phone: String) -> ParkData
         {
-            self.imageUrl = imageUrl
-            self.desc = desc
+            self.phone = phone
+            return self
         }
         
-        static func checkParkData()
+        func setAmenities(amenities: String...) -> ParkData
         {
-            if Park.parkData.count == 0
-            {
-                Park.parkData["Abernathy Greenway"] = Park(imageUrl: "greenway.jpeg")
-                Park.parkData["Abernathy Park"] = Park(imageUrl: "abernathy.jpeg")
-                Park.parkData["Allen Road"] = Park(imageUrl: "allen.jpeg")
-                Park.parkData["Big Trees Preserve"] = Park(imageUrl: "trees.jpeg")
-                Park.parkData["Chattahoochee River: Island Ford"] = Park(imageUrl: "river_ford.jpeg")
-                Park.parkData["Chattahoochee River: Powers Island"] = Park(imageUrl: "river_powers.jpeg")
-                Park.parkData["Chattahoochee River: East Palisades"] = Park(imageUrl: "river_palisades.jpeg")
-                Park.parkData["Hammond Park"] = Park(imageUrl: "hammond.jpeg")
-                Park.parkData["Morgan Falls Overlook Park"] = Park(imageUrl: "morgan_overlook.jpeg")
-                Park.parkData["Morgan Falls Ball Fields"] = Park(imageUrl: "morgan_fields.jpeg")
-                Park.parkData["Morgan Falls River Park"] = Park(imageUrl: "morgan_river.jpeg")
-                Park.parkData["Ridgeview Park"] = Park(imageUrl: "ridgeview.jpeg")
-                Park.parkData["Sandy Springs Tennis Center"] = Park(imageUrl: "tennis_center.jpeg")
-                Park.parkData["Sandy Springs Historical Site"] = Park(imageUrl: "historical_site.jpeg")
-            }
+            self.amenities = amenities
+            return self
         }
     }
 }
