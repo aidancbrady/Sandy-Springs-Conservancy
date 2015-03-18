@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mbg-3e-FFn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mbg-3e-FFn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Sandy Springs-->
@@ -41,11 +43,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7e4-uD-Otn">
-                                <rect key="frame" x="100" y="115" width="400" height="276"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bKH-Hw-flX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenway.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-qv-ZHH">
+                                        <rect key="frame" x="0.0" y="8" width="600" height="354"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="HiX-qv-ZHH" secondAttribute="height" multiplier="100:59" id="fIm-ax-Vpi"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="HiX-qv-ZHH" secondAttribute="centerX" id="8Qr-fB-SWb"/>
+                                    <constraint firstItem="HiX-qv-ZHH" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="top" constant="8" id="V3Q-uA-nAh"/>
+                                    <constraint firstItem="HiX-qv-ZHH" firstAttribute="leading" secondItem="bKH-Hw-flX" secondAttribute="leading" id="cnx-cn-GlX"/>
+                                    <constraint firstAttribute="centerX" secondItem="HiX-qv-ZHH" secondAttribute="centerX" id="dGg-zY-vB6"/>
+                                    <constraint firstItem="HiX-qv-ZHH" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="top" constant="77" id="gWh-ft-Vdh"/>
+                                    <constraint firstAttribute="trailing" secondItem="HiX-qv-ZHH" secondAttribute="trailing" id="xVt-KI-rJg"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8Qr-fB-SWb"/>
+                                        <exclude reference="gWh-ft-Vdh"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bKH-Hw-flX" firstAttribute="leading" secondItem="BRa-O5-fZl" secondAttribute="leadingMargin" constant="-16" id="0iz-Ru-ljs"/>
+                            <constraint firstItem="2ae-uQ-rpS" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="bottom" id="MTr-MJ-G6q"/>
+                            <constraint firstAttribute="centerX" secondItem="bKH-Hw-flX" secondAttribute="centerX" id="RW9-rR-603"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bKH-Hw-flX" secondAttribute="trailing" constant="-16" id="jD9-0A-0SO"/>
+                            <constraint firstItem="bKH-Hw-flX" firstAttribute="top" secondItem="BRa-O5-fZl" secondAttribute="topMargin" id="s0N-dv-24Y"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Park Name" id="AeH-eN-rnE">
                         <barButtonItem key="leftBarButtonItem" image="menu48-3.png" id="4a1-73-8YI">
@@ -54,6 +85,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="HiX-qv-ZHH" id="KOI-IY-Y3q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmk-tq-x0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,7 +103,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="yoa-KF-bcC" kind="relationship" relationship="rootViewController" id="bGS-OP-Ve4"/>
-                        <segue destination="kZT-FK-6mG" kind="show" id="4Sb-Cc-dhP"/>
+                        <segue destination="kZT-FK-6mG" kind="show" identifier="FakeSegue" id="4Sb-Cc-dhP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEx-tE-wvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,6 +112,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="greenway.jpeg" width="700" height="416"/>
         <image name="menu48-3.png" width="32" height="32"/>
     </resources>
 </document>

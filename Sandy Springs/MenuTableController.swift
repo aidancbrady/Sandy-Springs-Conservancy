@@ -29,9 +29,16 @@ class MenuTableController: UITableViewController
         menuData.append("Abernathy Park", false, "ParkController")
         menuData.append("Allen Road", false, "ParkController")
         menuData.append("Big Trees Preserve", false, "ParkController")
-        menuData.append("Chattahoochee River", false, "ParkController")
+        menuData.append("Chattahoochee River: Island Ford", false, "ParkController")
+        menuData.append("Chattahoochee River: Powers Island", false, "ParkController")
+        menuData.append("Chattahoochee River: East Palisades", false, "ParkController")
         menuData.append("Hammond Park", false, "ParkController")
+        menuData.append("Morgan Falls Overlook Park", false, "ParkController")
+        menuData.append("Morgan Falls Ball Fields", false, "ParkController")
+        menuData.append("Morgan Falls River Park", false, "ParkController")
         menuData.append("Ridgeview Park", false, "ParkController")
+        menuData.append("Sandy Springs Tennis Center", false, "ParkController")
+        menuData.append("Sandy Springs Historical Site", false, "ParkController")
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -71,6 +78,9 @@ class MenuTableController: UITableViewController
         {
             cell!.textLabel?.font = UIFont.boldSystemFontOfSize(16)
         }
+        else {
+            cell!.textLabel?.font = UIFont.systemFontOfSize(15)
+        }
 
         return cell!
     }
@@ -92,7 +102,6 @@ class MenuTableController: UITableViewController
             let park = destController as ParkController
             
             park.parkName = menuData[selectedItem].0
-            park.setParkData()
         }
         
         sideMenuController()?.setContentViewController(destController)
