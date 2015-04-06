@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mbg-3e-FFn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="mbg-3e-FFn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Sandy Springs-->
         <scene sceneID="U5I-4R-GvJ">
             <objects>
                 <viewController storyboardIdentifier="MenuController" id="yoa-KF-bcC" customClass="MenuController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ob8-9v-WeT"/>
-                        <viewControllerLayoutGuide type="bottom" id="0gy-p6-a5S"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gkw-CX-z1C">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -29,79 +23,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkN-jP-nGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680" y="0.0"/>
+            <point key="canvasLocation" x="362.66666666666669" y="0.0"/>
         </scene>
         <!--Park Name-->
         <scene sceneID="hAh-mq-ACU">
             <objects>
                 <viewController storyboardIdentifier="ParkController" id="kZT-FK-6mG" customClass="ParkController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8yf-S5-KQ8"/>
-                        <viewControllerLayoutGuide type="bottom" id="2ae-uQ-rpS"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BRa-O5-fZl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKH-Hw-flX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="bKH-Hw-flX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenway.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-qv-ZHH">
-                                        <rect key="frame" x="0.0" y="8" width="600" height="354"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="HiX-qv-ZHH" secondAttribute="height" multiplier="100:59" id="fIm-ax-Vpi"/>
-                                        </constraints>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenway.jpeg" id="HiX-qv-ZHH">
+                                        <rect key="frame" x="0.0" y="8" width="320" height="189"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teU-xb-VqM">
-                                        <rect key="frame" x="17" y="376" width="123" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="teU-xb-VqM">
+                                        <rect key="frame" x="17" y="211" width="123" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(555) 555-5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npa-lY-d30">
-                                        <rect key="frame" x="148" y="376" width="444" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="444" id="eJe-RC-YzK"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(555) 555-5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npa-lY-d30">
+                                        <rect key="frame" x="148" y="211" width="444" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amenities:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXD-Qx-OCV">
+                                        <rect key="frame" x="17" y="248" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="1Zj-ss-4Ge">
+                                        <rect key="frame" x="50" y="339" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </mapView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aCe-6Q-uU2">
+                                        <rect key="frame" x="17" y="285" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="HiX-qv-ZHH" secondAttribute="centerX" id="8Qr-fB-SWb"/>
-                                    <constraint firstItem="npa-lY-d30" firstAttribute="top" secondItem="HiX-qv-ZHH" secondAttribute="bottom" constant="14" id="8rR-Dm-cl3"/>
-                                    <constraint firstItem="teU-xb-VqM" firstAttribute="top" secondItem="HiX-qv-ZHH" secondAttribute="bottom" constant="14" id="Ld2-8a-lBA"/>
-                                    <constraint firstItem="teU-xb-VqM" firstAttribute="leading" secondItem="bKH-Hw-flX" secondAttribute="leading" constant="17" id="MOX-UC-OaM"/>
-                                    <constraint firstAttribute="bottom" secondItem="teU-xb-VqM" secondAttribute="bottom" constant="203" id="Npy-x7-i7e"/>
-                                    <constraint firstItem="HiX-qv-ZHH" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="top" constant="8" id="V3Q-uA-nAh"/>
-                                    <constraint firstItem="HiX-qv-ZHH" firstAttribute="leading" secondItem="bKH-Hw-flX" secondAttribute="leading" id="cnx-cn-GlX"/>
-                                    <constraint firstAttribute="centerX" secondItem="HiX-qv-ZHH" secondAttribute="centerX" id="dGg-zY-vB6"/>
-                                    <constraint firstItem="HiX-qv-ZHH" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="top" constant="77" id="gWh-ft-Vdh"/>
-                                    <constraint firstItem="npa-lY-d30" firstAttribute="leading" secondItem="teU-xb-VqM" secondAttribute="trailing" constant="8" id="wry-Yz-sbT"/>
-                                    <constraint firstAttribute="trailing" secondItem="HiX-qv-ZHH" secondAttribute="trailing" id="xVt-KI-rJg"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8Qr-fB-SWb"/>
-                                        <exclude reference="gWh-ft-Vdh"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bKH-Hw-flX" firstAttribute="leading" secondItem="BRa-O5-fZl" secondAttribute="leadingMargin" constant="-16" id="0iz-Ru-ljs"/>
-                            <constraint firstItem="2ae-uQ-rpS" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="bottom" id="1ep-ck-j54"/>
-                            <constraint firstItem="2ae-uQ-rpS" firstAttribute="top" secondItem="bKH-Hw-flX" secondAttribute="bottom" id="MTr-MJ-G6q"/>
-                            <constraint firstAttribute="centerX" secondItem="bKH-Hw-flX" secondAttribute="centerX" id="RW9-rR-603"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bKH-Hw-flX" secondAttribute="trailing" constant="-16" id="jD9-0A-0SO"/>
-                            <constraint firstItem="bKH-Hw-flX" firstAttribute="top" secondItem="BRa-O5-fZl" secondAttribute="topMargin" id="s0N-dv-24Y"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="MTr-MJ-G6q"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Park Name" id="AeH-eN-rnE">
                         <barButtonItem key="leftBarButtonItem" image="menu48-3.png" id="4a1-73-8YI">
@@ -111,13 +85,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="amenitiesLabel" destination="lXD-Qx-OCV" id="ljg-Ff-RRx"/>
                         <outlet property="imageView" destination="HiX-qv-ZHH" id="KOI-IY-Y3q"/>
+                        <outlet property="mapLabel" destination="aCe-6Q-uU2" id="zwY-MT-NU1"/>
+                        <outlet property="mapView" destination="1Zj-ss-4Ge" id="lqd-dU-3AV"/>
                         <outlet property="phoneLabel" destination="npa-lY-d30" id="kAp-Ta-VZ1"/>
+                        <outlet property="scrollView" destination="bKH-Hw-flX" id="aws-fz-YtY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmk-tq-x0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680" y="748"/>
+            <point key="canvasLocation" x="362.66666666666669" y="708.10666666666668"/>
         </scene>
         <!--Menu Navigation-->
         <scene sceneID="Emx-3o-Zxq">
@@ -129,16 +107,21 @@
                     </navigationBar>
                     <connections>
                         <segue destination="yoa-KF-bcC" kind="relationship" relationship="rootViewController" id="bGS-OP-Ve4"/>
-                        <segue destination="kZT-FK-6mG" kind="show" identifier="FakeSegue" id="4Sb-Cc-dhP"/>
+                        <segue destination="kZT-FK-6mG" kind="push" identifier="FakeSegue" id="4Sb-Cc-dhP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEx-tE-wvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-136" y="0.0"/>
+            <point key="canvasLocation" x="-72.533333333333331" y="0.0"/>
         </scene>
     </scenes>
     <resources>
         <image name="greenway.jpeg" width="700" height="416"/>
         <image name="menu48-3.png" width="32" height="32"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

@@ -19,6 +19,7 @@
 		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
 		11AEAE081A7677D7008414A9 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE071A7677D7008414A9 /* MenuTableController.swift */; };
 		11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE091A7679BC008414A9 /* MenuController.swift */; };
+		11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B404B71AD1E1F0001AB300 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		11B6164E1AB9A09B004B715D /* abernathy.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 11B6164D1AB9A09B004B715D /* abernathy.jpeg */; };
 		11B616501AB9A163004B715D /* allen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 11B6164F1AB9A163004B715D /* allen.jpeg */; };
 		11B616521AB9A1D1004B715D /* trees.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 11B616511AB9A1D1004B715D /* trees.jpeg */; };
@@ -62,6 +63,7 @@
 		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
 		11AEAE071A7677D7008414A9 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
 		11AEAE091A7679BC008414A9 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		11B404B71AD1E1F0001AB300 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11B6164D1AB9A09B004B715D /* abernathy.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abernathy.jpeg; sourceTree = "<group>"; };
 		11B6164F1AB9A163004B715D /* allen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = allen.jpeg; sourceTree = "<group>"; };
 		11B616511AB9A1D1004B715D /* trees.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trees.jpeg; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +102,7 @@
 		113F6DB619F8762600CE4B16 = {
 			isa = PBXGroup;
 			children = (
+				11B404B71AD1E1F0001AB300 /* MapKit.framework */,
 				113F6DC119F8762600CE4B16 /* Sandy Springs */,
 				113F6DD919F8762600CE4B16 /* Sandy SpringsTests */,
 				113F6DC019F8762600CE4B16 /* Products */,
