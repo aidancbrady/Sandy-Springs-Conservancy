@@ -109,6 +109,7 @@ public class ENSideMenu : NSObject
     public init(sourceView: UIView, menuPosition: ENSideMenuPosition)
     {
         super.init()
+        
         self.sourceView = sourceView
         self.menuPosition = menuPosition
         self.setupMenuView()
@@ -139,9 +140,11 @@ public class ENSideMenu : NSObject
     public convenience init(sourceView: UIView, menuTableViewController: UITableViewController, menuPosition: ENSideMenuPosition)
     {
         self.init(sourceView: sourceView, menuPosition: menuPosition)
+        
         self.menuTableViewController = menuTableViewController
         self.menuTableViewController.tableView.frame = sideMenuContainerView.bounds
         self.menuTableViewController.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+        
         sideMenuContainerView.addSubview(self.menuTableViewController.tableView)
     }
     
@@ -174,16 +177,13 @@ public class ENSideMenu : NSObject
         
         sourceView.addSubview(sideMenuContainerView)
         
-        if (NSClassFromString("UIVisualEffectView") != nil)
+        if NSClassFromString("UIVisualEffectView") != nil
         {
             // Add blur view
             var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
             visualEffectView.frame = sideMenuContainerView.bounds
             visualEffectView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
             sideMenuContainerView.addSubview(visualEffectView)
-        }
-        else {
-            // TODO: add blur for ios 7
         }
     }
     
@@ -233,7 +233,6 @@ public class ENSideMenu : NSObject
             let menuViewBehavior = UIDynamicItemBehavior(items: [sideMenuContainerView])
             menuViewBehavior.elasticity = 0.25
             animator.addBehavior(menuViewBehavior)
-            
         }
         else {
             var destFrame :CGRect

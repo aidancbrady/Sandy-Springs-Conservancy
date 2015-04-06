@@ -48,6 +48,8 @@ class ParkController: UIViewController, MKMapViewDelegate
         
         scrollView.contentSize = CGSizeMake(scrollView.frame.width, mapView.frame.maxY)
         
+        mapView.hidden = true
+        
         var geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(park.address, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
@@ -65,6 +67,18 @@ class ParkController: UIViewController, MKMapViewDelegate
                 self.mapView.setRegion(region, animated: false)
                 self.mapView.addAnnotation(point)
             }
+        })
+    }
+    
+    func loadMap()
+    {
+        mapView.hidden = false
+        mapView.alpha = 0.1
+        
+        UIView.transitionWithView(view, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut, animations: {() in
+            self.mapView.alpha = 1
+        }, completion: {b in
+            return
         })
     }
     
