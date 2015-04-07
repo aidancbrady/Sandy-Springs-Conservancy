@@ -25,20 +25,11 @@ class MenuTableController: UITableViewController
         self.clearsSelectionOnViewWillAppear = false
         
         menuData.append("Parks", true, "MenuController")
-        menuData.append("Abernathy Greenway", false, "ParkController")
-        menuData.append("Abernathy Park", false, "ParkController")
-        menuData.append("Allen Road", false, "ParkController")
-        menuData.append("Big Trees Forest Preserve", false, "ParkController")
-        menuData.append("Chattahoochee River: Island Ford", false, "ParkController")
-        menuData.append("Chattahoochee River: Powers Island", false, "ParkController")
-        menuData.append("Chattahoochee River: East Palisades", false, "ParkController")
-        menuData.append("Hammond Park", false, "ParkController")
-        menuData.append("Morgan Falls Overlook Park", false, "ParkController")
-        menuData.append("Morgan Falls Ball Fields", false, "ParkController")
-        menuData.append("Morgan Falls River Park", false, "ParkController")
-        menuData.append("Ridgeview Park", false, "ParkController")
-        menuData.append("Sandy Springs Tennis Center", false, "ParkController")
-        menuData.append("Sandy Springs Historical Site", false, "ParkController")
+        
+        for data in ParkController.Parks.parkData
+        {
+            menuData.append(data.0, false, "ParkController")
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat

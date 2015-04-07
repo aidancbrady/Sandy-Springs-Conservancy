@@ -13,6 +13,7 @@
 		113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCD19F8762600CE4B16 /* Images.xcassets */; };
 		113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */; };
 		113F6DDD19F8762600CE4B16 /* Sandy_SpringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */; };
+		118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */; };
 		11ABFE101A93C1390085490B /* greenway.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 11ABFE0F1A93C1390085490B /* greenway.jpeg */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
@@ -57,6 +58,7 @@
 		113F6DD619F8762600CE4B16 /* Sandy SpringsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sandy SpringsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DDB19F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandy_SpringsTests.swift; sourceTree = "<group>"; };
+		118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		11ABFE0F1A93C1390085490B /* greenway.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenway.jpeg; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */,
 				11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +105,7 @@
 		113F6DB619F8762600CE4B16 = {
 			isa = PBXGroup;
 			children = (
+				118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */,
 				11B404B71AD1E1F0001AB300 /* MapKit.framework */,
 				113F6DC119F8762600CE4B16 /* Sandy Springs */,
 				113F6DD919F8762600CE4B16 /* Sandy SpringsTests */,
