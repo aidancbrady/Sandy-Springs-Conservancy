@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ParkController: UIViewController, MKMapViewDelegate
+class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
 {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
@@ -21,9 +21,17 @@ class ParkController: UIViewController, MKMapViewDelegate
     var parkName: String!
     var park: ParkData!
     
+    var manager:CLLocationManager?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        manager = CLLocationManager()
+        manager!.delegate = self
+        manager!.desiredAccuracy = kCLLocationAccuracyBest
+        manager!.requestAlwaysAuthorization()
+        manager!.startUpdatingLocation()
 
         setParkData()
         
@@ -52,15 +60,15 @@ class ParkController: UIViewController, MKMapViewDelegate
         
         var geocoder = CLGeocoder()
         
-        geocoder.geocodeAddressString(park.address, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+        geocoder.geocodeAddressString(park.address, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
             if let placemark = placemarks?[0] as? CLPlacemark
             {
-                let pRegion = placemark.region as CLCircularRegion
+                let pRegion = placemark.region as! CLCircularRegion
                 
                 let region = MKCoordinateRegionMake(pRegion.center, MKCoordinateSpanMake(self.mapView.region.span.longitudeDelta/8192, self.mapView.region.span.latitudeDelta/8192))
                 let point = MKPointAnnotation()
                 
-                point.setCoordinate(pRegion.center)
+                point.coordinate = pRegion.center
                 point.title = self.parkName
                 point.subtitle = self.park.address
                 
@@ -92,7 +100,7 @@ class ParkController: UIViewController, MKMapViewDelegate
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnimation")
         
         annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIView
+        annotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
         
         return annotationView
     }

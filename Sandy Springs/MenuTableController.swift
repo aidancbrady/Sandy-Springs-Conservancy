@@ -86,11 +86,11 @@ class MenuTableController: UITableViewController
         selectedItem = indexPath.row
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destController = mainStoryboard.instantiateViewControllerWithIdentifier(menuData[selectedItem].2) as UIViewController
+        var destController = mainStoryboard.instantiateViewControllerWithIdentifier(menuData[selectedItem].2) as! UIViewController
         
         if destController is ParkController
         {
-            let park = destController as ParkController
+            let park = destController as! ParkController
             
             park.parkName = menuData[selectedItem].0
         }

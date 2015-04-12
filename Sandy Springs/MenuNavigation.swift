@@ -27,7 +27,7 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
             dispatch_async(dispatch_get_main_queue(), {
                 if self.topViewController is ParkController
                 {
-                    (self.topViewController as ParkController).loadMap()
+                    (self.topViewController as! ParkController).loadMap()
                 }
             })
         })
