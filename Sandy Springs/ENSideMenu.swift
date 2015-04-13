@@ -96,7 +96,7 @@ public class ENSideMenu : NSObject
         }
     }
     
-    private let menuPosition:ENSideMenuPosition = .Left
+    private var menuPosition:ENSideMenuPosition = .Left
     public var bouncingEnabled :Bool = true
     private let sideMenuContainerView =  UIView()
     private var menuTableViewController : UITableViewController!
@@ -108,9 +108,10 @@ public class ENSideMenu : NSObject
     
     public init(sourceView: UIView, menuPosition: ENSideMenuPosition)
     {
+        self.sourceView = sourceView
+        
         super.init()
         
-        self.sourceView = sourceView
         self.menuPosition = menuPosition
         self.setupMenuView()
     

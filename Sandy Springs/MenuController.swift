@@ -10,11 +10,13 @@ import UIKit
 
 class MenuController: UIViewController
 {
+    @IBOutlet weak var logoImage: UIImageView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        logoImage.frame = CGRectMake(view.frame.minX+16, navigationController!.navigationBar.frame.maxY+16, view.frame.maxX-32, (view.frame.maxX-32)/2.2)
     }
     
     @IBAction func menuPressed(sender: AnyObject)

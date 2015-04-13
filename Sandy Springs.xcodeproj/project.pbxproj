@@ -13,6 +13,7 @@
 		113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCD19F8762600CE4B16 /* Images.xcassets */; };
 		113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */; };
 		113F6DDD19F8762600CE4B16 /* Sandy_SpringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */; };
+		1186CE7C1ADBE8260022244A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1186CE7B1ADBE8260022244A /* logo.png */; };
 		118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */; };
 		11ABFE101A93C1390085490B /* greenway.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 11ABFE0F1A93C1390085490B /* greenway.jpeg */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
@@ -58,6 +59,7 @@
 		113F6DD619F8762600CE4B16 /* Sandy SpringsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sandy SpringsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DDB19F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandy_SpringsTests.swift; sourceTree = "<group>"; };
+		1186CE7B1ADBE8260022244A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../Desktop/logo.png; sourceTree = "<group>"; };
 		118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		11ABFE0F1A93C1390085490B /* greenway.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenway.jpeg; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		113F6DC219F8762600CE4B16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1186CE7B1ADBE8260022244A /* logo.png */,
 				11B616651AB9A6B2004B715D /* morgan_river.jpeg */,
 				11B616631AB9A575004B715D /* river_palisades.jpeg */,
 				11B616611AB9A52F004B715D /* river_ford.jpeg */,
@@ -277,6 +280,7 @@
 				11B616601AB9A4D4004B715D /* river_powers.jpeg in Resources */,
 				11B6165C1AB9A43D004B715D /* historical_site.jpeg in Resources */,
 				113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */,
+				1186CE7C1ADBE8260022244A /* logo.png in Resources */,
 				11B6164E1AB9A09B004B715D /* abernathy.jpeg in Resources */,
 				113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */,
 				11ABFE101A93C1390085490B /* greenway.jpeg in Resources */,
