@@ -40,7 +40,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         imageView.frame = CGRect(x: imageView.frame.minX, y: imageView.frame.minY, width: view.frame.width, height: imageView.frame.height)
         scrollView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
         
-        var startX = amenitiesLabel.frame.minX + 8
+        let startX = amenitiesLabel.frame.minX + 8
         var startY = amenitiesLabel.frame.maxY + 8
         
         for data in park.amenities
@@ -58,10 +58,10 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         mapView.hidden = true
         
-        var geocoder = CLGeocoder()
+        let geocoder = CLGeocoder()
         
-        geocoder.geocodeAddressString(park.address, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
-            if let placemark = placemarks?[0] as? CLPlacemark
+        geocoder.geocodeAddressString(park.address, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+            if let placemark = placemarks?[0] as CLPlacemark!
             {
                 let pRegion = placemark.region as! CLCircularRegion
                 
@@ -90,7 +90,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         })
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
         if annotation.isKindOfClass(MKUserLocation)
         {
@@ -100,18 +100,18 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnimation")
         
         annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+        annotationView.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIView
         
         return annotationView
     }
     
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!)
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
-        let annotation = view.annotation
+        let annotation = view.annotation!
         let placemark = MKPlacemark(coordinate: annotation.coordinate, addressDictionary: nil)
         let mapItem = MKMapItem(placemark: placemark)
         
-        mapItem.name = annotation.title
+        mapItem.name = annotation.title!
         mapItem.openInMapsWithLaunchOptions(nil)
     }
     
