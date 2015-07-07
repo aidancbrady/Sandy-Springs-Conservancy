@@ -19,7 +19,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="nax-wt-3hf">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="nax-wt-3hf">
                     <rect key="frame" x="40" y="31" width="400" height="400"/>
                     <animations/>
                     <constraints>
@@ -60,6 +60,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo.png" width="1200" height="1200"/>
+        <image name="logo.jpeg" width="1200" height="1200"/>
     </resources>
 </document>

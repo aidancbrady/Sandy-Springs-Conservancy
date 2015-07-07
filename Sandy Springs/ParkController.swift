@@ -35,6 +35,8 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
         setParkData()
         
+        phoneLabel.userInteractionEnabled = true
+        
         mapView.delegate = self
         
         imageView.frame = CGRect(x: imageView.frame.minX, y: imageView.frame.minY, width: view.frame.width, height: imageView.frame.height)
@@ -112,6 +114,25 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationItem.title = parkName
         imageView.image = UIImage(named: park.imageUrl)
         phoneLabel.text = park.phone
+    }
+    
+    @IBAction func numberTapped(sender: AnyObject)
+    {
+        let number = park.phone.stringByReplacingOccurrencesOfString("(", withString: "").stringByReplacingOccurrencesOfString(")", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("-", withString: "")
+        
+        if let url = NSURL(string: "tel://" + number)
+        {
+            let alertController = UIAlertController(title: "Confirm", message: "Call " + parkName + "?", preferredStyle: .Alert)
+            let yesAction = UIAlertAction(title: "Call", style: .Default, handler: {action in
+                UIApplication.sharedApplication().openURL(url)
+            })
+            let noAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            
+            alertController.addAction(noAction)
+            alertController.addAction(yesAction)
+            
+            presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func menuPressed(sender: AnyObject)

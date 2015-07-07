@@ -13,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="I5f-It-tqF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpeg" id="I5f-It-tqF">
                                 <rect key="frame" x="16" y="81" width="288" height="288"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
@@ -83,12 +83,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(555) 555-5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npa-lY-d30">
-                                        <rect key="frame" x="150" y="211" width="444" height="21"/>
+                                        <rect key="frame" x="150" y="211" width="162" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="39P-DW-Oed" appends="YES" id="JM9-wd-244"/>
+                                        </connections>
                                     </label>
                                 </subviews>
                                 <animations/>
@@ -114,6 +118,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmk-tq-x0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="39P-DW-Oed">
+                    <pressTypeMask key="allowedPressTypes"/>
+                    <connections>
+                        <action selector="numberTapped:" destination="kZT-FK-6mG" id="49F-PE-e4y"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="362" y="708"/>
         </scene>
@@ -138,7 +148,7 @@
     </scenes>
     <resources>
         <image name="greenway.jpeg" width="700" height="416"/>
-        <image name="logo.png" width="1200" height="1200"/>
+        <image name="logo.jpeg" width="1200" height="1200"/>
         <image name="menu48-3.png" width="32" height="32"/>
     </resources>
 </document>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		110A557B1B42EDF100BE2C30 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 110A557A1B42EDF100BE2C30 /* logo.png */; };
+		110A557B1B42EDF100BE2C30 /* logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 110A557A1B42EDF100BE2C30 /* logo.jpeg */; };
 		113CDC531A9769390024DBC7 /* ParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113CDC521A9769390024DBC7 /* ParkController.swift */; };
 		113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DC419F8762600CE4B16 /* AppDelegate.swift */; };
 		113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCA19F8762600CE4B16 /* Main.storyboard */; };
@@ -49,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		110A557A1B42EDF100BE2C30 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		110A557A1B42EDF100BE2C30 /* logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpeg; sourceTree = "<group>"; };
 		113CDC521A9769390024DBC7 /* ParkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkController.swift; sourceTree = "<group>"; };
 		113F6DBF19F8762600CE4B16 /* Sandy Springs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sandy Springs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DC319F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		113F6DC219F8762600CE4B16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				110A557A1B42EDF100BE2C30 /* logo.png */,
+				110A557A1B42EDF100BE2C30 /* logo.jpeg */,
 				11B616651AB9A6B2004B715D /* morgan_river.jpeg */,
 				11B616631AB9A575004B715D /* river_palisades.jpeg */,
 				11B616611AB9A52F004B715D /* river_ford.jpeg */,
@@ -233,6 +233,7 @@
 				TargetAttributes = {
 					113F6DBE19F8762600CE4B16 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = VBY56UWVE3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -281,7 +282,7 @@
 				11B616601AB9A4D4004B715D /* river_powers.jpeg in Resources */,
 				11B6165C1AB9A43D004B715D /* historical_site.jpeg in Resources */,
 				113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */,
-				110A557B1B42EDF100BE2C30 /* logo.png in Resources */,
+				110A557B1B42EDF100BE2C30 /* logo.jpeg in Resources */,
 				11B6164E1AB9A09B004B715D /* abernathy.jpeg in Resources */,
 				113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */,
 				11ABFE101A93C1390085490B /* greenway.jpeg in Resources */,
@@ -437,10 +438,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -448,10 +452,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
