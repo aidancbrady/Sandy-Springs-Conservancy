@@ -17,8 +17,8 @@ class InitController: UIViewController
     {
         super.viewDidLoad()
         
-        downloadLabel.frame = CGRectMake(view.frame.maxX/2 - downloadLabel.frame.maxX/2, (view.frame.maxY/2 - downloadLabel.frame.maxY/2) - 8, downloadLabel.frame.width, downloadLabel.frame.height)
-        downloadActivity.frame = CGRectMake(view.frame.maxX/2 - downloadActivity.frame.maxX/2, downloadLabel.frame.maxY + 8, downloadActivity.frame.width, downloadActivity.frame.height)
+        downloadLabel.frame = CGRect(x: view.frame.maxX/2 - downloadLabel.frame.width/2, y: (view.frame.maxY/2 - downloadLabel.frame.height/2) - 8, width: downloadLabel.frame.width, height: downloadLabel.frame.height)
+        downloadActivity.frame = CGRect(x: view.frame.maxX/2 - downloadActivity.frame.width/2, y: downloadLabel.frame.maxY + 8, width: downloadActivity.frame.width, height: downloadActivity.frame.height)
         
         downloadActivity.startAnimating()
         downloadActivity.hidesWhenStopped = true

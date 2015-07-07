@@ -250,7 +250,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                 
                                 if park === parkController.park
                                 {
-                                    parkController.imageView.image = park.image
+                                    park.setImage(parkController)
                                 }
                             }
                         }
