@@ -18,14 +18,32 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8K-m7-KmC">
-                                <rect key="frame" x="122" y="377" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8K-m7-KmC">
+                                <rect key="frame" x="16" y="377" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dev-yM-hzr">
+                                <rect key="frame" x="116" y="451" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="Visit Website"/>
+                                <connections>
+                                    <action selector="websitePressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="4NT-7T-Jgw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tVy-OX-mmk">
+                                <rect key="frame" x="96" y="489" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="Contact Developer"/>
+                                <connections>
+                                    <action selector="developerPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="uv7-Lo-17E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,7 +56,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="developerButton" destination="tVy-OX-mmk" id="UUy-4e-6Yu"/>
                         <outlet property="logoImage" destination="I5f-It-tqF" id="IIR-yV-Xl2"/>
+                        <outlet property="websiteButton" destination="dev-yM-hzr" id="aCe-gj-aFn"/>
+                        <outlet property="welcomeLabel" destination="e8K-m7-KmC" id="hq2-nB-MIX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkN-jP-nGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,7 +117,6 @@
                                         <animations/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="39P-DW-Oed" appends="YES" id="JM9-wd-244"/>
