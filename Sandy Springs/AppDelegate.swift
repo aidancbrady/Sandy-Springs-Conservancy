@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CLLocationManagerDelegate
 {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         ParkController.Parks.checkParkData()
+        
+        let manager = CLLocationManager()
+        manager.delegate = self
+        
+        manager.requestWhenInUseAuthorization()
         
         return true
     }
@@ -45,6 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func applicationWillTerminate(application: UIApplication)
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        let accepted = (status == CLAuthorizationStatus.AuthorizedWhenInUse)
+        
+        if accepted
+        {
+            ParkController.Parks.initLocationUpdates()
+        }
     }
 }
 
