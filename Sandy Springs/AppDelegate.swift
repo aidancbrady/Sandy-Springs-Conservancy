@@ -13,11 +13,12 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CLLocationManagerDelegate
 {
     var window: UIWindow?
+    
+    static var DATA_URL = "https://dl.dropboxusercontent.com/u/90411166/Conservancy/"
+    static var DATA_FILE = "conservancy.json"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        ParkController.Parks.checkParkData()
-        
         let manager = CLLocationManager()
         manager.delegate = self
         

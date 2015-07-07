@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="mbg-3e-FFn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="gg0-PB-s9v">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
@@ -49,7 +49,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenway.jpeg" id="HiX-qv-ZHH">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HiX-qv-ZHH">
                                         <rect key="frame" x="0.0" y="8" width="320" height="189"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
@@ -102,7 +102,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Park Name" id="AeH-eN-rnE">
-                        <barButtonItem key="leftBarButtonItem" image="menu48-3.png" id="4a1-73-8YI">
+                        <barButtonItem key="leftBarButtonItem" image="menu_tab.png" id="4a1-73-8YI">
                             <connections>
                                 <action selector="menuPressed:" destination="kZT-FK-6mG" id="F3F-qz-f8Y"/>
                             </connections>
@@ -127,10 +127,46 @@
             </objects>
             <point key="canvasLocation" x="362" y="708"/>
         </scene>
+        <!--Init Controller-->
+        <scene sceneID="1wa-HZ-cz9">
+            <objects>
+                <viewController id="gg0-PB-s9v" customClass="InitController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mvG-Lo-ov6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Park List..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4VO-wL-eKC">
+                                <rect key="frame" x="68" y="245" width="184" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="5a6-8P-7A6">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="downloadActivity" destination="5a6-8P-7A6" id="piN-H3-L7q"/>
+                        <outlet property="downloadLabel" destination="4VO-wL-eKC" id="Blh-Er-3eL"/>
+                        <segue destination="mbg-3e-FFn" kind="modal" identifier="download_complete" modalTransitionStyle="crossDissolve" id="r3I-GS-haY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J5k-mO-7Iy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-525" y="0.0"/>
+        </scene>
         <!--Menu Navigation-->
         <scene sceneID="Emx-3o-Zxq">
             <objects>
                 <navigationController id="mbg-3e-FFn" customClass="MenuNavigation" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gLM-4x-fwZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="A6A-Us-DOe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -147,8 +183,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="greenway.jpeg" width="700" height="416"/>
         <image name="logo.jpeg" width="1200" height="1200"/>
         <image name="menu48-3.png" width="32" height="32"/>
+        <image name="menu_tab.png" width="32" height="32"/>
     </resources>
 </document>
