@@ -105,6 +105,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let mapItem = MKMapItem(placemark: placemark)
         
         mapItem.name = annotation.title!
+        mapItem.phoneNumber = park.phone
         mapItem.openInMapsWithLaunchOptions(nil)
     }
     
