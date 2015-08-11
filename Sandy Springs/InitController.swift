@@ -30,33 +30,29 @@ class InitController: UIViewController
             {
                 if let data = NSData(contentsOfURL: url)
                 {
-                    do {
-                        let raw = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
-                        
-                        if let top = raw as? NSDictionary
+                    let raw: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: nil)
+                    
+                    if let top = raw as? NSDictionary
+                    {
+                        if let parks = top["parks"] as? NSArray
                         {
-                            if let parks = top["parks"] as? NSArray
+                            for obj in parks
                             {
-                                for obj in parks
+                                if let park = obj as? NSDictionary
                                 {
-                                    if let park = obj as? NSDictionary
-                                    {
-                                        ParkController.ParkData.initPark(park)
-                                    }
-                                    else {
-                                        errored = true
-                                        break
-                                    }
+                                    ParkController.ParkData.initPark(park)
                                 }
-                            }
-                            else {
-                                errored = true
+                                else {
+                                    errored = true
+                                    break
+                                }
                             }
                         }
                         else {
                             errored = true
                         }
-                    } catch {
+                    }
+                    else {
                         errored = true
                     }
                 }

@@ -57,7 +57,7 @@ public extension UIViewController
             return topMostController()
         }
         
-        repeat {
+        do {
             if iteration is ENSideMenuProtocol
             {
                 return iteration as? ENSideMenuProtocol
@@ -144,7 +144,7 @@ public class ENSideMenu : NSObject
         
         self.menuTableViewController = menuTableViewController
         self.menuTableViewController.tableView.frame = sideMenuContainerView.bounds
-        self.menuTableViewController.tableView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.menuTableViewController.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
         
         sideMenuContainerView.addSubview(self.menuTableViewController.tableView)
     }
@@ -183,7 +183,7 @@ public class ENSideMenu : NSObject
             // Add blur view
             let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
             visualEffectView.frame = sideMenuContainerView.bounds
-            visualEffectView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+            visualEffectView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
             sideMenuContainerView.addSubview(visualEffectView)
         }
     }
