@@ -30,29 +30,33 @@ class InitController: UIViewController
             {
                 if let data = NSData(contentsOfURL: url)
                 {
-                    let raw: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: nil)
-                    
-                    if let top = raw as? NSDictionary
-                    {
-                        if let parks = top["parks"] as? NSArray
+                    do {
+                        let raw: AnyObject? = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
+                        
+                        if let top = raw as? NSDictionary
                         {
-                            for obj in parks
+                            if let parks = top["parks"] as? NSArray
                             {
-                                if let park = obj as? NSDictionary
+                                for obj in parks
                                 {
-                                    ParkController.ParkData.initPark(park)
+                                    if let park = obj as? NSDictionary
+                                    {
+                                        ParkController.ParkData.initPark(park)
+                                    }
+                                    else {
+                                        errored = true
+                                        break
+                                    }
                                 }
-                                else {
-                                    errored = true
-                                    break
-                                }
+                            }
+                            else {
+                                errored = true
                             }
                         }
                         else {
                             errored = true
                         }
-                    }
-                    else {
+                    } catch {
                         errored = true
                     }
                 }

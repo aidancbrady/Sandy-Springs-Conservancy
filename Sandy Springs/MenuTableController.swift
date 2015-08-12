@@ -49,7 +49,7 @@ class MenuTableController: UITableViewController
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
 
         if cell == nil
         {
@@ -86,7 +86,7 @@ class MenuTableController: UITableViewController
         selectedItem = indexPath.row
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier(menuData[selectedItem].2) as! UIViewController
+        let destController = mainStoryboard.instantiateViewControllerWithIdentifier(menuData[selectedItem].2) as UIViewController
         
         if destController is ParkController
         {

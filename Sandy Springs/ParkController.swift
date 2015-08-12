@@ -93,7 +93,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnimation")
         
         annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+        annotationView.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
         
         return annotationView
     }
@@ -243,7 +243,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         if var controller:UIViewController = window.rootViewController as UIViewController!
                         {
                             let navigation:MenuNavigation = controller.presentedViewController as! MenuNavigation
-                            controller = navigation.viewControllers[0] as! UIViewController
+                            controller = navigation.viewControllers[0] as UIViewController
                             
                             if controller is ParkController
                             {
