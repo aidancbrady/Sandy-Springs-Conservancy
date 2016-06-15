@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="gg0-PB-s9v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="gg0-PB-s9v">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Sandy Springs-->
@@ -15,12 +16,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpeg" id="I5f-It-tqF">
                                 <rect key="frame" x="16" y="81" width="288" height="288"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <animations/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8K-m7-KmC">
                                 <rect key="frame" x="16" y="377" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -28,7 +27,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dev-yM-hzr">
                                 <rect key="frame" x="116" y="451" width="89" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
                                 <state key="normal" title="Visit Website"/>
                                 <connections>
                                     <action selector="websitePressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="4NT-7T-Jgw"/>
@@ -37,22 +35,21 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tVy-OX-mmk">
                                 <rect key="frame" x="96" y="489" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
                                 <state key="normal" title="Contact Developer"/>
                                 <connections>
                                     <action selector="developerPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="uv7-Lo-17E"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sandy Springs" id="Sd6-MV-iQZ">
-                        <barButtonItem key="leftBarButtonItem" image="menu_tab.png" id="wWf-Uh-tnZ">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" style="done" id="wWf-Uh-tnZ">
                             <connections>
                                 <action selector="menuPressed:" destination="yoa-KF-bcC" id="lqp-FE-gWl"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Map" style="done" id="Lli-ns-abO"/>
                     </navigationItem>
                     <connections>
                         <outlet property="developerButton" destination="tVy-OX-mmk" id="UUy-4e-6Yu"/>
@@ -80,35 +77,30 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HiX-qv-ZHH">
                                         <rect key="frame" x="0.0" y="8" width="320" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="teU-xb-VqM">
-                                        <rect key="frame" x="17" y="226" width="132" height="21"/>
+                                        <rect key="frame" x="16" y="304" width="132" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amenities:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXD-Qx-OCV">
-                                        <rect key="frame" x="17" y="263" width="295" height="21"/>
+                                        <rect key="frame" x="16" y="333" width="295" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aCe-6Q-uU2">
-                                        <rect key="frame" x="17" y="300" width="295" height="21"/>
+                                        <rect key="frame" x="16" y="362" width="289" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(555) 555-5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npa-lY-d30">
-                                        <rect key="frame" x="150" y="226" width="162" height="21"/>
+                                        <rect key="frame" x="149" y="304" width="156" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -117,19 +109,22 @@
                                         </connections>
                                     </label>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="1Zj-ss-4Ge">
-                                        <rect key="frame" x="44" y="354" width="240" height="128"/>
+                                        <rect key="frame" x="40" y="391" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                     </mapView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Park description goes here. Placeholder text, actual description varies by park entry." textAlignment="natural" selectable="NO" id="YkI-bn-y15">
+                                        <rect key="frame" x="16" y="226" width="289" height="77"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
-                                <animations/>
                             </scrollView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Park Name" id="AeH-eN-rnE">
-                        <barButtonItem key="leftBarButtonItem" image="menu_tab.png" id="4a1-73-8YI">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" style="done" id="4a1-73-8YI">
                             <connections>
                                 <action selector="menuPressed:" destination="kZT-FK-6mG" id="F3F-qz-f8Y"/>
                             </connections>
@@ -137,10 +132,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="amenitiesLabel" destination="lXD-Qx-OCV" id="ljg-Ff-RRx"/>
+                        <outlet property="descriptionView" destination="YkI-bn-y15" id="VoT-4d-P1e"/>
                         <outlet property="imageView" destination="HiX-qv-ZHH" id="KOI-IY-Y3q"/>
                         <outlet property="mapLabel" destination="aCe-6Q-uU2" id="zwY-MT-NU1"/>
                         <outlet property="mapView" destination="1Zj-ss-4Ge" id="lqd-dU-3AV"/>
                         <outlet property="phoneLabel" destination="npa-lY-d30" id="kAp-Ta-VZ1"/>
+                        <outlet property="phoneTitleLabel" destination="teU-xb-VqM" id="wfU-AV-ZOq"/>
                         <outlet property="scrollView" destination="bKH-Hw-flX" id="aws-fz-YtY"/>
                     </connections>
                 </viewController>
@@ -164,7 +161,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Park List..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4VO-wL-eKC">
                                 <rect key="frame" x="68" y="245" width="184" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -172,10 +168,8 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="5a6-8P-7A6">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
                             </activityIndicatorView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
@@ -196,7 +190,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="A6A-Us-DOe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="yoa-KF-bcC" kind="relationship" relationship="rootViewController" id="bGS-OP-Ve4"/>
@@ -210,11 +203,5 @@
     </scenes>
     <resources>
         <image name="logo.jpeg" width="1200" height="1200"/>
-        <image name="menu_tab.png" width="32" height="32"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -15,9 +15,21 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
         super.viewDidLoad()
         
         sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: MenuTableController(), menuPosition: .Left)
-        sideMenu!.menuWidth = 220
+        sideMenu!.menuWidth = self.view.frame.width*(4/5)
         sideMenu!.delegate = self
         sideMenuAnimationType = .None
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
+    }
+    
+    func onTap(sender: UITapGestureRecognizer?)
+    {
+        if sender!.locationInView(self.view).x > sideMenu!.menuWidth
+        {
+            hideSideMenuView()
+        }
+        
+        sender!.cancelsTouchesInView = false
     }
     
     func sideMenuWillClose()

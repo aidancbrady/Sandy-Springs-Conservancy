@@ -13,6 +13,8 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var descriptionView: UITextView!
+    @IBOutlet weak var phoneTitleLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var amenitiesLabel: UILabel!
     @IBOutlet weak var mapLabel: UILabel!
@@ -42,6 +44,19 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         imageView.frame = CGRect(x: imageView.frame.minX, y: imageView.frame.minY, width: view.frame.width, height: imageView.frame.height)
         scrollView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
         
+        //Setup park description view
+        descriptionView.font = UIFont.systemFontOfSize(17)
+        descriptionView.textContainer.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        let maxWidth = scrollView.frame.width - 32
+        let descSize = descriptionView.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.max))
+        descriptionView.frame.size = CGSize(width: max(maxWidth, descSize.width), height: descSize.height)
+        descriptionView.frame = CGRect(origin: CGPoint(x: view.frame.minX + 16, y: imageView.frame.maxY + 8), size: descriptionView.frame.size)
+        
+        phoneTitleLabel.frame.origin.y = descriptionView.frame.maxY + 8
+        phoneLabel.frame.origin.y = descriptionView.frame.maxY + 8
+        
+        amenitiesLabel.frame.origin.y = phoneTitleLabel.frame.maxY + 8
+        
         let startX = amenitiesLabel.frame.minX + 8
         var startY = amenitiesLabel.frame.maxY + 8
         
@@ -69,6 +84,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         self.mapView.setRegion(region, animated: false)
         self.mapView.addAnnotation(point)
+        self.mapView.scrollEnabled = false
     }
     
     func loadMap()
@@ -113,6 +129,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     {
         park = Parks.parkData[parkName]
         self.navigationItem.title = parkName
+        descriptionView.text = park.description
         phoneLabel.text = park.phone
         park.setImage(self)
     }
@@ -162,6 +179,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     class ParkData
     {
         var imageUrl: String!
+        var description: String!
         var phone: String!
         var amenities: [String] = [String]()
         var address: String!
@@ -172,6 +190,13 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         init(imageUrl: String)
         {
             self.imageUrl = imageUrl
+        }
+        
+        func setDescription(description: String) -> ParkData
+        {
+            self.description = description
+            
+            return self
         }
         
         func setPhone(phone: String) -> ParkData
@@ -210,6 +235,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         class func initPark(data:NSDictionary)
         {
             let park = ParkData(imageUrl: data["image"] as! String)
+            park.setDescription(data["description"] as! String)
             park.setPhone(data["phone"] as! String)
             park.setCoords(data["coordX"] as! Double, y: data["coordY"] as! Double)
             park.setAddress(data["address"] as! String)

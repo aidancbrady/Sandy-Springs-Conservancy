@@ -89,7 +89,7 @@ public extension UIViewController
 
 public class ENSideMenu : NSObject
 {
-    public var menuWidth : CGFloat = 160.0 {
+    public var menuWidth : CGFloat = 100.0 {
         didSet {
             needUpdateApperance = true
             updateFrame()
@@ -188,7 +188,7 @@ public class ENSideMenu : NSObject
         }
     }
     
-    private func toggleMenu (shouldOpen: Bool)
+    private func toggleMenu(shouldOpen: Bool)
     {
         updateSideMenuApperanceIfNeeded()
         isMenuOpen = shouldOpen
@@ -236,7 +236,7 @@ public class ENSideMenu : NSObject
             animator.addBehavior(menuViewBehavior)
         }
         else {
-            var destFrame :CGRect
+            var destFrame : CGRect
             
             if menuPosition == .Left
             {
