@@ -19,6 +19,8 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
+    let favoriteEdge = UIEdgeInsets(top: 6, left: 12, bottom: 8, right: 3)
+    
     var imageScroll: UIScrollView!
     var imageViews: [UIImageView] = [UIImageView]()
     var pageControl: UIPageControl!
@@ -43,6 +45,9 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         phoneLabel.userInteractionEnabled = true
         
         mapView.delegate = self
+        
+        //Favorite menu bar item
+        updateFavoriteButton(Utilities.isFavorite(parkName))
 
         //Setup main scroll view
         scrollView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
@@ -124,6 +129,23 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         })
     }
     
+    func onFavoriteToggle(sender: AnyObject)
+    {
+        updateFavoriteButton(Utilities.toggleFavorite(parkName))
+    }
+    
+    func updateFavoriteButton(favorite: Bool)
+    {
+        let btnFavourite = UIButton(frame: CGRectMake(0, 0, 30, 30))
+        btnFavourite.addTarget(self, action: #selector(onFavoriteToggle), forControlEvents: .TouchUpInside)
+        btnFavourite.setImage(UIImage(named: favorite ? "heart_filled" : "heart_empty")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        
+        let rightButton = UIBarButtonItem(customView: btnFavourite)
+        rightButton.imageInsets = favoriteEdge
+        rightButton.tintColor = UIColor.blueColor()
+        self.navigationItem.setRightBarButtonItems([rightButton], animated: true)
+    }
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
         if annotation.isKindOfClass(MKUserLocation)
@@ -200,7 +222,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    class ParkData
+    internal class ParkData
     {
         var imageUrls: [String] = [String]()
         var description: String!

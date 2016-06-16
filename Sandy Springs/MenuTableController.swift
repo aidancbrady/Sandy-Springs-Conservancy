@@ -24,7 +24,7 @@ class MenuTableController: UITableViewController
         
         self.clearsSelectionOnViewWillAppear = false
         
-        menuData.append(("Parks", true, "MenuController"))
+        menuData.append(("Home", true, "MenuController"))
         
         for data in ParkController.Parks.parkData
         {
