@@ -80,6 +80,7 @@ class MenuTableController: UITableViewController
     {
         if indexPath.row == selectedItem
         {
+            hideSideMenuView()
             return
         }
         

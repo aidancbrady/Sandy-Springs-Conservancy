@@ -14,6 +14,7 @@
 		113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCD19F8762600CE4B16 /* Images.xcassets */; };
 		113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */; };
 		113F6DDD19F8762600CE4B16 /* Sandy_SpringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */; };
+		117CB8391D13326500F263D3 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB8381D13326500F263D3 /* FavoriteCell.swift */; };
 		118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
@@ -51,6 +52,7 @@
 		113F6DD619F8762600CE4B16 /* Sandy SpringsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sandy SpringsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DDB19F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandy_SpringsTests.swift; sourceTree = "<group>"; };
+		117CB8381D13326500F263D3 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				11C52D1F1B4C559C007A2380 /* InitController.swift */,
 				11B841D01D1248C40009782C /* Utilities.swift */,
 				11B841D21D1262CF0009782C /* MapController.swift */,
+				117CB8381D13326500F263D3 /* FavoriteCell.swift */,
 			);
 			path = "Sandy Springs";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */,
 				11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */,
 				11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */,
+				117CB8391D13326500F263D3 /* FavoriteCell.swift in Sources */,
 				113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */,
 				11B841D11D1248C40009782C /* Utilities.swift in Sources */,
 				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,

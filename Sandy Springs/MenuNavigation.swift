@@ -10,12 +10,14 @@ import UIKit
 
 class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
 {
+    var tableController = MenuTableController()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: MenuTableController(), menuPosition: .Left)
-        sideMenu!.menuWidth = self.view.frame.width*(4/5)
+        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: tableController, menuPosition: .Left)
+        sideMenu!.menuWidth = 300
         sideMenu!.delegate = self
         sideMenuAnimationType = .None
         

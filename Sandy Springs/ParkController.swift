@@ -83,22 +83,36 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         phoneTitleLabel.frame.origin.y = descriptionView.frame.maxY + 8
         phoneLabel.frame.origin.y = descriptionView.frame.maxY + 8
         
-        //Amenities
-        amenitiesLabel.frame.origin.y = phoneTitleLabel.frame.maxY + 8
+        //Amenity layout
+        let margins = 20
+        let amenityWidth = view.frame.width-CGFloat(margins*2)
+        let perRow = Int(amenityWidth/110)
+        let rows = Int(ceil(Float(park.amenities.count)/Float(perRow)))
         
-        let startX = amenitiesLabel.frame.minX + 8
-        var startY = amenitiesLabel.frame.maxY + 8
+        let amenityView = UIView(frame: CGRect(x: view.frame.minX, y: phoneTitleLabel.frame.maxY + 8, width: view.frame.width, height: CGFloat(rows*110) - 10))
+        amenityView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
-        for data in park.amenities
+        for i in 0..<rows
         {
-            let label = UILabel(frame: CGRectMake(startX, startY, amenitiesLabel.frame.width-8, amenitiesLabel.frame.height))
-            label.text = "- " + data
-            scrollView.addSubview(label)
-            startY += label.frame.height + 4
+            for j in 0..<perRow
+            {
+                let index = i*perRow + j
+                
+                if index > park.amenities.count-1
+                {
+                    break
+                }
+                
+                let startX = (Int(amenityWidth)/perRow)/2 - 110/2
+                let amenity = AmenityView(amenityName: park.amenities[index], xPos: margins + (Int(amenityWidth)/perRow)*j + startX, yPos: 110*i)
+                amenityView.addSubview(amenity)
+            }
         }
         
+        scrollView.addSubview(amenityView)
+        
         //Setup map label and view
-        mapLabel.frame = CGRect(x: mapLabel.frame.minX, y: startY + 4 + 8, width: mapLabel.frame.width, height: mapLabel.frame.height)
+        mapLabel.frame = CGRect(x: mapLabel.frame.minX, y: amenityView.frame.maxY + 4 + 8, width: mapLabel.frame.width, height: mapLabel.frame.height)
         mapView.frame = CGRect(x: view.frame.minX, y: mapLabel.frame.maxY + 8, width: view.frame.width, height: 2*view.frame.width/3)
         
         scrollView.contentSize = CGSizeMake(scrollView.frame.width, mapView.frame.maxY)
@@ -350,5 +364,37 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 })
             })
         }
+    }
+}
+
+class AmenityView: UIView
+{
+    var amenityName: String!
+    
+    var imageView: UIImageView!
+    var amenityLabel: UILabel!
+    
+    var frameSize = 110
+    var imageSize = 60
+    
+    init(amenityName: String, xPos: Int, yPos: Int)
+    {
+        super.init(frame: CGRect(x: xPos, y: yPos, width: frameSize, height: frameSize))
+        self.amenityName = amenityName
+        
+        imageView = UIImageView(frame: CGRect(x: (frameSize/2)-(imageSize/2), y: 0, width: imageSize, height: imageSize))
+        imageView.image = UIImage(named: "park_leaf")
+        addSubview(imageView)
+        let yStart = Int(imageView.frame.maxY + 4)
+        amenityLabel = UILabel(frame: CGRect(x: 0, y: yStart, width: frameSize, height: 30))
+        amenityLabel.numberOfLines = 0
+        amenityLabel.text = amenityName
+        amenityLabel.textAlignment = NSTextAlignment.Center
+        addSubview(amenityLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
     }
 }
