@@ -24,6 +24,8 @@
 		11B841CE1D1247740009782C /* heart_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841CC1D1247740009782C /* heart_filled.png */; };
 		11B841CF1D1247740009782C /* heart_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841CD1D1247740009782C /* heart_empty.png */; };
 		11B841D11D1248C40009782C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B841D01D1248C40009782C /* Utilities.swift */; };
+		11B841D31D1262CF0009782C /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B841D21D1262CF0009782C /* MapController.swift */; };
+		11B841D51D126EC40009782C /* park_leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841D41D126EC40009782C /* park_leaf.png */; };
 		11C52D201B4C559C007A2380 /* InitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C52D1F1B4C559C007A2380 /* InitController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		11B841CC1D1247740009782C /* heart_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_filled.png; sourceTree = "<group>"; };
 		11B841CD1D1247740009782C /* heart_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_empty.png; sourceTree = "<group>"; };
 		11B841D01D1248C40009782C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		11B841D21D1262CF0009782C /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		11B841D41D126EC40009782C /* park_leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park_leaf.png; sourceTree = "<group>"; };
 		11C52D1F1B4C559C007A2380 /* InitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +122,7 @@
 				113CDC521A9769390024DBC7 /* ParkController.swift */,
 				11C52D1F1B4C559C007A2380 /* InitController.swift */,
 				11B841D01D1248C40009782C /* Utilities.swift */,
+				11B841D21D1262CF0009782C /* MapController.swift */,
 			);
 			path = "Sandy Springs";
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 		113F6DC219F8762600CE4B16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11B841D41D126EC40009782C /* park_leaf.png */,
 				11B841CC1D1247740009782C /* heart_filled.png */,
 				11B841CD1D1247740009782C /* heart_empty.png */,
 				110A557A1B42EDF100BE2C30 /* logo.jpeg */,
@@ -243,6 +249,7 @@
 				113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */,
 				113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */,
 				11B841CF1D1247740009782C /* heart_empty.png in Resources */,
+				11B841D51D126EC40009782C /* park_leaf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +275,7 @@
 				113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */,
 				11B841D11D1248C40009782C /* Utilities.swift in Sources */,
 				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,
+				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

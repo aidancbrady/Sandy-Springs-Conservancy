@@ -8,7 +8,7 @@
         <!--Sandy Springs-->
         <scene sceneID="U5I-4R-GvJ">
             <objects>
-                <viewController storyboardIdentifier="MenuController" id="yoa-KF-bcC" customClass="MenuController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yoa-KF-bcC" customClass="MenuController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gkw-CX-z1C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,11 @@
                                 <action selector="menuPressed:" destination="yoa-KF-bcC" id="lqp-FE-gWl"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Map" style="done" id="Lli-ns-abO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Map" style="done" id="Lli-ns-abO">
+                            <connections>
+                                <segue destination="bi9-tq-78V" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="gqw-YG-Kr9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="developerButton" destination="tVy-OX-mmk" id="UUy-4e-6Yu"/>
@@ -61,6 +65,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkN-jP-nGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="362" y="0.0"/>
+        </scene>
+        <!--Park Map-->
+        <scene sceneID="fkO-JA-ejd">
+            <objects>
+                <viewController storyboardIdentifier="MapController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KdH-dH-hSR" customClass="MapController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i3f-h9-2QC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="rbh-5F-Lb2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Park Map" id="yDg-tJ-sWR">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Cfp-gs-ncK">
+                            <connections>
+                                <action selector="donePressed:" destination="KdH-dH-hSR" id="iAe-vw-Z3B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="rbh-5F-Lb2" id="1BD-Q8-xhQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8O-zU-Ijb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1211" y="0.0"/>
         </scene>
         <!--Park Name-->
         <scene sceneID="hAh-mq-ACU">
@@ -198,6 +232,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEx-tE-wvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-72.533333333333331" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mon-xL-gax">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bi9-tq-78V" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="f3C-a9-5AG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UB5-R7-8V4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KdH-dH-hSR" kind="relationship" relationship="rootViewController" id="xIH-9G-0KS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4e-dJ-q33" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="779" y="0.0"/>
         </scene>
     </scenes>
     <resources>

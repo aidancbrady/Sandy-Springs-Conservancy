@@ -63,7 +63,7 @@ class MenuTableController: UITableViewController
         
         let data = menuData[indexPath.row]
         
-        cell!.textLabel?.text = data.1 ? data.0 : (" - " + data.0)
+        cell!.textLabel?.text = data.1 ? data.0 : (" " + data.0)
         
         if data.1
         {
