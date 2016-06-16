@@ -9,16 +9,19 @@
 import UIKit
 import MapKit
 
-class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
+class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate
 {
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var phoneTitleLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var amenitiesLabel: UILabel!
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    
+    var imageScroll: UIScrollView!
+    var imageViews: [UIImageView] = [UIImageView]()
+    var pageControl: UIPageControl!
     
     var parkName: String!
     var park: ParkData!
@@ -40,9 +43,28 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         phoneLabel.userInteractionEnabled = true
         
         mapView.delegate = self
-        
-        imageView.frame = CGRect(x: imageView.frame.minX, y: imageView.frame.minY, width: view.frame.width, height: imageView.frame.height)
+
+        //Setup main scroll view
         scrollView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
+        
+        //Setup image view's horizontal paging scroll view
+        imageScroll = UIScrollView(frame: CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.width/1.68))
+        imageScroll.pagingEnabled = true
+        imageScroll.delegate = self
+        scrollView.addSubview(imageScroll)
+        
+        //Add individual images to scroll view
+        for i in 0..<park.images.count
+        {
+            let imageX = imageScroll.frame.minX + CGFloat(i)*imageScroll.frame.width
+            let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: imageX, y: imageScroll.frame.minY), size: imageScroll.frame.size))
+            imageScroll.addSubview(imageView)
+            imageViews.append(imageView)
+        }
+        
+        park.setImages(self)
+        
+        imageScroll.contentSize = CGSize(width: imageScroll.frame.width*CGFloat(park.images.count), height: imageScroll.frame.height)
         
         //Setup park description view
         descriptionView.font = UIFont.systemFontOfSize(17)
@@ -50,11 +72,13 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let maxWidth = scrollView.frame.width - 32
         let descSize = descriptionView.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.max))
         descriptionView.frame.size = CGSize(width: max(maxWidth, descSize.width), height: descSize.height)
-        descriptionView.frame = CGRect(origin: CGPoint(x: view.frame.minX + 16, y: imageView.frame.maxY + 8), size: descriptionView.frame.size)
+        descriptionView.frame = CGRect(origin: CGPoint(x: view.frame.minX + 16, y: imageScroll.frame.maxY + 8), size: descriptionView.frame.size)
         
+        //Setup phone labels
         phoneTitleLabel.frame.origin.y = descriptionView.frame.maxY + 8
         phoneLabel.frame.origin.y = descriptionView.frame.maxY + 8
         
+        //Amenities
         amenitiesLabel.frame.origin.y = phoneTitleLabel.frame.maxY + 8
         
         let startX = amenitiesLabel.frame.minX + 8
@@ -68,6 +92,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             startY += label.frame.height + 4
         }
         
+        //Setup map label and view
         mapLabel.frame = CGRect(x: mapLabel.frame.minX, y: startY + 4 + 8, width: mapLabel.frame.width, height: mapLabel.frame.height)
         mapView.frame = CGRect(x: view.frame.minX, y: mapLabel.frame.maxY + 8, width: view.frame.width, height: 2*view.frame.width/3)
         
@@ -131,7 +156,6 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationItem.title = parkName
         descriptionView.text = park.description
         phoneLabel.text = park.phone
-        park.setImage(self)
     }
     
     @IBAction func numberTapped(sender: AnyObject)
@@ -178,19 +202,14 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     class ParkData
     {
-        var imageUrl: String!
+        var imageUrls: [String] = [String]()
         var description: String!
         var phone: String!
         var amenities: [String] = [String]()
         var address: String!
-        var image: UIImage?
+        var images: [UIImage] = [UIImage]()
         
         var coords: CLLocationCoordinate2D!
-        
-        init(imageUrl: String)
-        {
-            self.imageUrl = imageUrl
-        }
         
         func setDescription(description: String) -> ParkData
         {
@@ -227,14 +246,31 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             return self
         }
         
-        func setImage(controller:ParkController)
+        func setImages(controller:ParkController)
         {
-            controller.imageView.image = image
+            for i in 0..<controller.imageViews.count
+            {
+                if images.count == controller.imageViews.count
+                {
+                    controller.imageViews[i].image = images[i]
+                }
+            }
         }
         
         class func initPark(data:NSDictionary)
         {
-            let park = ParkData(imageUrl: data["image"] as! String)
+            let park = ParkData()
+            
+            if let images = data["images"] as? NSArray
+            {
+                for obj in images
+                {
+                    if let image = obj as? String
+                    {
+                        park.imageUrls.append(image)
+                    }
+                }
+            }
             park.setDescription(data["description"] as! String)
             park.setPhone(data["phone"] as! String)
             park.setCoords(data["coordX"] as! Double, y: data["coordY"] as! Double)
@@ -253,13 +289,20 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             Parks.parkData[data["name"] as! String] = park
             
-            //preload image asynchronously
+            //preload images asynchronously
+            
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-                if let url = NSURL(string: AppDelegate.DATA_URL + park.imageUrl)
+                for image in park.imageUrls
                 {
-                    if let data = NSData(contentsOfURL: url)
+                    if let url = NSURL(string: AppDelegate.DATA_URL + image)
                     {
-                        park.image = UIImage(data: data)
+                        if let data = NSData(contentsOfURL: url)
+                        {
+                            if let loadedImage = UIImage(data: data)
+                            {
+                                park.images.append(loadedImage)
+                            }
+                        }
                     }
                 }
                 
@@ -277,7 +320,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                 
                                 if park === parkController.park
                                 {
-                                    park.setImage(parkController)
+                                    park.setImages(parkController)
                                 }
                             }
                         }

@@ -133,7 +133,6 @@
                     <connections>
                         <outlet property="amenitiesLabel" destination="lXD-Qx-OCV" id="ljg-Ff-RRx"/>
                         <outlet property="descriptionView" destination="YkI-bn-y15" id="VoT-4d-P1e"/>
-                        <outlet property="imageView" destination="HiX-qv-ZHH" id="KOI-IY-Y3q"/>
                         <outlet property="mapLabel" destination="aCe-6Q-uU2" id="zwY-MT-NU1"/>
                         <outlet property="mapView" destination="1Zj-ss-4Ge" id="lqd-dU-3AV"/>
                         <outlet property="phoneLabel" destination="npa-lY-d30" id="kAp-Ta-VZ1"/>

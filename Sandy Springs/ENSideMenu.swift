@@ -205,14 +205,14 @@ public class ENSideMenu : NSObject
             if menuPosition == .Left
             {
                 // Left side menu
-                gravityDirectionX = (shouldOpen) ? 1 : -1
+                gravityDirectionX = (shouldOpen) ? 1.5 : -1.5
                 pushMagnitude = (shouldOpen) ? 20 : -20
                 boundaryPointX = (shouldOpen) ? menuWidth : -menuWidth-2
                 boundaryPointY = 20
             }
             else {
                 // Right side menu
-                gravityDirectionX = (shouldOpen) ? -1 : 1
+                gravityDirectionX = (shouldOpen) ? -1.5 : 1.5
                 pushMagnitude = (shouldOpen) ? -20 : 20
                 boundaryPointX = (shouldOpen) ? sourceView.frame.size.width-menuWidth : sourceView.frame.size.width+menuWidth+2
                 boundaryPointY =  -20
