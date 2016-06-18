@@ -235,136 +235,6 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
     }
-    
-    internal class ParkData
-    {
-        var imageUrls: [String] = [String]()
-        var description: String!
-        var phone: String!
-        var amenities: [String] = [String]()
-        var address: String!
-        var images: [UIImage] = [UIImage]()
-        
-        var coords: CLLocationCoordinate2D!
-        
-        func setDescription(description: String) -> ParkData
-        {
-            self.description = description
-            
-            return self
-        }
-        
-        func setPhone(phone: String) -> ParkData
-        {
-            self.phone = phone
-            
-            return self
-        }
-        
-        func setAmenities(amenities: String...) -> ParkData
-        {
-            self.amenities = amenities
-            
-            return self
-        }
-        
-        func setAddress(address: String) -> ParkData
-        {
-            self.address = address
-            
-            return self
-        }
-        
-        func setCoords(x: Double, y: Double) -> ParkData
-        {
-            coords = CLLocationCoordinate2DMake(x, y)
-            
-            return self
-        }
-        
-        func setImages(controller:ParkController)
-        {
-            for i in 0..<controller.imageViews.count
-            {
-                if images.count == controller.imageViews.count
-                {
-                    controller.imageViews[i].image = images[i]
-                }
-            }
-        }
-        
-        class func initPark(data:NSDictionary)
-        {
-            let park = ParkData()
-            
-            if let images = data["images"] as? NSArray
-            {
-                for obj in images
-                {
-                    if let image = obj as? String
-                    {
-                        park.imageUrls.append(image)
-                    }
-                }
-            }
-            park.setDescription(data["description"] as! String)
-            park.setPhone(data["phone"] as! String)
-            park.setCoords(data["coordX"] as! Double, y: data["coordY"] as! Double)
-            park.setAddress(data["address"] as! String)
-            
-            if let amenities = data["amenities"] as? NSArray
-            {
-                for obj in amenities
-                {
-                    if let amenity = obj as? String
-                    {
-                        park.amenities.append(amenity)
-                    }
-                }
-            }
-            
-            Parks.parkData[data["name"] as! String] = park
-            
-            //preload images asynchronously
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-                for image in park.imageUrls
-                {
-                    if let url = NSURL(string: AppDelegate.DATA_URL + image)
-                    {
-                        if let data = NSData(contentsOfURL: url)
-                        {
-                            if let loadedImage = UIImage(data: data)
-                            {
-                                park.images.append(loadedImage)
-                            }
-                        }
-                    }
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    if let window:UIWindow = UIApplication.sharedApplication().keyWindow as UIWindow!
-                    {
-                        if var controller:UIViewController = window.rootViewController as UIViewController!
-                        {
-                            let navigation:MenuNavigation = controller.presentedViewController as! MenuNavigation
-                            controller = navigation.viewControllers[0] as UIViewController
-                            
-                            if controller is ParkController
-                            {
-                                let parkController = controller as! ParkController
-                                
-                                if park === parkController.park
-                                {
-                                    park.setImages(parkController)
-                                }
-                            }
-                        }
-                    }
-                })
-            })
-        }
-    }
 }
 
 class AmenityView: UIView
@@ -385,11 +255,12 @@ class AmenityView: UIView
         imageView = UIImageView(frame: CGRect(x: (frameSize/2)-(imageSize/2), y: 0, width: imageSize, height: imageSize))
         imageView.image = UIImage(named: "park_leaf")
         addSubview(imageView)
-        let yStart = Int(imageView.frame.maxY + 4)
+        let yStart = Int(imageView.frame.maxY)
         amenityLabel = UILabel(frame: CGRect(x: 0, y: yStart, width: frameSize, height: 30))
         amenityLabel.numberOfLines = 0
         amenityLabel.text = amenityName
         amenityLabel.textAlignment = NSTextAlignment.Center
+        amenityLabel.font = UIFont.systemFontOfSize(15)
         addSubview(amenityLabel)
     }
     

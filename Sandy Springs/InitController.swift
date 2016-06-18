@@ -43,7 +43,7 @@ class InitController: UIViewController
                                 {
                                     if let park = obj as? NSDictionary
                                     {
-                                        ParkController.ParkData.initPark(park)
+                                        ParkData.initPark(park)
                                     }
                                     else {
                                         errored = true

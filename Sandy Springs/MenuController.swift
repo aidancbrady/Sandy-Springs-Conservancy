@@ -14,7 +14,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var favoritesLabel:UILabel!
     @IBOutlet weak var favoritesTable: UITableView!
     @IBOutlet weak var websiteButton: UIButton!
-    @IBOutlet weak var developerButton: UIButton!
+    @IBOutlet weak var amenitySearchButton: UIButton!
     
     override func viewDidLoad()
     {
@@ -22,14 +22,18 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         logoImage.frame = CGRectMake(view.frame.width/4, navigationController!.navigationBar.frame.maxY+48, view.frame.width/2, view.frame.width/2)
         favoritesLabel.frame = CGRect(x: view.frame.maxX/2 - favoritesLabel.frame.width/2, y: logoImage.frame.maxY + 32, width: favoritesLabel.frame.width, height: favoritesLabel.frame.height)
-        favoritesTable.frame = CGRect(x: view.frame.minX, y: favoritesLabel.frame.maxY + 8, width: view.frame.width, height: 208)
+        
+        let tableStartY = favoritesLabel.frame.maxY + 8
+        let bottomHeight = CGFloat(16+42+8+42+16)
+        favoritesTable.frame = CGRect(x: view.frame.minX, y: tableStartY, width: view.frame.width, height: (view.frame.height-bottomHeight)-tableStartY)
         
         favoritesTable.delegate = self
         favoritesTable.dataSource = self
         favoritesTable.scrollEnabled = true
         
-        websiteButton.frame = CGRect(x: view.frame.maxX/2 - websiteButton.frame.width/2, y: favoritesTable.frame.maxY + 32, width: websiteButton.frame.width, height: websiteButton.frame.height)
-        developerButton.frame = CGRect(x: view.frame.maxX/2 - developerButton.frame.width/2, y: websiteButton.frame.maxY + 12, width: developerButton.frame.width, height: developerButton.frame.height)
+        amenitySearchButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesTable.frame.maxY + 16, width: view.frame.width - 32, height: 42)
+        
+        websiteButton.frame = CGRect(x: view.frame.minX + 16, y: amenitySearchButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -83,24 +87,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         hideSideMenuView()
         menuNavigation.setViewControllers([destController], animated: true)
-        self.dismissViewControllerAnimated(false, completion: nil)
         
-        for i in 0..<menuNavigation.tableController.menuData.count
-        {
-            menuNavigation.tableController.tableView.deselectRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0), animated: false)
-        }
-        
-        menuNavigation.tableController.selectedItem = -1
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-            usleep(1000*1000)
-            dispatch_async(dispatch_get_main_queue(), {
-                if menuNavigation.topViewController is ParkController
-                {
-                    (menuNavigation.topViewController as! ParkController).loadMap()
-                }
-            })
-        })
+        Utilities.loadPark(menuNavigation)
     }
     
     @IBAction func websitePressed(sender: AnyObject)
@@ -108,13 +96,24 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         UIApplication.sharedApplication().openURL(NSURL(string: "http://sandyspringsconservancy.org")!)
     }
     
-    @IBAction func developerPressed(sender: AnyObject)
+    @IBAction func amenitySearchPressed(sender: AnyObject)
     {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://aidancbrady.com/contact")!)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuNavigation = self.navigationController as! MenuNavigation
+        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("AmenityController") as! AmenityController
+        menuNavigation.setViewControllers([destController], animated: true)
     }
     
     @IBAction func menuPressed(sender: AnyObject)
     {
         toggleSideMenuView()
+    }
+    
+    @IBAction func mapPressed(sender: AnyObject)
+    {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuNavigation = self.navigationController as! MenuNavigation
+        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("MapController") as! MapController
+        menuNavigation.setViewControllers([destController], animated: true)
     }
 }
