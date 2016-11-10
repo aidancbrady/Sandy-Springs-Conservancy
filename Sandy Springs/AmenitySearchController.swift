@@ -15,7 +15,7 @@ class AmenitySearchController: UITableViewController
     var selectedAmenities: [String] = [String]()
     var searchResults: [ParkData] = [ParkData]()
     
-    func setAmenities(selectedAmenities: [String])
+    func setAmenities(_ selectedAmenities: [String])
     {
         self.selectedAmenities = selectedAmenities
         
@@ -39,17 +39,17 @@ class AmenitySearchController: UITableViewController
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 52
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if searchResults.count == 0
         {
@@ -59,46 +59,46 @@ class AmenitySearchController: UITableViewController
         return searchResults.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if searchResults.count > 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("FavoriteCell") as! FavoriteCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell") as! FavoriteCell
 
-            cell.parkTitle.text = searchResults[indexPath.row].parkName
+            cell.parkTitle.text = searchResults[(indexPath as NSIndexPath).row].parkName
             
             return cell
         }
         else {
-            return tableView.dequeueReusableCellWithIdentifier("NoParksCell")! as UITableViewCell
+            return tableView.dequeueReusableCell(withIdentifier: "NoParksCell")! as UITableViewCell
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if searchResults.count == 0
         {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("ParkController") as! ParkController
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
         let menuNavigation = self.presentingViewController! as! MenuNavigation
         
-        destController.parkName = searchResults[indexPath.row].parkName
+        destController.parkName = searchResults[(indexPath as NSIndexPath).row].parkName
         
         hideSideMenuView()
         
         menuNavigation.setViewControllers([destController], animated: true)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         Utilities.loadPark(menuNavigation)
     }
     
-    @IBAction func backPressed(sender: AnyObject)
+    @IBAction func backPressed(_ sender: AnyObject)
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad()

@@ -25,15 +25,15 @@ class InitController: UIViewController
         downloadActivity.startAnimating()
         downloadActivity.hidesWhenStopped = true
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+        DispatchQueue.global(qos: .background).async {
             var errored = false
             
-            if let url = NSURL(string: AppDelegate.DATA_URL + AppDelegate.DATA_FILE)
+            if let url = URL(string: AppDelegate.DATA_URL + AppDelegate.DATA_FILE)
             {
-                if let data = NSData(contentsOfURL: url)
+                if let data = try? Data(contentsOf: url)
                 {
                     do {
-                        let raw: AnyObject? = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
+                        let raw: Any? = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                         
                         if let top = raw as? NSDictionary
                         {
@@ -70,7 +70,7 @@ class InitController: UIViewController
                 errored = true
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 if errored
                 {
                     ParkController.Parks.parkData.removeAll()
@@ -79,10 +79,10 @@ class InitController: UIViewController
                     self.downloadActivity.stopAnimating()
                 }
                 else {
-                   self.performSegueWithIdentifier("download_complete", sender: self)
+                   self.performSegue(withIdentifier: "download_complete", sender: self)
                 }
-            })
-        })
+            }
+        }
     }
 }
 

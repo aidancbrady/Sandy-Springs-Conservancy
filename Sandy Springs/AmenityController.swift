@@ -38,8 +38,8 @@ class AmenityController: UIViewController
         let scroll = UIScrollView(frame: CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height))
         let titleLabel = UILabel(frame: CGRect(x: scroll.frame.minX, y: scroll.frame.minY + 16, width: scroll.frame.width, height: 20))
         titleLabel.text = "Tap desired amenities:"
-        titleLabel.textAlignment = NSTextAlignment.Center
-        titleLabel.textColor = UIColor.darkGrayColor()
+        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.textColor = UIColor.darkGray
         scroll.addSubview(titleLabel)
         
         //Amenity layout
@@ -72,16 +72,16 @@ class AmenityController: UIViewController
         scroll.contentSize = CGSize(width: view.frame.width, height: amenityView.frame.maxY)
         view.addSubview(scroll)
         
-        searchButton.enabled = false
+        searchButton.isEnabled = false
     }
     
-    func onAmenityTapped(sender: UITapGestureRecognizer?)
+    func onAmenityTapped(_ sender: UITapGestureRecognizer?)
     {
         let amenityView = sender!.view as! AmenityView
         
         if selectedAmenities.contains(amenityView.amenityName)
         {
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
                 amenityView.backgroundColor = nil
             })
             
@@ -89,32 +89,32 @@ class AmenityController: UIViewController
             
             if selectedAmenities.count == 0
             {
-                searchButton.enabled = false
+                searchButton.isEnabled = false
             }
         }
         else {
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                amenityView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                amenityView.backgroundColor = UIColor.groupTableViewBackground
             })
             
             selectedAmenities.append(amenityView.amenityName)
-            searchButton.enabled = true
+            searchButton.isEnabled = true
         }
     }
     
-    @IBAction func menuPressed(sender: AnyObject)
+    @IBAction func menuPressed(_ sender: AnyObject)
     {
         toggleSideMenuView()
     }
     
-    @IBAction func searchPressed(sender: AnyObject)
+    @IBAction func searchPressed(_ sender: AnyObject)
     {
         if selectedAmenities.count > 0
         {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let destController = (mainStoryboard.instantiateViewControllerWithIdentifier("AmenitySearchNavigation") as! UINavigationController).viewControllers[0] as! AmenitySearchController
+            let destController = (mainStoryboard.instantiateViewController(withIdentifier: "AmenitySearchNavigation") as! UINavigationController).viewControllers[0] as! AmenitySearchController
             destController.setAmenities(selectedAmenities)
-            self.presentViewController(destController.navigationController!, animated: true, completion: nil)
+            self.present(destController.navigationController!, animated: true, completion: nil)
         }
     }
 }

@@ -23,49 +23,56 @@ class ParkData
     
     var coords: CLLocationCoordinate2D!
     
-    func setName(name: String) -> ParkData
+    @discardableResult
+    func setName(_ name: String) -> ParkData
     {
         self.parkName = name
         
         return self
     }
     
-    func setDescription(description: String) -> ParkData
+    @discardableResult
+    func setDescription(_ description: String) -> ParkData
     {
         self.description = description
         
         return self
     }
     
-    func setPhone(phone: String) -> ParkData
+    @discardableResult
+    func setPhone(_ phone: String) -> ParkData
     {
         self.phone = phone
         
         return self
     }
     
-    func setAmenities(amenities: String...) -> ParkData
+    @discardableResult
+    func setAmenities(_ amenities: String...) -> ParkData
     {
         self.amenities = amenities
         
         return self
     }
     
-    func setAddress(address: String) -> ParkData
+    @discardableResult
+    func setAddress(_ address: String) -> ParkData
     {
         self.address = address
         
         return self
     }
     
-    func setCoords(x: Double, y: Double) -> ParkData
+    @discardableResult
+    func setCoords(_ x: Double, y: Double) -> ParkData
     {
         coords = CLLocationCoordinate2DMake(x, y)
         
         return self
     }
     
-    func setImages(controller:ParkController)
+    @discardableResult
+    func setImages(_ controller:ParkController)
     {
         for i in 0..<controller.imageViews.count
         {
@@ -76,7 +83,7 @@ class ParkData
         }
     }
     
-    class func initPark(data:NSDictionary)
+    class func initPark(_ data:NSDictionary)
     {
         let park = ParkData()
         
@@ -112,12 +119,12 @@ class ParkData
         
         //preload images asynchronously
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+        DispatchQueue.global(qos: .background).async {
             for image in park.imageUrls
             {
-                if let url = NSURL(string: AppDelegate.DATA_URL + image)
+                if let url = URL(string: AppDelegate.DATA_URL + image)
                 {
-                    if let data = NSData(contentsOfURL: url)
+                    if let data = try? Data(contentsOf: url)
                     {
                         if let loadedImage = UIImage(data: data)
                         {
@@ -127,8 +134,8 @@ class ParkData
                 }
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
-                if let window:UIWindow = UIApplication.sharedApplication().keyWindow as UIWindow!
+            DispatchQueue.main.async {
+                if let window:UIWindow = UIApplication.shared.keyWindow as UIWindow!
                 {
                     if var controller:UIViewController = window.rootViewController as UIViewController!
                     {
@@ -146,7 +153,7 @@ class ParkData
                         }
                     }
                 }
-            })
-        })
+            }
+        }
     }
 }

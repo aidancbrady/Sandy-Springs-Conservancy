@@ -20,7 +20,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         super.viewDidLoad()
         
-        logoImage.frame = CGRectMake(view.frame.width/4, navigationController!.navigationBar.frame.maxY+48, view.frame.width/2, view.frame.width/2)
+        logoImage.frame = CGRect(x: view.frame.width/4, y: navigationController!.navigationBar.frame.maxY+48, width: view.frame.width/2, height: view.frame.width/2)
         favoritesLabel.frame = CGRect(x: view.frame.maxX/2 - favoritesLabel.frame.width/2, y: logoImage.frame.maxY + 32, width: favoritesLabel.frame.width, height: favoritesLabel.frame.height)
         
         let tableStartY = favoritesLabel.frame.maxY + 8
@@ -29,24 +29,24 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         favoritesTable.delegate = self
         favoritesTable.dataSource = self
-        favoritesTable.scrollEnabled = true
+        favoritesTable.isScrollEnabled = true
         
         amenitySearchButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesTable.frame.maxY + 16, width: view.frame.width - 32, height: 42)
         
         websiteButton.frame = CGRect(x: view.frame.minX + 16, y: amenitySearchButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 52
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if Utilities.favorites.count == 0
         {
@@ -56,34 +56,34 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return Utilities.favorites.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if Utilities.favorites.count > 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("FavoriteCell") as! FavoriteCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell") as! FavoriteCell
             
-            cell.parkTitle.text = Utilities.favorites[indexPath.row]
+            cell.parkTitle.text = Utilities.favorites[(indexPath as NSIndexPath).row]
             
             return cell
         }
         else {
-            return tableView.dequeueReusableCellWithIdentifier("NoFavoriteCell")! as UITableViewCell
+            return tableView.dequeueReusableCell(withIdentifier: "NoFavoriteCell")! as UITableViewCell
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if Utilities.favorites.count == 0
         {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("ParkController") as! ParkController
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
         let menuNavigation = self.navigationController as! MenuNavigation
         
-        destController.parkName = Utilities.favorites[indexPath.row]
+        destController.parkName = Utilities.favorites[(indexPath as NSIndexPath).row]
         
         hideSideMenuView()
         menuNavigation.setViewControllers([destController], animated: true)
@@ -91,29 +91,29 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Utilities.loadPark(menuNavigation)
     }
     
-    @IBAction func websitePressed(sender: AnyObject)
+    @IBAction func websitePressed(_ sender: AnyObject)
     {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://sandyspringsconservancy.org")!)
+        UIApplication.shared.openURL(URL(string: "http://sandyspringsconservancy.org")!)
     }
     
-    @IBAction func amenitySearchPressed(sender: AnyObject)
+    @IBAction func amenitySearchPressed(_ sender: AnyObject)
     {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("AmenityController") as! AmenityController
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
         menuNavigation.setViewControllers([destController], animated: true)
     }
     
-    @IBAction func menuPressed(sender: AnyObject)
+    @IBAction func menuPressed(_ sender: AnyObject)
     {
         toggleSideMenuView()
     }
     
-    @IBAction func mapPressed(sender: AnyObject)
+    @IBAction func mapPressed(_ sender: AnyObject)
     {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("MapController") as! MapController
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: "MapController") as! MapController
         menuNavigation.setViewControllers([destController], animated: true)
     }
 }

@@ -42,7 +42,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
         setParkData()
         
-        phoneLabel.userInteractionEnabled = true
+        phoneLabel.isUserInteractionEnabled = true
         
         mapView.delegate = self
         
@@ -54,7 +54,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //Setup image view's horizontal paging scroll view
         imageScroll = UIScrollView(frame: CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.width/1.68))
-        imageScroll.pagingEnabled = true
+        imageScroll.isPagingEnabled = true
         imageScroll.delegate = self
         scrollView.addSubview(imageScroll)
         
@@ -72,10 +72,10 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         imageScroll.contentSize = CGSize(width: imageScroll.frame.width*CGFloat(park.images.count), height: imageScroll.frame.height)
         
         //Setup park description view
-        descriptionView.font = UIFont.systemFontOfSize(17)
-        descriptionView.textContainer.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        descriptionView.font = UIFont.systemFont(ofSize: 17)
+        descriptionView.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
         let maxWidth = scrollView.frame.width - 32
-        let descSize = descriptionView.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.max))
+        let descSize = descriptionView.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude))
         descriptionView.frame.size = CGSize(width: max(maxWidth, descSize.width), height: descSize.height)
         descriptionView.frame = CGRect(origin: CGPoint(x: view.frame.minX + 16, y: imageScroll.frame.maxY + 8), size: descriptionView.frame.size)
         
@@ -90,7 +90,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let rows = Int(ceil(Float(park.amenities.count)/Float(perRow)))
         
         let amenityView = UIView(frame: CGRect(x: view.frame.minX, y: phoneTitleLabel.frame.maxY + 8, width: view.frame.width, height: CGFloat(rows*110) - 10))
-        amenityView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        amenityView.backgroundColor = UIColor.groupTableViewBackground
         
         for i in 0..<rows
         {
@@ -115,9 +115,9 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapLabel.frame = CGRect(x: mapLabel.frame.minX, y: amenityView.frame.maxY + 4 + 8, width: mapLabel.frame.width, height: mapLabel.frame.height)
         mapView.frame = CGRect(x: view.frame.minX, y: mapLabel.frame.maxY + 8, width: view.frame.width, height: 2*view.frame.width/3)
         
-        scrollView.contentSize = CGSizeMake(scrollView.frame.width, mapView.frame.maxY)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: mapView.frame.maxY)
         
-        mapView.hidden = true
+        mapView.isHidden = true
         
         let region = MKCoordinateRegionMake(park.coords, MKCoordinateSpanMake(self.mapView.region.span.longitudeDelta/8192, self.mapView.region.span.latitudeDelta/8192))
         let point = MKPointAnnotation()
@@ -128,41 +128,41 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         self.mapView.setRegion(region, animated: false)
         self.mapView.addAnnotation(point)
-        self.mapView.scrollEnabled = false
+        self.mapView.isScrollEnabled = false
     }
     
     func loadMap()
     {
-        mapView.hidden = false
+        mapView.isHidden = false
         mapView.alpha = 0.1
         
-        UIView.transitionWithView(view, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut, animations: {() in
+        UIView.transition(with: view, duration: 0.4, options: UIViewAnimationOptions.curveEaseOut, animations: {() in
             self.mapView.alpha = 1
         }, completion: {b in
             return
         })
     }
     
-    func onFavoriteToggle(sender: AnyObject)
+    func onFavoriteToggle(_ sender: AnyObject)
     {
         updateFavoriteButton(Utilities.toggleFavorite(parkName))
     }
     
-    func updateFavoriteButton(favorite: Bool)
+    func updateFavoriteButton(_ favorite: Bool)
     {
-        let btnFavourite = UIButton(frame: CGRectMake(0, 0, 30, 30))
-        btnFavourite.addTarget(self, action: #selector(onFavoriteToggle), forControlEvents: .TouchUpInside)
-        btnFavourite.setImage(UIImage(named: favorite ? "heart_filled" : "heart_empty")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        let btnFavourite = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        btnFavourite.addTarget(self, action: #selector(onFavoriteToggle), for: .touchUpInside)
+        btnFavourite.setImage(UIImage(named: favorite ? "heart_filled" : "heart_empty")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         let rightButton = UIBarButtonItem(customView: btnFavourite)
         rightButton.imageInsets = favoriteEdge
-        rightButton.tintColor = UIColor.blueColor()
+        rightButton.tintColor = UIColor.blue
         self.navigationItem.setRightBarButtonItems([rightButton], animated: true)
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        if annotation.isKindOfClass(MKUserLocation)
+        if annotation.isKind(of: MKUserLocation.self)
         {
             return nil
         }
@@ -170,12 +170,12 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnimation")
         
         annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
         
         return annotationView
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
         let annotation = view.annotation!
         let placemark = MKPlacemark(coordinate: annotation.coordinate, addressDictionary: nil)
@@ -183,7 +183,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         mapItem.name = annotation.title!
         mapItem.phoneNumber = park.phone
-        mapItem.openInMapsWithLaunchOptions(nil)
+        mapItem.openInMaps(launchOptions: nil)
     }
     
     func setParkData()
@@ -194,26 +194,26 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         phoneLabel.text = park.phone
     }
     
-    @IBAction func numberTapped(sender: AnyObject)
+    @IBAction func numberTapped(_ sender: AnyObject)
     {
-        let number = park.phone.stringByReplacingOccurrencesOfString("(", withString: "").stringByReplacingOccurrencesOfString(")", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("-", withString: "")
+        let number = park.phone.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
         
-        if let url = NSURL(string: "tel://" + number)
+        if let url = URL(string: "tel://" + number)
         {
-            let alertController = UIAlertController(title: "Confirm", message: "Call " + parkName + "?", preferredStyle: .Alert)
-            let yesAction = UIAlertAction(title: "Call", style: .Default, handler: {action in
-                UIApplication.sharedApplication().openURL(url)
+            let alertController = UIAlertController(title: "Confirm", message: "Call " + parkName + "?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "Call", style: .default, handler: {action in
+                UIApplication.shared.openURL(url)
             })
-            let noAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
             alertController.addAction(noAction)
             alertController.addAction(yesAction)
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
-    @IBAction func menuPressed(sender: AnyObject)
+    @IBAction func menuPressed(_ sender: AnyObject)
     {
         toggleSideMenuView()
     }
@@ -231,7 +231,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 notification.regionTriggersOnce = false
                 notification.region = CLCircularRegion(center: data.1.coords, radius: 100, identifier: data.0)
                 
-                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                UIApplication.shared.scheduleLocalNotification(notification)
             }
         }
     }
@@ -259,8 +259,8 @@ class AmenityView: UIView
         amenityLabel = UILabel(frame: CGRect(x: 0, y: yStart, width: frameSize, height: 30))
         amenityLabel.numberOfLines = 0
         amenityLabel.text = amenityName
-        amenityLabel.textAlignment = NSTextAlignment.Center
-        amenityLabel.font = UIFont.systemFontOfSize(15)
+        amenityLabel.textAlignment = NSTextAlignment.center
+        amenityLabel.font = UIFont.systemFont(ofSize: 15)
         addSubview(amenityLabel)
     }
     

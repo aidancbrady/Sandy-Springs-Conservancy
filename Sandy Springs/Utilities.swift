@@ -12,12 +12,12 @@ class Utilities
 {
     static var favorites: [String] = [String]()
     
-    static func isFavorite(name: String) -> Bool
+    static func isFavorite(_ name: String) -> Bool
     {
         return favorites.contains(name)
     }
     
-    static func toggleFavorite(name: String) -> Bool
+    static func toggleFavorite(_ name: String) -> Bool
     {
         var ret = false
         
@@ -37,45 +37,45 @@ class Utilities
     
     static func saveFavorites()
     {
-        NSUserDefaults.standardUserDefaults().setObject(favorites, forKey: "favorites")
+        UserDefaults.standard.set(favorites, forKey: "favorites")
     }
     
     static func loadFavorites()
     {
-        if let obj = NSUserDefaults.standardUserDefaults().objectForKey("favorites") as? [String]
+        if let obj = UserDefaults.standard.object(forKey: "favorites") as? [String]
         {
             favorites = obj
         }
     }
     
-    static func loadPark(menuNavigation: MenuNavigation)
+    static func loadPark(_ menuNavigation: MenuNavigation)
     {
         for i in 0..<menuNavigation.tableController.menuData.count
         {
-            menuNavigation.tableController.tableView.deselectRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0), animated: false)
+            menuNavigation.tableController.tableView.deselectRow(at: IndexPath(row: i, section: 0), animated: false)
         }
         
         menuNavigation.tableController.selectedItem = -1
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+        DispatchQueue.global(qos: .background).async {
             usleep(1000*1000)
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 if menuNavigation.topViewController is ParkController
                 {
                     (menuNavigation.topViewController as! ParkController).loadMap()
                 }
-            })
-        })
+            }
+        }
     }
 }
 
 extension Array where Element: Equatable
 {
-    mutating func removeObject(object : Generator.Element)
+    mutating func removeObject(_ object : Iterator.Element)
     {
-        if let index = self.indexOf(object)
+        if let index = self.index(of: object)
         {
-            self.removeAtIndex(index)
+            self.remove(at: index)
         }
     }
 }

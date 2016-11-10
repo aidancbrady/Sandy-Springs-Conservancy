@@ -19,8 +19,8 @@ class MenuTableController: UITableViewController
         
         tableView.contentInset = UIEdgeInsetsMake(24.0, 0, 0, 0)
         tableView.scrollsToTop = false
-        tableView.backgroundColor = UIColor.clearColor()
-        tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = .none
         
         self.clearsSelectionOnViewWillAppear = false
         
@@ -34,62 +34,62 @@ class MenuTableController: UITableViewController
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return menuData[indexPath.row].1 ? 48 : 36
+        return menuData[(indexPath as NSIndexPath).row].1 ? 48 : 36
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return menuData.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
 
         if cell == nil
         {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-            cell!.backgroundColor = UIColor.clearColor()
-            cell!.textLabel?.textColor = UIColor.darkGrayColor()
-            let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
-            selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+            cell!.backgroundColor = UIColor.clear
+            cell!.textLabel?.textColor = UIColor.darkGray
+            let selectedBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: cell!.frame.size.width, height: cell!.frame.size.height))
+            selectedBackgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
-        let data = menuData[indexPath.row]
+        let data = menuData[(indexPath as NSIndexPath).row]
         
         cell!.textLabel?.text = data.1 ? data.0 : (" " + data.0)
         
         if data.1
         {
-            cell!.textLabel?.font = UIFont.boldSystemFontOfSize(16)
+            cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         }
         else {
-            cell!.textLabel?.font = UIFont.systemFontOfSize(15)
+            cell!.textLabel?.font = UIFont.systemFont(ofSize: 15)
         }
 
         return cell!
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if indexPath.row == selectedItem
+        if (indexPath as NSIndexPath).row == selectedItem
         {
             hideSideMenuView()
             return
         }
         
-        selectedItem = indexPath.row
+        selectedItem = (indexPath as NSIndexPath).row
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier(menuData[selectedItem].2) as UIViewController
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: menuData[selectedItem].2) as UIViewController
         
         if destController is ParkController
         {

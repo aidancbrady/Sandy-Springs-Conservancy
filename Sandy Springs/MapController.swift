@@ -40,14 +40,14 @@ class MapController: UIViewController, MKMapViewDelegate
         mapView.setRegion(region, animated: false)
     }
     
-    @IBAction func donePressed(sender: AnyObject)
+    @IBAction func donePressed(_ sender: AnyObject)
     {
         toggleSideMenuView()
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        if annotation.isKindOfClass(MKUserLocation)
+        if annotation.isKind(of: MKUserLocation.self)
         {
             return nil
         }
@@ -55,15 +55,15 @@ class MapController: UIViewController, MKMapViewDelegate
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnimation")
         
         annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
         
         return annotationView
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let destController = mainStoryboard.instantiateViewControllerWithIdentifier("ParkController") as! ParkController
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
         let menuNavigation = self.navigationController as! MenuNavigation
             
         destController.parkName = view.annotation!.title!

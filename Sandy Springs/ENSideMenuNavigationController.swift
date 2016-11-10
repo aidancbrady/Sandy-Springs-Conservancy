@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class ENSideMenuNavigationController: UINavigationController, ENSideMenuProtocol
+open class ENSideMenuNavigationController: UINavigationController, ENSideMenuProtocol
 {
-    public var sideMenu : ENSideMenu?
-    public var sideMenuAnimationType : ENSideMenuAnimation = .Default
+    open var sideMenu : ENSideMenu?
+    open var sideMenuAnimationType : ENSideMenuAnimation = .default
     
     // MARK: - Life cycle
-    public override func viewDidLoad()
+    open override func viewDidLoad()
     {
         super.viewDidLoad()
     }
@@ -28,8 +28,8 @@ public class ENSideMenuNavigationController: UINavigationController, ENSideMenuP
             self.viewControllers = [contentViewController!]
         }
 
-        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: menuTableViewController, menuPosition:.Left)
-        view.bringSubviewToFront(navigationBar)
+        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: menuTableViewController, menuPosition:.left)
+        view.bringSubview(toFront: navigationBar)
     }
 
     required public init?(coder aDecoder: NSCoder)
@@ -37,19 +37,19 @@ public class ENSideMenuNavigationController: UINavigationController, ENSideMenuP
         super.init(coder: aDecoder)
     }
     
-    public override func didReceiveMemoryWarning()
+    open override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
     }
     
     // MARK: - Navigation
-    public func setContentViewController(contentViewController: UIViewController)
+    open func setContentViewController(_ contentViewController: UIViewController)
     {
         self.sideMenu?.toggleMenu()
         
         switch sideMenuAnimationType
         {
-            case .None:
+            case .none:
                 self.viewControllers = [contentViewController]
                 break
             default:

@@ -16,17 +16,17 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
     {
         super.viewDidLoad()
         
-        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: tableController, menuPosition: .Left)
+        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: tableController, menuPosition: .left)
         sideMenu!.menuWidth = 300
         sideMenu!.delegate = self
-        sideMenuAnimationType = .None
+        sideMenuAnimationType = .none
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
     }
     
-    func onTap(sender: UITapGestureRecognizer?)
+    func onTap(_ sender: UITapGestureRecognizer?)
     {
-        if sender!.locationInView(self.view).x > sideMenu!.menuWidth
+        if sender!.location(in: self.view).x > sideMenu!.menuWidth
         {
             hideSideMenuView()
         }
@@ -36,14 +36,14 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
     
     func sideMenuWillClose()
     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+        DispatchQueue.global(qos: .background).async {
             usleep(1000*1000)
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 if self.topViewController is ParkController
                 {
                     (self.topViewController as! ParkController).loadMap()
                 }
-            })
-        })
+            }
+        }
     }
 }
