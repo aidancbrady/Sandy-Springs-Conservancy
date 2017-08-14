@@ -71,7 +71,6 @@ class ParkData
         return self
     }
     
-    @discardableResult
     func setImages(_ controller:ParkController)
     {
         for i in 0..<controller.imageViews.count

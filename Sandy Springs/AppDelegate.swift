@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CLLocationManagerDelegate
@@ -20,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         //register for notifications
-        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge], categories: nil))
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge]) {
+            (granted, error) in
+        }
+        
         application.registerForRemoteNotifications()
         
         let manager = CLLocationManager()

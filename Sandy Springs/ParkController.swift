@@ -19,7 +19,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    let favoriteEdge = UIEdgeInsets(top: 6, left: 12, bottom: 8, right: 3)
+    let favoriteEdge = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 5)
     
     var imageScroll: UIScrollView!
     var imageViews: [UIImageView] = [UIImageView]()
@@ -143,7 +143,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         })
     }
     
-    func onFavoriteToggle(_ sender: AnyObject)
+    @objc func onFavoriteToggle(_ sender: AnyObject)
     {
         updateFavoriteButton(Utilities.toggleFavorite(parkName))
     }
@@ -153,9 +153,9 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let btnFavourite = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         btnFavourite.addTarget(self, action: #selector(onFavoriteToggle), for: .touchUpInside)
         btnFavourite.setImage(UIImage(named: favorite ? "heart_filled" : "heart_empty")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        btnFavourite.imageEdgeInsets = favoriteEdge
         
         let rightButton = UIBarButtonItem(customView: btnFavourite)
-        rightButton.imageInsets = favoriteEdge
         rightButton.tintColor = UIColor.blue
         self.navigationItem.setRightBarButtonItems([rightButton], animated: true)
     }

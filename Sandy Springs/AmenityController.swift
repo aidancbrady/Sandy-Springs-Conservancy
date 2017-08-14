@@ -75,7 +75,7 @@ class AmenityController: UIViewController
         searchButton.isEnabled = false
     }
     
-    func onAmenityTapped(_ sender: UITapGestureRecognizer?)
+    @objc func onAmenityTapped(_ sender: UITapGestureRecognizer?)
     {
         let amenityView = sender!.view as! AmenityView
         

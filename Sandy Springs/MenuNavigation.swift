@@ -24,7 +24,7 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
     }
     
-    func onTap(_ sender: UITapGestureRecognizer?)
+    @objc func onTap(_ sender: UITapGestureRecognizer?)
     {
         if sender!.location(in: self.view).x > sideMenu!.menuWidth
         {

@@ -263,7 +263,7 @@ open class ENSideMenu : NSObject
         }
     }
     
-    internal func handleGesture(_ gesture: UISwipeGestureRecognizer) {
+    @objc internal func handleGesture(_ gesture: UISwipeGestureRecognizer) {
         toggleMenu((self.menuPosition == .right && gesture.direction == .left)
                 || (self.menuPosition == .left && gesture.direction == .right))
     }
