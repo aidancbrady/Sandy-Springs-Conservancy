@@ -227,7 +227,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             for data in parkData
             {
-                let region = CLCircularRegion(center: data.1.coords, radius: 1000, identifier: data.0)
+                let region = CLCircularRegion(center: data.1.coords, radius: 150, identifier: data.0)
                 region.notifyOnEntry = true
                 region.notifyOnExit = false
                 let content = UNMutableNotificationContent()

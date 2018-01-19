@@ -38,6 +38,7 @@ class MapController: UIViewController, MKMapViewDelegate
         }
         
         mapView.setRegion(region, animated: false)
+        mapView.showsUserLocation = true
     }
     
     @IBAction func donePressed(_ sender: AnyObject)
