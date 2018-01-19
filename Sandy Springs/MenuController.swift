@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import UserNotifications
 
 class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -102,11 +104,24 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func amenitySearchPressed(_ sender: AnyObject)
     {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        /*let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
         menuNavigation.setViewControllers([destController], animated: true)
-        menuNavigation.tableController.selectedItem = -1
+        menuNavigation.tableController.selectedItem = -1*/
+        
+        let data = ParkController.Parks.parkData["Abernathy Greenway"]!
+        let content = UNMutableNotificationContent()
+        content.title = "You're Near " + data.parkName
+        content.body = "Tap for more details."
+        content.userInfo = ["PARK":data.parkName]
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error requesting notification: (\(error), \(error.localizedDescription))")
+            }
+        }
     }
     
     @IBAction func menuPressed(_ sender: AnyObject)

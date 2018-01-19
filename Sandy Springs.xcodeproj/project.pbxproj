@@ -25,12 +25,12 @@
 		119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51BF2011E22400ABAE55 /* ParkSearchController.swift */; };
 		119A51C320125E5B00ABAE55 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C120125E5B00ABAE55 /* up.png */; };
 		119A51C420125E5B00ABAE55 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C220125E5B00ABAE55 /* down.png */; };
+		119A51C62012947600ABAE55 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C52012947600ABAE55 /* DataManager.swift */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
 		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
 		11AEAE081A7677D7008414A9 /* MenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE071A7677D7008414A9 /* MenuTableController.swift */; };
 		11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE091A7679BC008414A9 /* MenuController.swift */; };
-		11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B404B71AD1E1F0001AB300 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		11B841CE1D1247740009782C /* heart_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841CC1D1247740009782C /* heart_filled.png */; };
 		11B841CF1D1247740009782C /* heart_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841CD1D1247740009782C /* heart_empty.png */; };
 		11B841D11D1248C40009782C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B841D01D1248C40009782C /* Utilities.swift */; };
@@ -73,12 +73,13 @@
 		119A51BF2011E22400ABAE55 /* ParkSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSearchController.swift; sourceTree = "<group>"; };
 		119A51C120125E5B00ABAE55 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		119A51C220125E5B00ABAE55 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		119A51C52012947600ABAE55 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sandy Springs.entitlements"; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
 		11AEAE071A7677D7008414A9 /* MenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableController.swift; sourceTree = "<group>"; };
 		11AEAE091A7679BC008414A9 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
-		11B404B71AD1E1F0001AB300 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11B841CC1D1247740009782C /* heart_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_filled.png; sourceTree = "<group>"; };
 		11B841CD1D1247740009782C /* heart_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_empty.png; sourceTree = "<group>"; };
 		11B841D01D1248C40009782C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 				119A51BA2011B1A300ABAE55 /* QuartzCore.framework in Frameworks */,
 				11D2A9EF2011A002009FE9C1 /* UserNotifications.framework in Frameworks */,
 				118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */,
-				11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */,
-				11B404B71AD1E1F0001AB300 /* MapKit.framework */,
 				113F6DC119F8762600CE4B16 /* Sandy Springs */,
 				113F6DD919F8762600CE4B16 /* Sandy SpringsTests */,
 				113F6DC019F8762600CE4B16 /* Products */,
@@ -134,10 +133,12 @@
 		113F6DC119F8762600CE4B16 /* Sandy Springs */ = {
 			isa = PBXGroup;
 			children = (
+				119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */,
 				119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */,
 				11AEAE011A7676D4008414A9 /* ENSideMenu.swift */,
 				11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */,
 				113F6DC419F8762600CE4B16 /* AppDelegate.swift */,
+				119A51C52012947600ABAE55 /* DataManager.swift */,
 				113F6DCA19F8762600CE4B16 /* Main.storyboard */,
 				113F6DCD19F8762600CE4B16 /* Images.xcassets */,
 				113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */,
@@ -255,6 +256,12 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					113F6DD519F8762600CE4B16 = {
@@ -321,6 +328,7 @@
 				11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */,
 				11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */,
 				117CB8391D13326500F263D3 /* FavoriteCell.swift in Sources */,
+				119A51C62012947600ABAE55 /* DataManager.swift in Sources */,
 				119A51BE2011E20E00ABAE55 /* ParkCell.swift in Sources */,
 				113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */,
 				11B841D11D1248C40009782C /* Utilities.swift in Sources */,
@@ -475,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VBY56UWVE3;
@@ -494,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VBY56UWVE3;

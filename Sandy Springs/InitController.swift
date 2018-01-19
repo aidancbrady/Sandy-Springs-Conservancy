@@ -28,52 +28,10 @@ class InitController: UIViewController
         downloadActivity.hidesWhenStopped = true
         
         DispatchQueue.global(qos: .background).async {
-            var errored = false
-            
-            if let url = URL(string: AppDelegate.DATA_URL + AppDelegate.DATA_FILE)
-            {
-                if let data = try? Data(contentsOf: url)
-                {
-                    do {
-                        let raw: Any? = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                        
-                        if let top = raw as? NSDictionary
-                        {
-                            if let parks = top["parks"] as? NSArray
-                            {
-                                for obj in parks
-                                {
-                                    if let park = obj as? NSDictionary
-                                    {
-                                        ParkData.initPark(park)
-                                    }
-                                    else {
-                                        errored = true
-                                        break
-                                    }
-                                }
-                            }
-                            else {
-                                errored = true
-                            }
-                        }
-                        else {
-                            errored = true
-                        }
-                    } catch {
-                        errored = true
-                    }
-                }
-                else {
-                    errored = true
-                }
-            }
-            else {
-                errored = true
-            }
+            let success = DataManager.loadData()
             
             DispatchQueue.main.async {
-                if errored
+                if !success
                 {
                     ParkController.Parks.parkData.removeAll()
                     

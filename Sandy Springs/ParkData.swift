@@ -82,7 +82,7 @@ class ParkData
         }
     }
     
-    class func initPark(_ data:NSDictionary)
+    class func initPark(_ data:NSDictionary) -> ParkData
     {
         let park = ParkData()
         
@@ -116,43 +116,6 @@ class ParkData
         
         ParkController.Parks.parkData[park.parkName] = park
         
-        //preload images asynchronously
-        
-        DispatchQueue.global(qos: .background).async {
-            for image in park.imageUrls
-            {
-                if let url = URL(string: AppDelegate.DATA_URL + image)
-                {
-                    if let data = try? Data(contentsOf: url)
-                    {
-                        if let loadedImage = UIImage(data: data)
-                        {
-                            park.images.append(loadedImage)
-                        }
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async {
-                if let window:UIWindow = UIApplication.shared.keyWindow as UIWindow!
-                {
-                    if var controller:UIViewController = window.rootViewController as UIViewController!
-                    {
-                        let navigation:MenuNavigation = controller.presentedViewController as! MenuNavigation
-                        controller = navigation.viewControllers[0] as UIViewController
-                        
-                        if controller is ParkController
-                        {
-                            let parkController = controller as! ParkController
-                            
-                            if park === parkController.park
-                            {
-                                park.setImages(parkController)
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        return park
     }
 }
