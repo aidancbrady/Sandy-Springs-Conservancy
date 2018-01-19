@@ -190,7 +190,13 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func setParkData()
     {
         park = Parks.parkData[parkName]
-        self.navigationItem.title = parkName
+        let label = MarqueeLabel(frame: CGRect.zero, duration: 2.0, fadeLength: 10.0)
+        label.adjustsFontSizeToFitWidth = true
+        label.fadeLength = 10
+        label.type = .leftRight
+        label.text = parkName
+        label.sizeToFit()
+        self.navigationItem.titleView = label
         descriptionView.text = park.description
         phoneLabel.text = park.phone
     }

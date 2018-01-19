@@ -19,6 +19,8 @@
 		117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */; };
 		117CB83F1D1594C200F263D3 /* ParkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB83E1D1594C200F263D3 /* ParkData.swift */; };
 		118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */; };
+		119A51BA2011B1A300ABAE55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119A51B92011B1A300ABAE55 /* QuartzCore.framework */; };
+		119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
 		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
@@ -61,6 +63,8 @@
 		117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmenitySearchController.swift; sourceTree = "<group>"; };
 		117CB83E1D1594C200F263D3 /* ParkData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkData.swift; sourceTree = "<group>"; };
 		118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		119A51B92011B1A300ABAE55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119A51BA2011B1A300ABAE55 /* QuartzCore.framework in Frameworks */,
 				11D2A9EF2011A002009FE9C1 /* UserNotifications.framework in Frameworks */,
 				118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */,
 				11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */,
@@ -121,6 +126,7 @@
 		113F6DC119F8762600CE4B16 /* Sandy Springs */ = {
 			isa = PBXGroup;
 			children = (
+				119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */,
 				11AEAE011A7676D4008414A9 /* ENSideMenu.swift */,
 				11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */,
 				113F6DC419F8762600CE4B16 /* AppDelegate.swift */,
@@ -175,6 +181,7 @@
 		11D2A9ED2011A002009FE9C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				119A51B92011B1A300ABAE55 /* QuartzCore.framework */,
 				11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */,
 			);
 			name = Frameworks;
@@ -305,6 +312,7 @@
 				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,
 				117CB83B1D149FE700F263D3 /* AmenityController.swift in Sources */,
 				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
+				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
 				117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */,
 			);
@@ -392,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -438,7 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
