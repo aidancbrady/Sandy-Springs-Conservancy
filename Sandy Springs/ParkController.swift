@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import UserNotifications
 
 class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate
 {
@@ -19,7 +20,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    let favoriteEdge = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 5)
+    let favoriteEdge = UIEdgeInsets(top: 5, left: 17, bottom: 5, right: 0)
     
     var imageScroll: UIScrollView!
     var imageViews: [UIImageView] = [UIImageView]()
@@ -202,7 +203,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             let alertController = UIAlertController(title: "Confirm", message: "Call " + parkName + "?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Call", style: .default, handler: {action in
-                UIApplication.shared.openURL(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             })
             let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
@@ -226,12 +227,20 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             for data in parkData
             {
-                let notification = UILocalNotification()
-                notification.alertBody = "Arrived at " + data.0
-                notification.regionTriggersOnce = false
-                notification.region = CLCircularRegion(center: data.1.coords, radius: 100, identifier: data.0)
-                
-                UIApplication.shared.scheduleLocalNotification(notification)
+                let region = CLCircularRegion(center: data.1.coords, radius: 1000, identifier: data.0)
+                region.notifyOnEntry = true
+                region.notifyOnExit = false
+                let content = UNMutableNotificationContent()
+                content.title = "You're Near " + data.value.parkName
+                content.body = "Tap for more details."
+                let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+                let identifier = data.value.parkName.replacingOccurrences(of: " ", with: "")
+                let request = UNNotificationRequest(identifier: identifier + "_region_notification", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) { (error) in
+                    if let error = error {
+                        print("Error requesting notification: (\(error), \(error.localizedDescription))")
+                    }
+                }
             }
         }
     }

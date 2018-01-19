@@ -93,7 +93,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func websitePressed(_ sender: AnyObject)
     {
-        UIApplication.shared.openURL(URL(string: "http://sandyspringsconservancy.org")!)
+        UIApplication.shared.open(URL(string: "http://sandyspringsconservancy.org")!, options: [:], completionHandler: nil)
     }
     
     @IBAction func amenitySearchPressed(_ sender: AnyObject)

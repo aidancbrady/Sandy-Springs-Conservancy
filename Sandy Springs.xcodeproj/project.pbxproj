@@ -31,6 +31,7 @@
 		11B841D31D1262CF0009782C /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B841D21D1262CF0009782C /* MapController.swift */; };
 		11B841D51D126EC40009782C /* park_leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841D41D126EC40009782C /* park_leaf.png */; };
 		11C52D201B4C559C007A2380 /* InitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C52D1F1B4C559C007A2380 /* InitController.swift */; };
+		11D2A9EF2011A002009FE9C1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		11B841D21D1262CF0009782C /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		11B841D41D126EC40009782C /* park_leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park_leaf.png; sourceTree = "<group>"; };
 		11C52D1F1B4C559C007A2380 /* InitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitController.swift; sourceTree = "<group>"; };
+		11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D2A9EF2011A002009FE9C1 /* UserNotifications.framework in Frameworks */,
 				118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */,
 				11B404B81AD1E1F0001AB300 /* MapKit.framework in Frameworks */,
 			);
@@ -102,6 +105,7 @@
 				113F6DC119F8762600CE4B16 /* Sandy Springs */,
 				113F6DD919F8762600CE4B16 /* Sandy SpringsTests */,
 				113F6DC019F8762600CE4B16 /* Products */,
+				11D2A9ED2011A002009FE9C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +170,14 @@
 				113F6DDB19F8762600CE4B16 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11D2A9ED2011A002009FE9C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,12 +455,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.sandy-springs-conservancy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -463,12 +475,12 @@
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.sandy-springs-conservancy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -486,7 +498,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sandy Springs.app/Sandy Springs";
 			};
@@ -500,7 +512,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sandy Springs.app/Sandy Springs";
 			};

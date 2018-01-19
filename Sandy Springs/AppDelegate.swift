@@ -14,24 +14,28 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CLLocationManagerDelegate
 {
     var window: UIWindow?
+    var locationManager: CLLocationManager!
     
-    static var DATA_URL = "https://dl.dropboxusercontent.com/u/90411166/Conservancy/"
+    static var DATA_URL = "http://server.aidancbrady.com/sandysprings/"
     static var DATA_FILE = "conservancy.json"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         //register for notifications
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .badge]) {
+        center.requestAuthorization(options: [.alert, .badge, .sound]) {
             (granted, error) in
         }
         
         application.registerForRemoteNotifications()
         
-        let manager = CLLocationManager()
-        manager.delegate = self
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
         
-        manager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
+        locationManager.pausesLocationUpdatesAutomatically = false
         
         return true
     }
@@ -65,11 +69,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
-        let accepted = (status == CLAuthorizationStatus.authorizedWhenInUse)
+        let accepted = (status == CLAuthorizationStatus.authorizedAlways)
         
         if accepted
         {
             ParkController.Parks.initLocationUpdates()
+            print("Set up location notifications")
+        }
+        else {
+            print("Failed to set up location notifications")
         }
     }
 }

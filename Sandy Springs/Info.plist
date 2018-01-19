@@ -19,11 +19,30 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>9</string>
+	<string>10</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>aidancbrady.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Your location is used to let you know when you're near a park.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is used to let you know when you're near a park.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location is used to let you know when you're near a park.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
