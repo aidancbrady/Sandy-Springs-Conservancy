@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     static var DATA_URL = "http://server.aidancbrady.com/sandysprings/"
     static var DATA_FILE = "conservancy.json"
-    static var VERSION_FILE = "version.txt"
     
     static var LAST_LOCATION: CLLocation?
 
@@ -87,7 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
     {
-        print("Received notification input")
         let parkName = response.notification.request.content.userInfo["PARK"] as! String
         
         if self.window!.rootViewController!.presentedViewController != nil
