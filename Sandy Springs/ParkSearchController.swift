@@ -44,6 +44,7 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         }
         
         searchBar.delegate = self
+        updateResults()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -95,6 +96,13 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
+        updateResults()
+    }
+    
+    func updateResults()
+    {
+        let searchText = searchBar.text!
+        
         if searchText.count == 0
         {
             filterCells = allCells
@@ -110,6 +118,13 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
                 {
                     filterCells.append(parkCell)
                 }
+            }
+        }
+        
+        if filterCells.count > 0 && !filterCells[0].distanceLabel.isHidden
+        {
+            filterCells.sort() { (cell1, cell2) in
+                return cell1.distanceLabel.text!.compare(cell2.distanceLabel.text!).rawValue < 0
             }
         }
         

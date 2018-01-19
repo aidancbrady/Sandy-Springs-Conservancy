@@ -15,4 +15,11 @@ class ParkCell: UITableViewCell
     @IBOutlet weak var parkName: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    
+    override func didMoveToWindow()
+    {
+        let rect = CGRect(x: parkName.frame.minX, y: parkName.frame.minY, width: self.superview!.frame.maxX-parkName.frame.minX-5, height: parkName.frame.size.height)
+        parkName.frame = rect
+        (parkName as! MarqueeLabel).type = .leftRight
+    }
 }
