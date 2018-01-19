@@ -13,7 +13,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var favoritesLabel:UILabel!
     @IBOutlet weak var favoritesTable: UITableView!
-    @IBOutlet weak var websiteButton: UIButton!
+    @IBOutlet weak var parkListButton: UIButton!
     @IBOutlet weak var amenitySearchButton: UIButton!
     
     override func viewDidLoad()
@@ -33,7 +33,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         amenitySearchButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesTable.frame.maxY + 16, width: view.frame.width - 32, height: 42)
         
-        websiteButton.frame = CGRect(x: view.frame.minX + 16, y: amenitySearchButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
+        parkListButton.frame = CGRect(x: view.frame.minX + 16, y: amenitySearchButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -91,9 +91,13 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Utilities.loadPark(menuNavigation)
     }
     
-    @IBAction func websitePressed(_ sender: AnyObject)
+    @IBAction func parkListPressed(_ sender: AnyObject)
     {
-        UIApplication.shared.open(URL(string: "http://sandyspringsconservancy.org")!, options: [:], completionHandler: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuNavigation = self.navigationController as! MenuNavigation
+        let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkSearchController") as! ParkSearchController
+        menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.tableController.selectedItem = -1
     }
     
     @IBAction func amenitySearchPressed(_ sender: AnyObject)
@@ -102,6 +106,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
         menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.tableController.selectedItem = -1
     }
     
     @IBAction func menuPressed(_ sender: AnyObject)
@@ -115,5 +120,6 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "MapController") as! MapController
         menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.tableController.selectedItem = -1
     }
 }

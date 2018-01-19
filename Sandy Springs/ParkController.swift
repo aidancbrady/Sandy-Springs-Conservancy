@@ -239,6 +239,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let content = UNMutableNotificationContent()
                 content.title = "You're Near " + data.value.parkName
                 content.body = "Tap for more details."
+                content.userInfo = ["PARK":data.key]
                 let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
                 let identifier = data.value.parkName.replacingOccurrences(of: " ", with: "")
                 let request = UNNotificationRequest(identifier: identifier + "_region_notification", content: content, trigger: trigger)

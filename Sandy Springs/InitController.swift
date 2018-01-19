@@ -13,6 +13,8 @@ class InitController: UIViewController
     @IBOutlet weak var downloadLabel: UILabel!
     @IBOutlet weak var downloadActivity: UIActivityIndicatorView!
     
+    var notificationOpen: String?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -80,6 +82,21 @@ class InitController: UIViewController
                 }
                 else {
                    self.performSegue(withIdentifier: "download_complete", sender: self)
+                    
+                    if let parkName = self.notificationOpen
+                    {
+                        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
+                        let menuNavigation = self.presentedViewController as! MenuNavigation
+                        
+                        destController.parkName = parkName
+                        
+                        menuNavigation.setViewControllers([destController], animated: true)
+                        
+                        Utilities.loadPark(menuNavigation)
+                        
+                        self.notificationOpen = nil
+                    }
                 }
             }
         }

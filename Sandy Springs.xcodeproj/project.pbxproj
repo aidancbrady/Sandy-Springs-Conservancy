@@ -21,6 +21,8 @@
 		118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */; };
 		119A51BA2011B1A300ABAE55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119A51B92011B1A300ABAE55 /* QuartzCore.framework */; };
 		119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */; };
+		119A51BE2011E20E00ABAE55 /* ParkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51BD2011E20E00ABAE55 /* ParkCell.swift */; };
+		119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51BF2011E22400ABAE55 /* ParkSearchController.swift */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
 		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
@@ -65,6 +67,8 @@
 		118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		119A51B92011B1A300ABAE55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
+		119A51BD2011E20E00ABAE55 /* ParkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkCell.swift; sourceTree = "<group>"; };
+		119A51BF2011E22400ABAE55 /* ParkSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSearchController.swift; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				117CB83A1D149FE700F263D3 /* AmenityController.swift */,
 				117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */,
 				117CB83E1D1594C200F263D3 /* ParkData.swift */,
+				119A51BD2011E20E00ABAE55 /* ParkCell.swift */,
+				119A51BF2011E22400ABAE55 /* ParkSearchController.swift */,
 			);
 			path = "Sandy Springs";
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 				11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */,
 				11AEAE0A1A7679BC008414A9 /* MenuController.swift in Sources */,
 				117CB8391D13326500F263D3 /* FavoriteCell.swift in Sources */,
+				119A51BE2011E20E00ABAE55 /* ParkCell.swift in Sources */,
 				113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */,
 				11B841D11D1248C40009782C /* Utilities.swift in Sources */,
 				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,
@@ -314,6 +321,7 @@
 				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
 				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
+				119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */,
 				117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
