@@ -26,6 +26,8 @@
 		119A51C320125E5B00ABAE55 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C120125E5B00ABAE55 /* up.png */; };
 		119A51C420125E5B00ABAE55 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C220125E5B00ABAE55 /* down.png */; };
 		119A51C62012947600ABAE55 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C52012947600ABAE55 /* DataManager.swift */; };
+		119A51C92012BAD000ABAE55 /* NetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C82012BAD000ABAE55 /* NetHandler.swift */; };
+		119A51CB2012BAEC00ABAE55 /* OperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
 		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
@@ -75,6 +77,8 @@
 		119A51C220125E5B00ABAE55 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		119A51C52012947600ABAE55 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sandy Springs.entitlements"; sourceTree = "<group>"; };
+		119A51C82012BAD000ABAE55 /* NetHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHandler.swift; sourceTree = "<group>"; };
+		119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsManager.swift; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */,
+				119A51C82012BAD000ABAE55 /* NetHandler.swift */,
+				119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */,
 				119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */,
 				11AEAE011A7676D4008414A9 /* ENSideMenu.swift */,
 				11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */,
@@ -322,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */,
+				119A51CB2012BAEC00ABAE55 /* OperationsManager.swift in Sources */,
 				117CB83F1D1594C200F263D3 /* ParkData.swift in Sources */,
 				11AEAE081A7677D7008414A9 /* MenuTableController.swift in Sources */,
 				11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */,
@@ -336,6 +343,7 @@
 				117CB83B1D149FE700F263D3 /* AmenityController.swift in Sources */,
 				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
 				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
+				119A51C92012BAD000ABAE55 /* NetHandler.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
 				119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */,
 				117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */,

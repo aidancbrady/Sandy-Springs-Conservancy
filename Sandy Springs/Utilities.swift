@@ -67,6 +67,26 @@ class Utilities
             }
         }
     }
+    
+    static func split(_ s:String, separator:String) -> [String]
+    {
+        if s.range(of: separator) == nil
+        {
+            return [s.trim()]
+        }
+        
+        var split = s.trim().components(separatedBy: separator)
+        
+        for i in 0 ..< split.count
+        {
+            if split[i] == ""
+            {
+                split.remove(at: i)
+            }
+        }
+        
+        return split
+    }
 }
 
 extension Array where Element: Equatable
@@ -85,5 +105,15 @@ extension String
     func trim() -> String
     {
         return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+}
+
+extension Data
+{
+    func hexString() -> String
+    {
+        return self.reduce("") { string, byte in
+            string + String(format: "%02X", byte)
+        }
     }
 }

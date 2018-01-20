@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     static var DATA_URL = "http://server.aidancbrady.com/sandysprings/"
     static var DATA_FILE = "conservancy.json"
     
+    static var SPLITTER = ":"
+    static var PORT = 26840
+    static var IP = "server.aidancbrady.com"
+    
     static var LAST_LOCATION: CLLocation?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
@@ -84,24 +88,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
+    {
+        print("Successfully registered notification service.")
+        
+        let deviceID = deviceToken.hexString()
+            .replacingOccurrences(of: "<", with: "", options: [], range: nil)
+            .replacingOccurrences(of: ">", with: "", options: [], range: nil)
+            .replacingOccurrences(of: " ", with: "", options: [], range: nil)
+        
+        print("Sending device ID: " + deviceID)
+        
+        NetHandler.sendDeviceID(deviceID: deviceID)
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
     {
-        let parkName = response.notification.request.content.userInfo["PARK"] as! String
-        
-        if self.window!.rootViewController!.presentedViewController != nil
+        if let parkName = response.notification.request.content.userInfo["PARK"] as? String
         {
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
-            let menuNavigation = self.window!.rootViewController!.presentedViewController as! MenuNavigation
-            
-            destController.parkName = parkName
-            
-            menuNavigation.setViewControllers([destController], animated: true)
-            
-            Utilities.loadPark(menuNavigation)
-        }
-        else {
-            (self.window!.rootViewController! as! InitController).notificationOpen = parkName
+            if self.window!.rootViewController!.presentedViewController != nil
+            {
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
+                let menuNavigation = self.window!.rootViewController!.presentedViewController as! MenuNavigation
+                
+                destController.parkName = parkName
+                
+                menuNavigation.setViewControllers([destController], animated: true)
+                
+                Utilities.loadPark(menuNavigation)
+            }
+            else {
+                (self.window!.rootViewController! as! InitController).notificationOpen = parkName
+            }
         }
         
         completionHandler()
