@@ -104,13 +104,14 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func amenitySearchPressed(_ sender: AnyObject)
     {
-        /*let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
         menuNavigation.setViewControllers([destController], animated: true)
-        menuNavigation.tableController.selectedItem = -1*/
+        menuNavigation.tableController.selectedItem = -1
         
-        let data = ParkController.Parks.parkData["Abernathy Greenway"]!
+        //For testing purposes
+        /*let data = ParkController.Parks.parkData["Abernathy Greenway"]!
         let content = UNMutableNotificationContent()
         content.title = "You're Near " + data.parkName
         content.body = "Tap for more details."
@@ -121,7 +122,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let error = error {
                 print("Error requesting notification: (\(error), \(error.localizedDescription))")
             }
-        }
+        }*/
     }
     
     @IBAction func menuPressed(_ sender: AnyObject)
