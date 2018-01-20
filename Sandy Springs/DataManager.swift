@@ -31,7 +31,7 @@ class DataManager
                     return true
                 }
                 
-                if let url = URL(string: AppDelegate.DATA_URL + AppDelegate.DATA_FILE)
+                if let url = URL(string: Constants.DATA_URL + Constants.DATA_FILE)
                 {
                     if let data = try? Data(contentsOf: url)
                     {
@@ -68,7 +68,7 @@ class DataManager
             }
             
             do {
-                if let url = URL(string: AppDelegate.DATA_URL + AppDelegate.DATA_FILE)
+                if let url = URL(string: Constants.DATA_URL + Constants.DATA_FILE)
                 {
                     if let data = try? Data(contentsOf: url)
                     {
@@ -87,7 +87,7 @@ class DataManager
     private class func localLoadData() throws
     {
         let cacheDir = getCachePath()
-        let dataFile = cacheDir + AppDelegate.DATA_FILE
+        let dataFile = cacheDir + Constants.DATA_FILE
         
         if let data = try? Data(contentsOf: URL(fileURLWithPath: dataFile))
         {
@@ -133,7 +133,7 @@ class DataManager
             print("Created data directory")
         }
         
-        let dataFile = cacheDir + AppDelegate.DATA_FILE
+        let dataFile = cacheDir + Constants.DATA_FILE
         
         try fileData.write(to: URL(fileURLWithPath: dataFile))
         print("Downloaded file data")
@@ -161,7 +161,7 @@ class DataManager
         do {
             for image in park.imageUrls
             {
-                let dir = remote ? AppDelegate.DATA_URL : cacheDir
+                let dir = remote ? Constants.DATA_URL : cacheDir
                 let testURL = remote ? URL(string: dir + image) : URL(fileURLWithPath: dir + image)
                 
                 if let url = testURL
@@ -188,7 +188,7 @@ class DataManager
     
     private class func getStoredVersion() -> Double?
     {
-        let dataFile = getCachePath() + AppDelegate.DATA_FILE
+        let dataFile = getCachePath() + Constants.DATA_FILE
         
         if let data = try? Data(contentsOf: URL(fileURLWithPath: dataFile))
         {

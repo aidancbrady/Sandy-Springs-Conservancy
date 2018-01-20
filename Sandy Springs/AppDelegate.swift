@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  Constants.swift
 //  Sandy Springs
 //
 //  Created by aidancbrady on 10/22/14.
@@ -15,15 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 {
     var window: UIWindow?
     var locationManager: CLLocationManager!
-    
-    static var DATA_URL = "http://server.aidancbrady.com/sandysprings/"
-    static var DATA_FILE = "conservancy.json"
-    
-    static var SPLITTER = ":"
-    static var PORT = 26840
-    static var IP = "server.aidancbrady.com"
-    
-    static var LAST_LOCATION: CLLocation?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
@@ -99,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         print("Sending device ID: " + deviceID)
         
-        NetHandler.sendDeviceID(deviceID: deviceID)
+        NetManager.sendDeviceID(deviceID: deviceID)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
@@ -128,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        AppDelegate.LAST_LOCATION = locations[0]
+        Constants.LAST_LOCATION = locations[0]
     }
 }
 

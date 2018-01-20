@@ -26,8 +26,9 @@
 		119A51C320125E5B00ABAE55 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C120125E5B00ABAE55 /* up.png */; };
 		119A51C420125E5B00ABAE55 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C220125E5B00ABAE55 /* down.png */; };
 		119A51C62012947600ABAE55 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C52012947600ABAE55 /* DataManager.swift */; };
-		119A51C92012BAD000ABAE55 /* NetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C82012BAD000ABAE55 /* NetHandler.swift */; };
+		119A51C92012BAD000ABAE55 /* NetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C82012BAD000ABAE55 /* NetManager.swift */; };
 		119A51CB2012BAEC00ABAE55 /* OperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */; };
+		119A51D22012D38E00ABAE55 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51D12012D38E00ABAE55 /* Constants.swift */; };
 		11AEAE031A7676D4008414A9 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE011A7676D4008414A9 /* ENSideMenu.swift */; };
 		11AEAE041A7676D4008414A9 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */; };
 		11AEAE061A767796008414A9 /* MenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AEAE051A767796008414A9 /* MenuNavigation.swift */; };
@@ -77,8 +78,9 @@
 		119A51C220125E5B00ABAE55 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		119A51C52012947600ABAE55 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sandy Springs.entitlements"; sourceTree = "<group>"; };
-		119A51C82012BAD000ABAE55 /* NetHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetHandler.swift; sourceTree = "<group>"; };
+		119A51C82012BAD000ABAE55 /* NetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetManager.swift; sourceTree = "<group>"; };
 		119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsManager.swift; sourceTree = "<group>"; };
+		119A51D12012D38E00ABAE55 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11AEAE011A7676D4008414A9 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		11AEAE051A767796008414A9 /* MenuNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigation.swift; sourceTree = "<group>"; };
@@ -138,30 +140,16 @@
 			isa = PBXGroup;
 			children = (
 				119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */,
-				119A51C82012BAD000ABAE55 /* NetHandler.swift */,
-				119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */,
-				119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */,
-				11AEAE011A7676D4008414A9 /* ENSideMenu.swift */,
-				11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */,
-				113F6DC419F8762600CE4B16 /* AppDelegate.swift */,
-				119A51C52012947600ABAE55 /* DataManager.swift */,
-				113F6DCA19F8762600CE4B16 /* Main.storyboard */,
 				113F6DCD19F8762600CE4B16 /* Images.xcassets */,
+				113F6DCA19F8762600CE4B16 /* Main.storyboard */,
 				113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */,
+				119A51D02012D27E00ABAE55 /* MarqueeLabel */,
+				119A51CF2012D23300ABAE55 /* ENSideMenu */,
 				113F6DC219F8762600CE4B16 /* Supporting Files */,
-				11AEAE051A767796008414A9 /* MenuNavigation.swift */,
-				11AEAE071A7677D7008414A9 /* MenuTableController.swift */,
-				11AEAE091A7679BC008414A9 /* MenuController.swift */,
-				113CDC521A9769390024DBC7 /* ParkController.swift */,
-				11C52D1F1B4C559C007A2380 /* InitController.swift */,
-				11B841D01D1248C40009782C /* Utilities.swift */,
-				11B841D21D1262CF0009782C /* MapController.swift */,
-				117CB8381D13326500F263D3 /* FavoriteCell.swift */,
-				117CB83A1D149FE700F263D3 /* AmenityController.swift */,
-				117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */,
-				117CB83E1D1594C200F263D3 /* ParkData.swift */,
-				119A51BD2011E20E00ABAE55 /* ParkCell.swift */,
-				119A51BF2011E22400ABAE55 /* ParkSearchController.swift */,
+				119A51CD2012D1D100ABAE55 /* Views */,
+				119A51D32012D47B00ABAE55 /* Helpers */,
+				119A51D42012D49700ABAE55 /* Base */,
+				113F6DC419F8762600CE4B16 /* AppDelegate.swift */,
 			);
 			path = "Sandy Springs";
 			sourceTree = "<group>";
@@ -195,6 +183,69 @@
 				113F6DDB19F8762600CE4B16 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		119A51CD2012D1D100ABAE55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				119A51CE2012D20600ABAE55 /* Cells */,
+				11AEAE051A767796008414A9 /* MenuNavigation.swift */,
+				11AEAE071A7677D7008414A9 /* MenuTableController.swift */,
+				11AEAE091A7679BC008414A9 /* MenuController.swift */,
+				113CDC521A9769390024DBC7 /* ParkController.swift */,
+				11C52D1F1B4C559C007A2380 /* InitController.swift */,
+				11B841D21D1262CF0009782C /* MapController.swift */,
+				117CB83A1D149FE700F263D3 /* AmenityController.swift */,
+				117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */,
+				119A51BF2011E22400ABAE55 /* ParkSearchController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		119A51CE2012D20600ABAE55 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				119A51BD2011E20E00ABAE55 /* ParkCell.swift */,
+				117CB8381D13326500F263D3 /* FavoriteCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		119A51CF2012D23300ABAE55 /* ENSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				11AEAE011A7676D4008414A9 /* ENSideMenu.swift */,
+				11AEAE021A7676D4008414A9 /* ENSideMenuNavigationController.swift */,
+			);
+			name = ENSideMenu;
+			sourceTree = "<group>";
+		};
+		119A51D02012D27E00ABAE55 /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				119A51BB2011B25E00ABAE55 /* MarqueeLabel.swift */,
+			);
+			name = MarqueeLabel;
+			sourceTree = "<group>";
+		};
+		119A51D32012D47B00ABAE55 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				119A51D12012D38E00ABAE55 /* Constants.swift */,
+				11B841D01D1248C40009782C /* Utilities.swift */,
+				119A51C52012947600ABAE55 /* DataManager.swift */,
+				119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */,
+				119A51C82012BAD000ABAE55 /* NetManager.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		119A51D42012D49700ABAE55 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				117CB83E1D1594C200F263D3 /* ParkData.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		11D2A9ED2011A002009FE9C1 /* Frameworks */ = {
@@ -251,7 +302,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = aidancbrady;
 				TargetAttributes = {
 					113F6DBE19F8762600CE4B16 = {
@@ -338,12 +389,13 @@
 				119A51C62012947600ABAE55 /* DataManager.swift in Sources */,
 				119A51BE2011E20E00ABAE55 /* ParkCell.swift in Sources */,
 				113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */,
+				119A51D22012D38E00ABAE55 /* Constants.swift in Sources */,
 				11B841D11D1248C40009782C /* Utilities.swift in Sources */,
 				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,
 				117CB83B1D149FE700F263D3 /* AmenityController.swift in Sources */,
 				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
 				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
-				119A51C92012BAD000ABAE55 /* NetHandler.swift in Sources */,
+				119A51C92012BAD000ABAE55 /* NetManager.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
 				119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */,
 				117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */,

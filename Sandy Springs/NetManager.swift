@@ -1,5 +1,5 @@
 //
-//  NetHandler.swift
+//  NetManager.swift
 //  VocabCrack
 //
 //  Created by aidancbrady on 12/2/14.
@@ -7,7 +7,7 @@
 //
 import Foundation
 
-class NetHandler
+class NetManager
 {
     @discardableResult
     class func sendData(_ str:String) -> String?
@@ -17,7 +17,7 @@ class NetHandler
         var inputStream:InputStream?
         var outputStream:OutputStream?
         
-        Stream.getStreamsToHost(withName: AppDelegate.IP, port: AppDelegate.PORT, inputStream: &inputStream, outputStream: &outputStream)
+        Stream.getStreamsToHost(withName: Constants.IP, port: Constants.PORT, inputStream: &inputStream, outputStream: &outputStream)
         
         var writeData = [UInt8]((str + "\n").utf8)
         
@@ -78,7 +78,7 @@ func compileMsg(_ msg:String...) -> String
             
             if index < msg.count-1
             {
-                ret += AppDelegate.SPLITTER
+                ret += Constants.SPLITTER
             }
         }
     }

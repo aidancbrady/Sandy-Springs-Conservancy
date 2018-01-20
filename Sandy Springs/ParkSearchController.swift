@@ -30,7 +30,7 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
             allCells.append(cell)
             filterCells.append(cell)
             
-            if let location = AppDelegate.LAST_LOCATION
+            if let location = Constants.LAST_LOCATION
             {
                 let parkLocation = CLLocation(latitude: data.value.coords.latitude, longitude: data.value.coords.longitude)
                 let distance = location.distance(from: parkLocation)
