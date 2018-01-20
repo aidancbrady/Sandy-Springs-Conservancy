@@ -13,6 +13,7 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate
 {
+    var setLocationNotifications = false
     var window: UIWindow?
     var locationManager: CLLocationManager!
 
@@ -67,15 +68,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
-        let accepted = (status == CLAuthorizationStatus.authorizedAlways)
-        
-        if accepted
+        if !setLocationNotifications
         {
-            ParkController.Parks.initLocationUpdates()
-            print("Set up location notifications")
-        }
-        else {
-            print("Failed to set up location notifications")
+            let accepted = (status == CLAuthorizationStatus.authorizedAlways)
+            
+            if accepted
+            {
+                ParkController.Parks.initLocationUpdates()
+                print("Set up location notifications")
+            }
+            else {
+                print("Failed to set up location notifications")
+            }
+            
+            setLocationNotifications = true
         }
     }
     
