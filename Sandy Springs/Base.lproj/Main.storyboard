@@ -119,7 +119,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpeg" id="I5f-It-tqF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_alpha.png" id="I5f-It-tqF">
                                 <rect key="frame" x="70" y="80" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -185,9 +185,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dev-yM-hzr">
                                 <rect key="frame" x="20" y="513" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.43085466169999997" green="0.68111229279999996" blue="0.47851557500000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.35931347432311639" green="0.52754203680203049" blue="0.40137061494284498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Amenity Search"/>
+                                <state key="normal" title="Amenity Search">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="amenitySearchPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="dJy-sD-irc"/>
                                 </connections>
@@ -195,9 +197,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7mk-bk-OFC">
                                 <rect key="frame" x="20" y="463" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.43085466173844195" green="0.68111229275741703" blue="0.47851557497621877" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.35931347432311639" green="0.52754203680203049" blue="0.40137061494284498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Park List">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="parkListPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="TVO-9b-T7e"/>
@@ -228,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkN-jP-nGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="362" y="0.0"/>
+            <point key="canvasLocation" x="361.5" y="-0.5"/>
         </scene>
         <!--Park Map-->
         <scene sceneID="fkO-JA-ejd">
@@ -501,7 +503,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo.jpeg" width="1200" height="1200"/>
+        <image name="logo_alpha.png" width="1200" height="1200"/>
         <image name="park_leaf.png" width="1200" height="1200"/>
     </resources>
 </document>
