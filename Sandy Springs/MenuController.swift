@@ -13,14 +13,16 @@ import UserNotifications
 class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var favoritesLabel:UILabel!
     @IBOutlet weak var favoritesTable: UITableView!
+    @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var parkListButton: UIButton!
     @IBOutlet weak var amenitySearchButton: UIButton!
     
     var imageView: UIImageView!
     var backgroundIndex: Int = 0
     var timer: Timer!
+    var favoritesActive = false
+    var defFavoritesY: CGFloat = 0
     
     override func viewDidLoad()
     {
@@ -28,20 +30,22 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let viewStretch = (view.frame.height/view.frame.width)-1.75
         let startBoost = viewStretch*80
+        let bottomHeight = CGFloat(16+42+16+42+16+16)+(viewStretch*80)
+        
         logoImage.frame = CGRect(x: view.frame.width/4, y: navigationController!.navigationBar.frame.maxY+48+startBoost, width: view.frame.width/2, height: view.frame.width/2)
-        favoritesLabel.frame = CGRect(x: view.frame.maxX/2 - favoritesLabel.frame.width/2, y: logoImage.frame.maxY + 32, width: favoritesLabel.frame.width, height: favoritesLabel.frame.height)
         
-        let tableStartY = favoritesLabel.frame.maxY + 8
-        let bottomHeight = CGFloat(16+42+8+42+16)+(viewStretch*80)
-        favoritesTable.frame = CGRect(x: view.frame.minX+16, y: tableStartY, width: view.frame.width-32, height: (view.frame.height-bottomHeight)-tableStartY)
+        defFavoritesY = view.frame.maxY - bottomHeight
+        favoritesButton.frame = CGRect(x: view.frame.minX + 16, y: defFavoritesY, width: view.frame.width - 32, height: 42)
+        favoritesButton.layer.cornerRadius = 10
         
+        favoritesTable.frame = CGRect(x: view.frame.minX+16, y: favoritesButton.frame.maxY + 16, width: view.frame.width-32, height: 0)
         favoritesTable.delegate = self
         favoritesTable.dataSource = self
         favoritesTable.isScrollEnabled = true
         favoritesTable.layer.cornerRadius = 10
         favoritesTable.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.65)
         
-        parkListButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesTable.frame.maxY + 8, width: view.frame.width - 32, height: 42)
+        parkListButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
         parkListButton.layer.cornerRadius = 10
         
         amenitySearchButton.frame = CGRect(x: view.frame.minX + 16, y: parkListButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
@@ -125,6 +129,25 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         menuNavigation.setViewControllers([destController], animated: true)
         
         Utilities.loadPark(menuNavigation)
+    }
+    
+    @IBAction func favoritesPressed(_ sender: Any)
+    {
+        UIView.animate(withDuration: 0.5, animations: {
+            //toggle favorites
+            self.favoritesActive = !self.favoritesActive
+            //set up new bottom frame from new starting y pos
+            let yStart = self.favoritesActive ? self.logoImage.frame.maxY + 32 : self.defFavoritesY
+            self.favoritesButton.frame = CGRect(x: self.view.frame.minX + 16, y: yStart, width: self.view.frame.width - 32, height: 42)
+            //set up table view from these updated positions
+            let frame = self.favoritesTable.frame
+            var height = (self.parkListButton.frame.minY - 16) - (self.favoritesButton.frame.maxY + 16)
+            //we don't want a negative height
+            if !self.favoritesActive {
+                height = 0
+            }
+            self.favoritesTable.frame = CGRect(x: frame.minX, y: self.favoritesButton.frame.maxY + 16, width: frame.width, height: height)
+        })
     }
     
     @IBAction func parkListPressed(_ sender: AnyObject)

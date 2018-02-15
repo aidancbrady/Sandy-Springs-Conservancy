@@ -123,13 +123,6 @@
                                 <rect key="frame" x="70" y="80" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Parks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8K-m7-KmC">
-                                <rect key="frame" x="16" y="273" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" id="ibh-IF-PKc">
                                 <rect key="frame" x="0.0" y="322" width="320" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -182,8 +175,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dev-yM-hzr">
-                                <rect key="frame" x="20" y="513" width="280" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dev-yM-hzr">
+                                <rect key="frame" x="20" y="578" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.35931347432311639" green="0.52754203680203049" blue="0.40137061494284498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,8 +187,8 @@
                                     <action selector="amenitySearchPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="dJy-sD-irc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7mk-bk-OFC">
-                                <rect key="frame" x="20" y="463" width="280" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7mk-bk-OFC">
+                                <rect key="frame" x="20" y="528" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.35931347432311639" green="0.52754203680203049" blue="0.40137061494284498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Park List">
@@ -203,6 +196,17 @@
                                 </state>
                                 <connections>
                                     <action selector="parkListPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="TVO-9b-T7e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="l0z-xR-YiU">
+                                <rect key="frame" x="20" y="478" width="280" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.35931347429999999" green="0.5275420368" blue="0.40137061489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Favorites">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="favoritesPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="bQY-HE-z3C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -222,7 +226,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="amenitySearchButton" destination="dev-yM-hzr" id="ED5-6N-Lan"/>
-                        <outlet property="favoritesLabel" destination="e8K-m7-KmC" id="2LG-ua-EJr"/>
+                        <outlet property="favoritesButton" destination="l0z-xR-YiU" id="9Aw-YH-C3E"/>
                         <outlet property="favoritesTable" destination="ibh-IF-PKc" id="biS-YP-lqZ"/>
                         <outlet property="logoImage" destination="I5f-It-tqF" id="IIR-yV-Xl2"/>
                         <outlet property="parkListButton" destination="7mk-bk-OFC" id="rrh-DL-Dux"/>
