@@ -22,6 +22,9 @@ class MapController: UIViewController, MKMapViewDelegate
     {
         super.viewDidLoad()
         
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+        
         mapView.delegate = self
         
         let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerCoordLat, centerCoordLong), MKCoordinateSpanMake(self.mapView.region.span.longitudeDelta/1024, self.mapView.region.span.latitudeDelta/1024))

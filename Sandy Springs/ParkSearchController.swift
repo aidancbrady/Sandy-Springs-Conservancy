@@ -21,6 +21,9 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     {
         super.viewDidLoad()
         
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+        
         for data in ParkController.Parks.parkData
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ParkCell") as! ParkCell

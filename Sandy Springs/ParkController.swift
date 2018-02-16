@@ -35,6 +35,9 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     {
         super.viewDidLoad()
         
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+        
         manager = CLLocationManager()
         manager!.delegate = self
         manager!.desiredAccuracy = kCLLocationAccuracyBest

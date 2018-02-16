@@ -21,6 +21,9 @@ class AmenityController: UIViewController
     {
         super.viewDidLoad()
         
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+        
         if amenityList.count == 0
         {
             for data in ParkController.Parks.parkData

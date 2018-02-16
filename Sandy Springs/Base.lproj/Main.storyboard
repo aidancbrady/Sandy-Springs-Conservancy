@@ -178,10 +178,10 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dev-yM-hzr">
                                 <rect key="frame" x="20" y="578" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.35931347432311639" green="0.52754203680203049" blue="0.40137061494284498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Amenity Search">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="amenitySearchPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="dJy-sD-irc"/>
@@ -190,9 +190,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7mk-bk-OFC">
                                 <rect key="frame" x="20" y="528" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.35931347432311639" green="0.52754203680203049" blue="0.40137061494284498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Park List">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="parkListPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="TVO-9b-T7e"/>
@@ -201,34 +201,36 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="l0z-xR-YiU">
                                 <rect key="frame" x="20" y="478" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.35931347429999999" green="0.5275420368" blue="0.40137061489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Favorites">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="favoritesPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="bQY-HE-z3C"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HBC-QC-viU">
+                                <rect key="frame" x="16" y="80" width="77" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.35931347429999999" green="0.5275420368" blue="0.40137061489999998" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Menu">
+                                    <color key="titleColor" red="0.10528303689994799" green="0.39815989847715738" blue="0.13425043108509099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuPressed:" destination="yoa-KF-bcC" eventType="touchUpInside" id="eSB-eX-N3I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sandy Springs" id="Sd6-MV-iQZ">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" style="done" id="wWf-Uh-tnZ">
-                            <connections>
-                                <action selector="menuPressed:" destination="yoa-KF-bcC" id="lqp-FE-gWl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Map" style="done" id="Lli-ns-abO">
-                            <connections>
-                                <action selector="mapPressed:" destination="yoa-KF-bcC" id="njr-gj-EYR"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sandy Springs" id="Sd6-MV-iQZ"/>
                     <connections>
                         <outlet property="amenitySearchButton" destination="dev-yM-hzr" id="ED5-6N-Lan"/>
                         <outlet property="favoritesButton" destination="l0z-xR-YiU" id="9Aw-YH-C3E"/>
                         <outlet property="favoritesTable" destination="ibh-IF-PKc" id="biS-YP-lqZ"/>
                         <outlet property="logoImage" destination="I5f-It-tqF" id="IIR-yV-Xl2"/>
+                        <outlet property="menuButton" destination="HBC-QC-viU" id="OMQ-aT-IvK"/>
                         <outlet property="parkListButton" destination="7mk-bk-OFC" id="rrh-DL-Dux"/>
                     </connections>
                 </viewController>
@@ -510,4 +512,5 @@
         <image name="logo_alpha.png" width="1200" height="1200"/>
         <image name="park_leaf.png" width="1200" height="1200"/>
     </resources>
+    <color key="tintColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

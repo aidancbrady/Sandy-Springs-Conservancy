@@ -12,6 +12,7 @@ import UserNotifications
 
 class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var favoritesTable: UITableView!
     @IBOutlet weak var favoritesButton: UIButton!
@@ -28,11 +29,34 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         super.viewDidLoad()
         
+        //hide nav bar
+        navigationController!.navigationBar.isHidden = true
+        
         let viewStretch = (view.frame.height/view.frame.width)-1.75
-        let startBoost = viewStretch*80
-        let bottomHeight = CGFloat(16+42+16+42+16+16)+(viewStretch*80)
+        let startBoost = viewStretch*160
+        let bottomHeight = CGFloat(16+42+16+42+16+32)+(viewStretch*80)
+        var topPadding = UIApplication.shared.keyWindow!.safeAreaInsets.top
+        
+        if topPadding == 0 {
+            topPadding = 16
+        }
         
         logoImage.frame = CGRect(x: view.frame.width/4, y: navigationController!.navigationBar.frame.maxY+48+startBoost, width: view.frame.width/2, height: view.frame.width/2)
+        logoImage.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(logoPressed))
+        logoImage.addGestureRecognizer(tapRecognizer)
+        
+        menuButton.frame = CGRect(x: view.frame.minX + 16, y: topPadding + 16, width: 60, height: 34)
+        menuButton.layer.cornerRadius = 10
+        menuButton.layer.borderWidth = 1
+        menuButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
+        
+        favoritesButton.layer.borderWidth = 2
+        favoritesButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
+        parkListButton.layer.borderWidth = 2
+        parkListButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
+        amenitySearchButton.layer.borderWidth = 2
+        amenitySearchButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
         
         defFavoritesY = view.frame.maxY - bottomHeight
         favoritesButton.frame = CGRect(x: view.frame.minX + 16, y: defFavoritesY, width: view.frame.width - 32, height: 42)
@@ -67,6 +91,15 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //update background images
         timer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateBackground), userInfo: nil, repeats: true)
+    }
+    
+    @objc func logoPressed()
+    {
+        print("TET")
+        if let url = URL(string: "https://sandyspringsconservancy.org")
+        {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @objc func updateBackground()

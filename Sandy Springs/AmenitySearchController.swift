@@ -15,6 +15,14 @@ class AmenitySearchController: UITableViewController
     var selectedAmenities: [String] = [String]()
     var searchResults: [ParkData] = [ParkData]()
     
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+    }
+    
     func setAmenities(_ selectedAmenities: [String])
     {
         self.selectedAmenities = selectedAmenities
@@ -99,10 +107,5 @@ class AmenitySearchController: UITableViewController
     @IBAction func backPressed(_ sender: AnyObject)
     {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
     }
 }
