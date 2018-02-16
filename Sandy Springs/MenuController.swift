@@ -51,12 +51,12 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         menuButton.layer.borderWidth = 1
         menuButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
         
-        favoritesButton.layer.borderWidth = 2
-        favoritesButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
-        parkListButton.layer.borderWidth = 2
-        parkListButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
-        amenitySearchButton.layer.borderWidth = 2
-        amenitySearchButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
+        favoritesButton.layer.borderWidth = 1
+        favoritesButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
+        parkListButton.layer.borderWidth = 1
+        parkListButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
+        amenitySearchButton.layer.borderWidth = 1
+        amenitySearchButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
         
         defFavoritesY = view.frame.maxY - bottomHeight
         favoritesButton.frame = CGRect(x: view.frame.minX + 16, y: defFavoritesY, width: view.frame.width - 32, height: 42)
