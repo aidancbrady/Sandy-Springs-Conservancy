@@ -17,6 +17,7 @@ class Utilities
         return favorites.contains(name)
     }
     
+    @discardableResult
     static func toggleFavorite(_ name: String) -> Bool
     {
         var ret = false

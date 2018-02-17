@@ -24,6 +24,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var timer: Timer!
     var favoritesActive = false
     var defFavoritesY: CGFloat = 0
+    var updatingTable = false
     
     override func viewDidLoad()
     {
@@ -66,6 +67,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         favoritesTable.delegate = self
         favoritesTable.dataSource = self
         favoritesTable.isScrollEnabled = true
+        favoritesTable.allowsMultipleSelectionDuringEditing = false
         favoritesTable.layer.cornerRadius = 10
         favoritesTable.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.65)
         
@@ -95,7 +97,6 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func logoPressed()
     {
-        print("TET")
         if let url = URL(string: "https://sandyspringsconservancy.org")
         {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -121,7 +122,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if Utilities.favorites.count == 0
+        if Utilities.favorites.count == 0 && !updatingTable
         {
             return 1
         }
@@ -144,6 +145,11 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        cell.backgroundColor = UIColor.clear
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if Utilities.favorites.count == 0
@@ -162,6 +168,27 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         menuNavigation.setViewControllers([destController], animated: true)
         
         Utilities.loadPark(menuNavigation)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return Utilities.favorites.count > 0
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            Utilities.toggleFavorite(Utilities.favorites[indexPath.row])
+            
+            updatingTable = true
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            updatingTable = false
+            
+            if Utilities.favorites.count == 0 {
+                tableView.insertRows(at: [indexPath], with: .none)
+            }
+        }
     }
     
     @IBAction func favoritesPressed(_ sender: Any)
