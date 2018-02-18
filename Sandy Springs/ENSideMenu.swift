@@ -97,7 +97,7 @@ open class ENSideMenu : NSObject
         }
     }
     
-    fileprivate var menuPosition:ENSideMenuPosition = .left
+    open var menuPosition:ENSideMenuPosition = .left
     open var bouncingEnabled :Bool = true
     fileprivate let sideMenuContainerView =  UIView()
     fileprivate var menuTableViewController : UITableViewController!

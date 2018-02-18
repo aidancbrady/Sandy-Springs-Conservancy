@@ -26,9 +26,19 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
     
     @objc func onTap(_ sender: UITapGestureRecognizer?)
     {
-        if sender!.location(in: self.view).x > sideMenu!.menuWidth
+        if sideMenu!.menuPosition == .left
         {
-            hideSideMenuView()
+            if sender!.location(in: self.view).x > sideMenu!.menuWidth
+            {
+                hideSideMenuView()
+            }
+        }
+        else if sideMenu!.menuPosition == .right
+        {
+            if sender!.location(in: self.view).x < self.view.frame.width-sideMenu!.menuWidth
+            {
+                hideSideMenuView()
+            }
         }
         
         sender!.cancelsTouchesInView = false
