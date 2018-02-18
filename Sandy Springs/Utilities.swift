@@ -21,7 +21,7 @@ class Utilities
     {
         var str = name.replacingOccurrences(of: " ", with: "_")
         str = str.replacingOccurrences(of: "/", with: "_")
-        return str + ".png"
+        return str.lowercased() + ".png"
     }
     
     @discardableResult
