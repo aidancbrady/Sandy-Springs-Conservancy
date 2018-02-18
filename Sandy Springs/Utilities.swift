@@ -17,6 +17,13 @@ class Utilities
         return favorites.contains(name)
     }
     
+    static func formatAmenity(_ name: String) -> String
+    {
+        var str = name.replacingOccurrences(of: " ", with: "_")
+        str = str.replacingOccurrences(of: "/", with: "_")
+        return str + ".png"
+    }
+    
     @discardableResult
     static func toggleFavorite(_ name: String) -> Bool
     {

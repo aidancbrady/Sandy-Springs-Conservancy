@@ -16,7 +16,7 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
     {
         super.viewDidLoad()
         
-        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: tableController, menuPosition: .left)
+        sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: tableController, menuPosition: .right)
         sideMenu!.menuWidth = 300
         sideMenu!.delegate = self
         sideMenuAnimationType = .none

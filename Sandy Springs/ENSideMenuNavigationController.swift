@@ -45,7 +45,7 @@ open class ENSideMenuNavigationController: UINavigationController, ENSideMenuPro
     // MARK: - Navigation
     open func setContentViewController(_ contentViewController: UIViewController)
     {
-        self.sideMenu?.toggleMenu()
+        self.hideSideMenuView()
         
         switch sideMenuAnimationType
         {
@@ -61,7 +61,7 @@ open class ENSideMenuNavigationController: UINavigationController, ENSideMenuPro
     
     open func present(_ viewController: UIViewController)
     {
-        self.sideMenu?.toggleMenu()
+        self.hideSideMenuView()
         self.pushViewController(viewController, animated: true)
     }
 }

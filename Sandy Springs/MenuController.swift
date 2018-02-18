@@ -36,7 +36,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillDisappear(_ animated: Bool)
     {
         //show nav bar
-        navigationController!.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLoad()
@@ -57,7 +57,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(logoPressed))
         logoImage.addGestureRecognizer(tapRecognizer)
         
-        menuButton.frame = CGRect(x: view.frame.minX + 16, y: topPadding + 16, width: 60, height: 34)
+        menuButton.frame = CGRect(x: view.frame.maxX - 16 - 60, y: topPadding + 16, width: 60, height: 34)
         menuButton.layer.cornerRadius = 10
         menuButton.layer.borderWidth = 1
         menuButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
