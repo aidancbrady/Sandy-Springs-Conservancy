@@ -19,6 +19,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Amenity Search" id="BMf-ZH-Az4">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="KEe-wa-vdZ"/>
                         <barButtonItem key="rightBarButtonItem" title="Search" style="done" id="3R5-n8-qwb">
                             <connections>
                                 <action selector="searchPressed:" destination="9Qr-4h-Po3" id="Zll-DC-ayb"/>
@@ -92,6 +93,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search Results" id="u2X-7n-VTZ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="mNW-pc-jta"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="VFk-ap-VDm">
                             <connections>
                                 <action selector="backPressed:" destination="YdU-F0-viS" id="XVR-q3-QYB"/>
@@ -224,7 +226,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="Sd6-MV-iQZ"/>
+                    <navigationItem key="navigationItem" title="Home" id="Sd6-MV-iQZ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="N97-fC-lW5"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="amenitySearchButton" destination="dev-yM-hzr" id="ED5-6N-Lan"/>
                         <outlet property="favoritesButton" destination="l0z-xR-YiU" id="9Aw-YH-C3E"/>
@@ -254,7 +258,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Park Map" id="yDg-tJ-sWR"/>
+                    <navigationItem key="navigationItem" title="Park Map" id="yDg-tJ-sWR">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="LVd-2m-zSe"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="rbh-5F-Lb2" id="1BD-Q8-xhQ"/>
@@ -319,7 +325,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Park Name" id="AeH-eN-rnE"/>
+                    <navigationItem key="navigationItem" title="Park Name" id="AeH-eN-rnE">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="RqK-mx-gM1"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="descriptionView" destination="YkI-bn-y15" id="VoT-4d-P1e"/>
@@ -411,7 +419,9 @@
                             <outlet property="delegate" destination="RJn-GS-FsL" id="evK-Ng-JzT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Park List" id="JXo-U3-xL9"/>
+                    <navigationItem key="navigationItem" title="Park List" id="JXo-U3-xL9">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="uXC-kj-9Vt"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="searchBar" destination="BSD-mz-sn2" id="IuF-bh-4cZ"/>
