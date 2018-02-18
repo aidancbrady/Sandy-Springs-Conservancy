@@ -49,7 +49,7 @@ class InitController: UIViewController
                         
                         destController.parkName = parkName
                         
-                        menuNavigation.setViewControllers([destController], animated: true)
+                        menuNavigation.pushViewController(destController, animated: true)
                         
                         Utilities.loadPark(menuNavigation)
                         

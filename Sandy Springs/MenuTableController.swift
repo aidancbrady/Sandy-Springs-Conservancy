@@ -152,6 +152,7 @@ class MenuTableController: UITableViewController
             park.parkName = displayedData[selectedItem].0
         }
         
-        sideMenuController()?.setContentViewController(destController)
+        sideMenuController()?.present(destController)
+        //sideMenuController()?.setContentViewController(destController)
     }
 }

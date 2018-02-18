@@ -17,6 +17,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var favoritesTable: UITableView!
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var parkListButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var amenitySearchButton: UIButton!
     
     var imageView: UIImageView!
@@ -26,12 +27,21 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var defFavoritesY: CGFloat = 0
     var updatingTable = false
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        //hide nav bar
+        navigationController!.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        //hide nav bar
-        navigationController!.navigationBar.isHidden = true
         
         let viewStretch = (view.frame.height/view.frame.width)-1.75
         let startBoost = viewStretch*160
@@ -56,6 +66,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         favoritesButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
         parkListButton.layer.borderWidth = 1
         parkListButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
+        mapButton.layer.borderWidth = 1
+        mapButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
         amenitySearchButton.layer.borderWidth = 1
         amenitySearchButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
         
@@ -71,8 +83,11 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         favoritesTable.layer.cornerRadius = 10
         favoritesTable.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.65)
         
-        parkListButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
+        parkListButton.frame = CGRect(x: view.frame.minX + 16, y: favoritesButton.frame.maxY + 8, width: (view.frame.width/2 - 4) - (view.frame.minX + 16), height: 42)
         parkListButton.layer.cornerRadius = 10
+        
+        mapButton.frame = CGRect(x: parkListButton.frame.maxX + 8, y: favoritesButton.frame.maxY + 8, width: (view.frame.width - 16) - (parkListButton.frame.maxX + 8), height: 42)
+        mapButton.layer.cornerRadius = 10
         
         amenitySearchButton.frame = CGRect(x: view.frame.minX + 16, y: parkListButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
         amenitySearchButton.layer.cornerRadius = 10
@@ -165,7 +180,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         destController.parkName = Utilities.favorites[(indexPath as NSIndexPath).row]
         
         hideSideMenuView()
-        menuNavigation.setViewControllers([destController], animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        menuNavigation.pushViewController(destController, animated: true)
         
         Utilities.loadPark(menuNavigation)
     }
@@ -215,7 +231,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkSearchController") as! ParkSearchController
-        menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.pushViewController(destController, animated: true)
         menuNavigation.tableController.selectedItem = -1
     }
     
@@ -224,7 +240,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
-        menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.pushViewController(destController, animated: true)
         menuNavigation.tableController.selectedItem = -1
         
         //For testing purposes
@@ -252,7 +268,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "MapController") as! MapController
-        menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.pushViewController(destController, animated: true)
         menuNavigation.tableController.selectedItem = -1
     }
 }

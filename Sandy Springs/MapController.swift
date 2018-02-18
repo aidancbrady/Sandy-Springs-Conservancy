@@ -73,7 +73,7 @@ class MapController: UIViewController, MKMapViewDelegate
         destController.parkName = view.annotation!.title!
         
         hideSideMenuView()
-        menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.pushViewController(destController, animated: true)
         
         Utilities.loadPark(menuNavigation)
     }

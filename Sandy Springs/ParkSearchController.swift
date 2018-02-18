@@ -86,7 +86,7 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         
         hideSideMenuView()
         
-        menuNavigation.setViewControllers([destController], animated: true)
+        menuNavigation.pushViewController(destController, animated: true)
         self.dismiss(animated: true, completion: nil)
         
         Utilities.loadPark(menuNavigation)

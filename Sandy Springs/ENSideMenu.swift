@@ -18,6 +18,7 @@ import UIKit
 {
     var sideMenu : ENSideMenu? { get }
     func setContentViewController(_ contentViewController: UIViewController)
+    func present(_ viewController: UIViewController)
 }
 
 public enum ENSideMenuAnimation : Int

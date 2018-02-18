@@ -58,4 +58,10 @@ open class ENSideMenuNavigationController: UINavigationController, ENSideMenuPro
                 break
         }
     }
+    
+    open func present(_ viewController: UIViewController)
+    {
+        self.sideMenu?.toggleMenu()
+        self.pushViewController(viewController, animated: true)
+    }
 }
