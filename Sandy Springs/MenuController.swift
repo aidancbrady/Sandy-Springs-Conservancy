@@ -31,6 +31,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         //hide nav bar
         navigationController!.navigationBar.isHidden = true
+        favoritesTable.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -120,7 +121,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func updateBackground()
     {
-        backgroundIndex = (backgroundIndex+1)%3
+        backgroundIndex = (backgroundIndex+1)%4
         let newImage = UIImage(named: "background_" + String(backgroundIndex) + ".png")
         UIView.transition(with: imageView, duration: 2, options: .transitionCrossDissolve, animations: {self.imageView.image = newImage}, completion: nil)
     }
