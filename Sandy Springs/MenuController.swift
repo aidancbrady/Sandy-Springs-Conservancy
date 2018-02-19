@@ -76,7 +76,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         favoritesButton.frame = CGRect(x: view.frame.minX + 16, y: defFavoritesY, width: view.frame.width - 32, height: 42)
         favoritesButton.layer.cornerRadius = 10
         
-        favoritesTable.frame = CGRect(x: view.frame.minX+16, y: favoritesButton.frame.maxY + 16, width: view.frame.width-32, height: 0)
+        favoritesTable.frame = CGRect(x: view.frame.minX+16, y: favoritesButton.frame.maxY + 4, width: view.frame.width-32, height: 0)
         favoritesTable.delegate = self
         favoritesTable.dataSource = self
         favoritesTable.isScrollEnabled = true
@@ -164,6 +164,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         cell.backgroundColor = UIColor.clear
+        UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -216,14 +217,15 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //set up new bottom frame from new starting y pos
             let yStart = self.favoritesActive ? self.logoImage.frame.maxY + 32 : self.defFavoritesY
             self.favoritesButton.frame = CGRect(x: self.view.frame.minX + 16, y: yStart, width: self.view.frame.width - 32, height: 42)
+            let tableYStart = self.favoritesButton.frame.maxY + (self.favoritesActive ? 8 : 4)
             //set up table view from these updated positions
             let frame = self.favoritesTable.frame
-            var height = (self.parkListButton.frame.minY - 16) - (self.favoritesButton.frame.maxY + 16)
+            var height = (self.parkListButton.frame.minY - 8) - tableYStart
             //we don't want a negative height
             if !self.favoritesActive {
                 height = 0
             }
-            self.favoritesTable.frame = CGRect(x: frame.minX, y: self.favoritesButton.frame.maxY + 16, width: frame.width, height: height)
+            self.favoritesTable.frame = CGRect(x: frame.minX, y: tableYStart, width: frame.width, height: height)
         })
     }
     
