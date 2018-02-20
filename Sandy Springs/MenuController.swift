@@ -101,7 +101,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //background blur
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.alpha = 0.9
+        blurredEffectView.alpha = 0.7
         blurredEffectView.frame = imageView.bounds
         view.addSubview(blurredEffectView)
         view.sendSubview(toBack: blurredEffectView)
