@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Utilities
 {
@@ -123,5 +124,15 @@ extension Data
         return self.reduce("") { string, byte in
             string + String(format: "%02X", byte)
         }
+    }
+}
+
+extension UIColor
+{
+    func lighten(_ amount: CGFloat) -> UIColor
+    {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return UIColor(displayP3Red: r + amount, green: g + amount, blue: b + amount, alpha: a)
     }
 }

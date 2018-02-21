@@ -53,16 +53,19 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
             topPadding = 16
         }
         
+        //set up logo
         logoImage.frame = CGRect(x: view.frame.width/4, y: navigationController!.navigationBar.frame.maxY+48+startBoost, width: view.frame.width/2, height: view.frame.width/2)
         logoImage.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(logoPressed))
         logoImage.addGestureRecognizer(tapRecognizer)
         
+        //menu button
         menuButton.frame = CGRect(x: view.frame.maxX - 16 - 60, y: topPadding + 16, width: 60, height: 34)
         menuButton.layer.cornerRadius = 10
         menuButton.layer.borderWidth = 1
         menuButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
         
+        //button borders
         favoritesButton.layer.borderWidth = 1
         favoritesButton.layer.borderColor = UIColor.white.withAlphaComponent(0.7).cgColor
         parkListButton.layer.borderWidth = 1
@@ -106,6 +109,15 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         view.addSubview(blurredEffectView)
         view.sendSubview(toBack: blurredEffectView)
         view.sendSubview(toBack: imageView)
+        
+        //circle around logo
+        let logoRadius = logoImage.frame.width/2
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: logoImage.frame.minX+logoRadius, y: logoImage.frame.minY+logoRadius+2), radius: logoRadius+10, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi*2), clockwise: true)
+        let circleLayer = CAShapeLayer()
+        circleLayer.path = circlePath.cgPath
+        circleLayer.strokeColor = UIColor.white.withAlphaComponent(0.7).cgColor
+        circleLayer.fillColor = UIColor.white.withAlphaComponent(0.4).cgColor
+        blurredEffectView.layer.addSublayer(circleLayer)
         
         //update background images
         timer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateBackground), userInfo: nil, repeats: true)
