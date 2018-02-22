@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import MessageUI
 
-class MenuTableController: UITableViewController
+class MenuTableController: UITableViewController, MFMailComposeViewControllerDelegate
 {
-    var selectedItem = 0
     var menuData: [(String, Bool, String)] = [(String, Bool, String)]()
     var parkData: [(String, Bool, String)] = [(String, Bool, String)]()
     var displayedData: [(String, Bool, String)] = [(String, Bool, String)]()
@@ -33,6 +33,7 @@ class MenuTableController: UITableViewController
         menuData.append(("Park Map", true, "MapController"))
         menuData.append(("Amenity Search", true, "AmenityController"))
         menuData.append(("Show Parks", true, "dropdown"))
+        menuData.append(("Contact & Support", true, "contact"))
         
         for data in ParkController.Parks.parkData
         {
@@ -46,6 +47,12 @@ class MenuTableController: UITableViewController
                 displayedData.append(data)
             }
         }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        controller.dismiss(animated: true)
+        hideSideMenuView()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -65,19 +72,30 @@ class MenuTableController: UITableViewController
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
+        let data = displayedData[(indexPath as NSIndexPath).row]
+        let cellType = data.2 == "dropdown" ? "dropdownCell" : "cell"
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellType) as UITableViewCell!
 
         if cell == nil
         {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellType)
             cell!.backgroundColor = UIColor.clear
             cell!.textLabel?.textColor = UIColor.darkGray
             let selectedBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: cell!.frame.size.width, height: cell!.frame.size.height))
             selectedBackgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
+            
+            if cellType == "dropdownCell"
+            {
+                let size = cell!.frame.height/2
+                let yStart = cell!.frame.height/2 - size/2 + 2
+                let imageView = UIImageView(frame: CGRect(x: cell!.contentView.frame.maxX-size-35, y: cell!.frame.minY + yStart, width: size, height: size))
+                imageView.image = UIImage(named: dropdownActive ? "up" : "down")
+                imageView.contentMode = .scaleToFill
+                cell!.addSubview(imageView)
+                dropdownImage = imageView
+            }
         }
-        
-        let data = displayedData[(indexPath as NSIndexPath).row]
         
         cell!.textLabel?.text = data.1 ? data.0 : (" " + data.0)
         
@@ -88,36 +106,19 @@ class MenuTableController: UITableViewController
         else {
             cell!.textLabel?.font = UIFont.systemFont(ofSize: 15)
         }
-        
-        if data.2 == "dropdown"
-        {
-            let size = cell!.frame.height/2
-            let yStart = cell!.frame.height/2 - size/2 + 2
-            let imageView = UIImageView(frame: CGRect(x: cell!.contentView.frame.maxX-size-35, y: cell!.frame.minY + yStart, width: size, height: size))
-            imageView.image = UIImage(named: dropdownActive ? "up" : "down")
-            imageView.contentMode = .scaleToFill
-            cell!.addSubview(imageView)
-            dropdownImage = imageView
-        }
 
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if (indexPath as NSIndexPath).row == selectedItem
-        {
-            hideSideMenuView()
-            return
-        }
-        
-        selectedItem = (indexPath as NSIndexPath).row
+        let selectedItem = (indexPath as NSIndexPath).row
         
         if displayedData[selectedItem].2 == "dropdown"
         {
             dropdownActive = !dropdownActive
             
-            let range = selectedItem+1...menuData.count+parkData.count-1
+            let range = selectedItem+1...selectedItem+parkData.count
             let paths = range.map{return IndexPath(row: $0, section: indexPath.section)}
             dropdownImage?.image = UIImage(named: dropdownActive ? "up" : "down")
             tableView.beginUpdates()
@@ -137,7 +138,21 @@ class MenuTableController: UITableViewController
             }
             
             tableView.endUpdates()
-            self.selectedItem = -1
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            return
+        }
+        else if displayedData[selectedItem].2 == "contact"
+        {
+            if MFMailComposeViewController.canSendMail()
+            {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients([Constants.DEV_EMAIL])
+                tableView.deselectRow(at: indexPath, animated: true)
+                
+                Utilities.getTopViewController()?.present(mail, animated: true)
+            }
             
             return
         }
@@ -151,6 +166,8 @@ class MenuTableController: UITableViewController
             
             park.parkName = displayedData[selectedItem].0
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if displayedData[selectedItem].2 == "MenuController"
         {

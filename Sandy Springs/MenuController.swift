@@ -44,7 +44,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         super.viewDidLoad()
         
-        let viewStretch = (view.frame.height/view.frame.width)-1.75
+        let viewStretch = max(0, (view.frame.height/view.frame.width)-1.75)
         let startBoost = viewStretch*160
         let bottomHeight = CGFloat(16+42+16+42+16+32)+(viewStretch*80)
         var topPadding = UIApplication.shared.keyWindow!.safeAreaInsets.top
@@ -121,6 +121,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //update background images
         timer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateBackground), userInfo: nil, repeats: true)
+        
+        Utilities.checkFirstLaunch(controller: self)
     }
     
     @objc func logoPressed()
@@ -247,7 +249,6 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkSearchController") as! ParkSearchController
         menuNavigation.pushViewController(destController, animated: true)
-        menuNavigation.tableController.selectedItem = -1
     }
     
     @IBAction func amenitySearchPressed(_ sender: AnyObject)
@@ -256,21 +257,6 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
         menuNavigation.pushViewController(destController, animated: true)
-        menuNavigation.tableController.selectedItem = -1
-        
-        //For testing purposes
-        /*let data = ParkController.Parks.parkData["Abernathy Greenway"]!
-        let content = UNMutableNotificationContent()
-        content.title = "You're Near " + data.parkName
-        content.body = "Tap for more details."
-        content.userInfo = ["PARK":data.parkName]
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print("Error requesting notification: (\(error), \(error.localizedDescription))")
-            }
-        }*/
     }
     
     @IBAction func menuPressed(_ sender: AnyObject)
@@ -284,6 +270,5 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "MapController") as! MapController
         menuNavigation.pushViewController(destController, animated: true)
-        menuNavigation.tableController.selectedItem = -1
     }
 }

@@ -12,7 +12,7 @@
         <!--Amenity Search-->
         <scene sceneID="QIt-Mj-YJ4">
             <objects>
-                <viewController storyboardIdentifier="AmenityController" id="9Qr-4h-Po3" customClass="AmenityController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AmenityController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Qr-4h-Po3" customClass="AmenityController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vIU-Yz-63F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
         <!--Search Results-->
         <scene sceneID="eCm-YQ-AIP">
             <objects>
-                <tableViewController storyboardIdentifier="AmenitySearchController" id="YdU-F0-viS" customClass="AmenitySearchController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AmenitySearchController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YdU-F0-viS" customClass="AmenitySearchController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fxT-u9-8T0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,6 +237,7 @@
                         <outlet property="mapButton" destination="CLY-6g-55e" id="YBN-vJ-kI3"/>
                         <outlet property="menuButton" destination="HBC-QC-viU" id="OMQ-aT-IvK"/>
                         <outlet property="parkListButton" destination="7mk-bk-OFC" id="rrh-DL-Dux"/>
+                        <segue destination="0KH-Jd-VlQ" kind="modal" identifier="welcome_segue" id="8H1-Hg-1jL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkN-jP-nGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,7 +274,7 @@
         <!--Park Name-->
         <scene sceneID="hAh-mq-ACU">
             <objects>
-                <viewController storyboardIdentifier="ParkController" id="kZT-FK-6mG" customClass="ParkController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kZT-FK-6mG" customClass="ParkController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BRa-O5-fZl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,10 +348,79 @@
             </objects>
             <point key="canvasLocation" x="362" y="731"/>
         </scene>
+        <!--Welcome Controller-->
+        <scene sceneID="msi-M1-jkx">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0KH-Jd-VlQ" customClass="WelcomeController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zbg-C4-ir4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_alpha.png" id="S1i-xq-Fgw">
+                                <rect key="frame" x="107" y="57" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mHG-eX-oDj">
+                                <rect key="frame" x="81" y="274" width="212" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe from the right at any time to show the side menu." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CBZ-7m-G2f">
+                                <rect key="frame" x="36" y="344" width="202" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contact Aidan if you have any questions." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bn3-FA-7gX">
+                                <rect key="frame" x="36" y="455" width="202" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mail.png" id="uh7-pz-RTq">
+                                <rect key="frame" x="276" y="459" width="65" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PWS-Ih-TVO">
+                                <rect key="frame" x="16" y="600" width="343" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissPressed:" destination="0KH-Jd-VlQ" eventType="touchUpInside" id="63w-I5-r8g"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="swipe_left.png" id="9Em-nU-e6B">
+                                <rect key="frame" x="267" y="336" width="82" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="contactIcon" destination="uh7-pz-RTq" id="Jue-kQ-SKl"/>
+                        <outlet property="contactLabel" destination="Bn3-FA-7gX" id="oXo-3G-CVr"/>
+                        <outlet property="dismissButton" destination="PWS-Ih-TVO" id="jDN-pV-gpq"/>
+                        <outlet property="logoImage" destination="S1i-xq-Fgw" id="YVX-Jc-Wh4"/>
+                        <outlet property="menuIcon" destination="9Em-nU-e6B" id="HM2-wa-POQ"/>
+                        <outlet property="menuLabel" destination="CBZ-7m-G2f" id="t6L-va-mAR"/>
+                        <outlet property="welcomeLabel" destination="mHG-eX-oDj" id="X0T-JX-xNe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBX-Y8-FxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="778.5" y="730.5"/>
+        </scene>
         <!--Park List-->
         <scene sceneID="WUK-WX-XcR">
             <objects>
-                <tableViewController storyboardIdentifier="ParkSearchController" id="RJn-GS-FsL" customClass="ParkSearchController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ParkSearchController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RJn-GS-FsL" customClass="ParkSearchController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fUd-g5-MpA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,7 +577,9 @@
     </scenes>
     <resources>
         <image name="logo_alpha.png" width="1200" height="1200"/>
+        <image name="mail.png" width="512" height="512"/>
         <image name="park_leaf.png" width="1200" height="1200"/>
+        <image name="swipe_left.png" width="388" height="388"/>
     </resources>
     <color key="tintColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

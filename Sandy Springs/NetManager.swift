@@ -57,7 +57,7 @@ class NetManager
             
             if let ret = sendData(str)
             {
-                print("Server responded with msg: " + ret)
+                print("Server responded with msg: " + ret.replacingOccurrences(of: "\n", with: ""))
             }
             else {
                 print("Failed to send device ID to server")

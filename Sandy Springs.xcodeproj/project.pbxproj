@@ -63,6 +63,9 @@
 		11B841D51D126EC40009782C /* park_leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B841D41D126EC40009782C /* park_leaf.png */; };
 		11C52D201B4C559C007A2380 /* InitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C52D1F1B4C559C007A2380 /* InitController.swift */; };
 		11D2A9EF2011A002009FE9C1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */; };
+		11E75FEB203DEE1C003F79F4 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E75FEA203DEE1C003F79F4 /* WelcomeController.swift */; };
+		11E75FEF203DF8CE003F79F4 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E75FEE203DF8CE003F79F4 /* mail.png */; };
+		11E75FF2203E0928003F79F4 /* swipe_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E75FF1203E0928003F79F4 /* swipe_left.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +140,9 @@
 		11B841D41D126EC40009782C /* park_leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park_leaf.png; sourceTree = "<group>"; };
 		11C52D1F1B4C559C007A2380 /* InitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitController.swift; sourceTree = "<group>"; };
 		11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		11E75FEA203DEE1C003F79F4 /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		11E75FEE203DF8CE003F79F4 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		11E75FF1203E0928003F79F4 /* swipe_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipe_left.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,13 +209,10 @@
 			children = (
 				11A55E742039FD5100BD878C /* Amenities */,
 				11A55E732039FD4800BD878C /* Backgrounds */,
-				113F090E202F88A6008DA047 /* logo_alpha.png */,
-				119A51C220125E5B00ABAE55 /* down.png */,
-				119A51C120125E5B00ABAE55 /* up.png */,
-				11B841D41D126EC40009782C /* park_leaf.png */,
-				11B841CC1D1247740009782C /* heart_filled.png */,
-				11B841CD1D1247740009782C /* heart_empty.png */,
+				11E75FF0203DF8D9003F79F4 /* Icons */,
 				110A557A1B42EDF100BE2C30 /* logo.jpeg */,
+				113F090E202F88A6008DA047 /* logo_alpha.png */,
+				11B841D41D126EC40009782C /* park_leaf.png */,
 				113F6DC319F8762600CE4B16 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -245,6 +248,7 @@
 				117CB83A1D149FE700F263D3 /* AmenityController.swift */,
 				117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */,
 				119A51BF2011E22400ABAE55 /* ParkSearchController.swift */,
+				11E75FEA203DEE1C003F79F4 /* WelcomeController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -337,6 +341,19 @@
 				11D2A9EE2011A002009FE9C1 /* UserNotifications.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		11E75FF0203DF8D9003F79F4 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				11E75FEE203DF8CE003F79F4 /* mail.png */,
+				11E75FF1203E0928003F79F4 /* swipe_left.png */,
+				119A51C220125E5B00ABAE55 /* down.png */,
+				119A51C120125E5B00ABAE55 /* up.png */,
+				11B841CC1D1247740009782C /* heart_filled.png */,
+				11B841CD1D1247740009782C /* heart_empty.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,10 +468,12 @@
 				11A55E882039FD8600BD878C /* greenhouse.png in Resources */,
 				110A557B1B42EDF100BE2C30 /* logo.jpeg in Resources */,
 				11A55E8B2039FD8600BD878C /* sports_field.png in Resources */,
+				11E75FEF203DF8CE003F79F4 /* mail.png in Resources */,
 				113F091B202F8C83008DA047 /* background_1.png in Resources */,
 				113F090F202F88A6008DA047 /* logo_alpha.png in Resources */,
 				11A55E862039FD8600BD878C /* trails.png in Resources */,
 				11A55E8F2039FD8600BD878C /* gymnastics.png in Resources */,
+				11E75FF2203E0928003F79F4 /* swipe_left.png in Resources */,
 				11A55E8D2039FD8600BD878C /* fishing.png in Resources */,
 				11A55E8E2039FD8600BD878C /* walking_hiking.png in Resources */,
 				113F6DD119F8762600CE4B16 /* LaunchScreen.xib in Resources */,
@@ -498,6 +517,7 @@
 				113CDC531A9769390024DBC7 /* ParkController.swift in Sources */,
 				117CB83B1D149FE700F263D3 /* AmenityController.swift in Sources */,
 				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
+				11E75FEB203DEE1C003F79F4 /* WelcomeController.swift in Sources */,
 				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
 				119A51C92012BAD000ABAE55 /* NetManager.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,

@@ -62,6 +62,18 @@ open class ENSideMenuNavigationController: UINavigationController, ENSideMenuPro
     open func present(_ viewController: UIViewController)
     {
         self.hideSideMenuView()
-        self.pushViewController(viewController, animated: true)
+        
+        let oldController = Utilities.getTopViewController()!
+        var differentParks = false
+        
+        if oldController is ParkController && viewController is ParkController
+        {
+            differentParks = (oldController as! ParkController).park.parkName != (viewController as! ParkController).parkName
+        }
+        
+        if type(of: oldController) != type(of: viewController) || differentParks
+        {
+            self.pushViewController(viewController, animated: true)
+        }
     }
 }

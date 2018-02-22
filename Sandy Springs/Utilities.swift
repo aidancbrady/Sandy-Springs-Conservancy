@@ -25,6 +25,26 @@ class Utilities
         return str.lowercased() + ".png"
     }
     
+    static func getTopViewController() -> UIViewController?
+    {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController
+        {
+            while let presentedViewController = topController.presentedViewController
+            {
+                topController = presentedViewController
+            }
+            
+            if topController.childViewControllers.count > 0
+            {
+                topController = topController.childViewControllers[topController.childViewControllers.count-1]
+            }
+            
+            return topController
+        }
+        
+        return nil
+    }
+    
     @discardableResult
     static func toggleFavorite(_ name: String) -> Bool
     {
@@ -64,8 +84,6 @@ class Utilities
             menuNavigation.tableController.tableView.deselectRow(at: IndexPath(row: i, section: 0), animated: false)
         }
         
-        menuNavigation.tableController.selectedItem = -1
-        
         DispatchQueue.global(qos: .background).async {
             usleep(1000*1000)
             DispatchQueue.main.async {
@@ -95,6 +113,19 @@ class Utilities
         }
         
         return split
+    }
+    
+    static func checkFirstLaunch(controller: UIViewController)
+    {
+        let prevLaunch = UserDefaults.standard.bool(forKey: "prevLaunch")
+        
+        if !prevLaunch {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let destController = mainStoryboard.instantiateViewController(withIdentifier: "WelcomeController") as! WelcomeController
+            controller.present(destController, animated: true, completion: nil)
+            
+            UserDefaults.standard.set(true, forKey: "prevLaunch")
+        }
     }
 }
 
