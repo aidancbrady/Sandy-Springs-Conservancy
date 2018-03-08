@@ -16,6 +16,7 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     
     var allCells: [ParkCell] = [ParkCell]()
     var filterCells: [ParkCell] = [ParkCell]()
+    var distances = [String: Double]()
     
     override func viewDidLoad()
     {
@@ -37,9 +38,10 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
             {
                 let parkLocation = CLLocation(latitude: data.value.coords.latitude, longitude: data.value.coords.longitude)
                 let distance = location.distance(from: parkLocation)
-                let distanceVal = distance*0.000621371
+                let distanceVal = distance*0.000621371 // meters to miles
                 let val = round(10*distanceVal)/Double(10)
                 cell.distanceLabel.text = String(val) + " mi away"
+                distances[cell.parkName.text!] = distanceVal
             }
             else {
                 cell.distanceLabel.isHidden = true
@@ -126,7 +128,9 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         if filterCells.count > 0 && !filterCells[0].distanceLabel.isHidden
         {
             filterCells.sort() { (cell1, cell2) in
-                return cell1.distanceLabel.text!.compare(cell2.distanceLabel.text!).rawValue < 0
+                let distance1 = self.distances[cell1.parkName.text!]!
+                let distance2 = self.distances[cell2.parkName.text!]!
+                return distance1 < distance2
             }
         }
         
