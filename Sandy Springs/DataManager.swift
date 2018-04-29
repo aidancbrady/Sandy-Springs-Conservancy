@@ -45,11 +45,13 @@ class DataManager
                                 {
                                     print("Downloading new data from server")
                                     try remoteLoadData(fileData: data)
+                                    asyncLoadExtraImages(remote: true)
                                     return true
                                 }
                                 else {
                                     print("Loading existing data from file storage")
                                     try localLoadData()
+                                    asyncLoadExtraImages(remote: false)
                                     return true
                                 }
                             }
@@ -102,7 +104,7 @@ class DataManager
                         if let park = obj as? NSDictionary
                         {
                             let parkObj = ParkData.initPark(park)
-                            try loadImages(park: parkObj, cacheDir: cacheDir, remote: false)
+                            try loadImages(park: parkObj, cacheDir: cacheDir, primary: true, remote: false)
                         }
                     }
                 }
@@ -149,37 +151,66 @@ class DataManager
                     if let park = obj as? NSDictionary
                     {
                         let parkObj = ParkData.initPark(park)
-                        try loadImages(park: parkObj, cacheDir: cacheDir, remote: true)
+                        try loadImages(park: parkObj, cacheDir: cacheDir, primary: true, remote: true)
                     }
                 }
             }
         }
     }
     
-    private class func loadImages(park: ParkData, cacheDir: String, remote: Bool) throws
+    private class func asyncLoadExtraImages(remote: Bool)
+    {
+        let cacheDir = getCachePath()
+        DispatchQueue.global(qos: .background).async {
+            do {
+                for park in ParkController.Parks.parkData
+                {
+                    try loadImages(park: park.value, cacheDir: cacheDir, primary: false, remote: remote)
+                }
+                
+                print("Completed asynchronous image load")
+            } catch {
+                print("Failed to load extra images")
+            }
+        }
+    }
+    
+    private class func loadImages(park: ParkData, cacheDir: String, primary: Bool, remote: Bool) throws
     {
         do {
+            var didInitial = false
+            
             for image in park.imageUrls
             {
                 let dir = remote ? Constants.DATA_URL : cacheDir
                 let testURL = remote ? URL(string: dir + image) : URL(fileURLWithPath: dir + image)
                 
-                if let url = testURL
+                if primary || didInitial
                 {
-                    if let data = try? Data(contentsOf: url)
+                    if let url = testURL
                     {
-                        if remote
+                        if let data = try? Data(contentsOf: url)
                         {
-                            let localFile = cacheDir + image
-                            try data.write(to: URL(fileURLWithPath: localFile))
-                        }
-                        
-                        if let loadedImage = UIImage(data: data)
-                        {
-                            park.images.append(loadedImage)
+                            if remote
+                            {
+                                let localFile = cacheDir + image
+                                try data.write(to: URL(fileURLWithPath: localFile))
+                            }
+                            
+                            if let loadedImage = UIImage(data: data)
+                            {
+                                park.images.append(loadedImage)
+                            }
                         }
                     }
                 }
+                
+                if primary
+                {
+                    return
+                }
+                
+                didInitial = true
             }
         } catch {
             print("Failed to load images")
