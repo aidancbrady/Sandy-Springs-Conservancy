@@ -75,6 +75,7 @@ class DataManager
                     if let data = try? Data(contentsOf: url)
                     {
                         try remoteLoadData(fileData: data)
+                        asyncLoadExtraImages(remote: true)
                     }
                 }
             } catch {
@@ -158,6 +159,30 @@ class DataManager
         }
     }
     
+    private class func checkMissingImage(cacheDir: String, image: String)
+    {
+        let manager = FileManager.default
+        if !manager.fileExists(atPath: cacheDir + image)
+        {
+            let localURL = URL(fileURLWithPath: cacheDir + image)
+            let remoteURL = URL(string: Constants.DATA_URL + image)
+            
+            do {
+                if let downloadURL = remoteURL
+                {
+                    if let data = try? Data(contentsOf: downloadURL)
+                    {
+                        try data.write(to: localURL)
+                    }
+                }
+                
+                print("Loaded missing secondary image '" + image + "'")
+            } catch {
+                print("Failed to reload missing secondary image")
+            }
+        }
+    }
+    
     private class func asyncLoadExtraImages(remote: Bool)
     {
         let cacheDir = getCachePath()
@@ -187,6 +212,12 @@ class DataManager
                 
                 if primary || didInitial
                 {
+                    if !remote && !primary
+                    {
+                        // if we're loading a secondary image locally, make sure it exists
+                        checkMissingImage(cacheDir: cacheDir, image: image)
+                    }
+                    
                     if let url = testURL
                     {
                         if let data = try? Data(contentsOf: url)
