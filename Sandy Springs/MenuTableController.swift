@@ -74,7 +74,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
     {
         let data = displayedData[(indexPath as NSIndexPath).row]
         let cellType = data.2 == "dropdown" ? "dropdownCell" : "cell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellType) as UITableViewCell!
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellType)
 
         if cell == nil
         {
