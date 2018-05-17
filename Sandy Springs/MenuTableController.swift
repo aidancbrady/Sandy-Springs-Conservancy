@@ -29,10 +29,12 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         self.clearsSelectionOnViewWillAppear = false
         
         menuData.append(("Home", true, "MenuController"))
+        menuData.append(("About", true, "AboutController"))
         menuData.append(("Park List", true, "ParkSearchController"))
         menuData.append(("Park Map", true, "MapController"))
         menuData.append(("Amenity Search", true, "AmenityController"))
         menuData.append(("Show Parks", true, "dropdown"))
+        menuData.append(("Donate", true, "donate"))
         menuData.append(("Contact & Support", true, "contact"))
         
         for data in ParkController.Parks.parkData
@@ -153,6 +155,18 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
                 
                 Utilities.getTopViewController()?.present(mail, animated: true)
             }
+            
+            return
+        }
+        else if displayedData[selectedItem].2 == "donate"
+        {
+            if let url = URL(string: Constants.DONATE_SITE)
+            {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            hideSideMenuView()
             
             return
         }

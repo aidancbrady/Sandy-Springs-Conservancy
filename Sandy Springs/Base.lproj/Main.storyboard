@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="gg0-PB-s9v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="gg0-PB-s9v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +33,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVb-eZ-1ed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="362" y="-726"/>
+            <point key="canvasLocation" x="362" y="-840"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="eCm-YQ-AIP">
@@ -103,7 +103,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hth-Iz-Q4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311" y="-726"/>
+            <point key="canvasLocation" x="1201" y="-841"/>
         </scene>
         <!--Home-->
         <scene sceneID="U5I-4R-GvJ">
@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8O-zU-Ijb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779" y="0.0"/>
+            <point key="canvasLocation" x="779" y="827"/>
         </scene>
         <!--Park Name-->
         <scene sceneID="hAh-mq-ACU">
@@ -346,7 +346,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="362" y="731"/>
+            <point key="canvasLocation" x="362" y="827"/>
         </scene>
         <!--Welcome Controller-->
         <scene sceneID="msi-M1-jkx">
@@ -415,7 +415,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBX-Y8-FxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778.5" y="730.5"/>
+            <point key="canvasLocation" x="779" y="-1"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="yGK-GF-IAI">
+            <objects>
+                <viewController storyboardIdentifier="AboutController" id="YDP-Hh-gkY" customClass="AboutController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OMz-f4-eWw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="xMB-ES-8DG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="k1Q-Lh-lUI">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="w1i-pE-Yk7"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textView" destination="xMB-ES-8DG" id="aS4-j4-y4l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kSJ-g7-Lc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-74.5" y="826.5"/>
         </scene>
         <!--Park List-->
         <scene sceneID="WUK-WX-XcR">
@@ -499,7 +532,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-0R-Yq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311" y="-1"/>
+            <point key="canvasLocation" x="-74" y="-840"/>
         </scene>
         <!--Init Controller-->
         <scene sceneID="1wa-HZ-cz9">
@@ -550,6 +583,7 @@
                         <segue destination="9Qr-4h-Po3" kind="push" identifier="AmenitySegue" id="Zzv-tw-oTp"/>
                         <segue destination="KdH-dH-hSR" kind="push" identifier="MapSegue" id="f53-QA-UKf"/>
                         <segue destination="RJn-GS-FsL" kind="push" identifier="SearchSegue" id="HCY-ET-4Ko"/>
+                        <segue destination="YDP-Hh-gkY" kind="push" identifier="AboutSegue" id="gbn-f5-K3v"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEx-tE-wvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,7 +606,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAt-hF-Uw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779" y="-726"/>
+            <point key="canvasLocation" x="779" y="-841"/>
         </scene>
     </scenes>
     <resources>

@@ -21,6 +21,10 @@ class Constants
     static var PORT = 26840
     static var IP = "server.aidancbrady.com"
     
+    // sandy springs info
+    static var WEBSITE = "https://sandyspringsconservancy.org"
+    static var DONATE_SITE = "https://sandyspringsconservancy.org/join-us/donate/"
+    
     // last location recieved from location services
     static var LAST_LOCATION: CLLocation?
 }

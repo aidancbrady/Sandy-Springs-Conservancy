@@ -127,7 +127,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func logoPressed()
     {
-        if let url = URL(string: "https://sandyspringsconservancy.org")
+        if let url = URL(string: Constants.WEBSITE)
         {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
