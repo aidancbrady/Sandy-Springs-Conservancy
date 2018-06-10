@@ -19,14 +19,23 @@ class AboutController: UIViewController
     {
         super.viewDidLoad()
         
+        //show nav bar
+        navigationController!.navigationBar.isHidden = false
+        
         if AboutController.html == nil
         {
             AboutController.html = loadHTML()
         }
         
+        let top = 50 + UIApplication.shared.keyWindow!.safeAreaInsets.top
+        let image = UIImageView(image: UIImage(named: "logo.jpeg"))
+        let size = self.view.frame.width/3
+        image.frame = CGRect(x: self.view.frame.width/2-size/2, y: top + 15, width: size, height: size)
+        self.view.addSubview(image)
+        
         if let htmlText = AboutController.html
         {
-            textView.frame = CGRect(x: 5, y: 0, width: view.frame.width-10, height: view.frame.height)
+            textView.frame = CGRect(x: 5, y: image.frame.maxY + 15, width: view.frame.width-10, height: view.frame.height - (image.frame.maxY + 15))
             textView.attributedText = htmlText
             textView.isScrollEnabled = true
             textView.isEditable = false
