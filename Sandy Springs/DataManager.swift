@@ -60,6 +60,7 @@ class DataManager
                 }
             } catch {
                 print("Data management process failed")
+                resetCache()
                 return false
             }
         }
@@ -80,6 +81,7 @@ class DataManager
                 }
             } catch {
                 print("Failed to download fresh data")
+                resetCache()
                 return false
             }
         }
@@ -273,5 +275,29 @@ class DataManager
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let cacheDir = paths.first!
         return cacheDir + cacheDataDir
+    }
+    
+    private class func resetCache()
+    {
+        let cacheDir = getCachePath()
+        var isDir = ObjCBool(true)
+        let manager = FileManager.default
+        
+        do {
+            if manager.fileExists(atPath: cacheDir, isDirectory: &isDir)
+            {
+                let enumerator = manager.enumerator(atPath: cacheDir)!
+                
+                // clear stored files
+                for case let fileURL as URL in enumerator
+                {
+                    try manager.removeItem(at: fileURL)
+                }
+                
+                print("Cleared old files")
+            }
+        } catch {
+            print("Error resetting data cache")
+        }
     }
 }
