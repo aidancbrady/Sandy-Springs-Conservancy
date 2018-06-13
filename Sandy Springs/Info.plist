@@ -47,7 +47,6 @@
 	<string>Your location is used to let you know when you're near a park.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
