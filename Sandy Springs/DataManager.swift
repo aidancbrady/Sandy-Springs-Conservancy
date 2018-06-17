@@ -28,6 +28,7 @@ class DataManager
                 {
                     print("Offline, using existing data")
                     try localLoadData()
+                    asyncLoadExtraImages(remote: false)
                     return true
                 }
                 
