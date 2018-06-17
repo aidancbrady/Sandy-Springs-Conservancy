@@ -23,7 +23,6 @@
 		113F6DDD19F8762600CE4B16 /* Sandy_SpringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */; };
 		117CB8391D13326500F263D3 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB8381D13326500F263D3 /* FavoriteCell.swift */; };
 		117CB83B1D149FE700F263D3 /* AmenityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB83A1D149FE700F263D3 /* AmenityController.swift */; };
-		117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */; };
 		117CB83F1D1594C200F263D3 /* ParkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CB83E1D1594C200F263D3 /* ParkData.swift */; };
 		118B05C21AD2FFBD005B3D2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */; };
 		119A51BA2011B1A300ABAE55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119A51B92011B1A300ABAE55 /* QuartzCore.framework */; };
@@ -101,7 +100,6 @@
 		113F6DDC19F8762600CE4B16 /* Sandy_SpringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandy_SpringsTests.swift; sourceTree = "<group>"; };
 		117CB8381D13326500F263D3 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		117CB83A1D149FE700F263D3 /* AmenityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmenityController.swift; sourceTree = "<group>"; };
-		117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmenitySearchController.swift; sourceTree = "<group>"; };
 		117CB83E1D1594C200F263D3 /* ParkData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkData.swift; sourceTree = "<group>"; };
 		118B05C11AD2FFBD005B3D2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		119A51B92011B1A300ABAE55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -251,7 +249,6 @@
 				11C52D1F1B4C559C007A2380 /* InitController.swift */,
 				11B841D21D1262CF0009782C /* MapController.swift */,
 				117CB83A1D149FE700F263D3 /* AmenityController.swift */,
-				117CB83C1D14A04900F263D3 /* AmenitySearchController.swift */,
 				119A51BF2011E22400ABAE55 /* ParkSearchController.swift */,
 				11E75FEA203DEE1C003F79F4 /* WelcomeController.swift */,
 				113D89F420AD1E1300A2552F /* AboutController.swift */,
@@ -530,7 +527,6 @@
 				119A51C92012BAD000ABAE55 /* NetManager.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
 				119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */,
-				117CB83D1D14A04900F263D3 /* AmenitySearchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

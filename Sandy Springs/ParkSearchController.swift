@@ -18,6 +18,9 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     var filterCells: [ParkCell] = [ParkCell]()
     var distances = [String: Double]()
     
+    var selectedAmenities: [String] = [String]()
+    var isAmenitySearch = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -27,24 +30,41 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         
         for data in ParkController.Parks.parkData
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ParkCell") as! ParkCell
-            cell.parkImage.image = data.value.images[0]
-            cell.parkName.text = data.value.parkName
-            cell.phoneLabel.text = data.value.phone
-            allCells.append(cell)
-            filterCells.append(cell)
+            var valid = true
             
-            if let location = Constants.LAST_LOCATION
+            if isAmenitySearch
             {
-                let parkLocation = CLLocation(latitude: data.value.coords.latitude, longitude: data.value.coords.longitude)
-                let distance = location.distance(from: parkLocation)
-                let distanceVal = distance*0.000621371 // meters to miles
-                let val = round(10*distanceVal)/Double(10)
-                cell.distanceLabel.text = String(val) + " mi away"
-                distances[cell.parkName.text!] = distanceVal
+                for amenity in selectedAmenities
+                {
+                    if !data.value.amenities.contains(amenity)
+                    {
+                        valid = false
+                        break
+                    }
+                }
             }
-            else {
-                cell.distanceLabel.isHidden = true
+            
+            if valid
+            {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ParkCell") as! ParkCell
+                cell.parkImage.image = data.value.images[0]
+                cell.parkName.text = data.value.parkName
+                cell.phoneLabel.text = data.value.phone
+                allCells.append(cell)
+                filterCells.append(cell)
+                
+                if let location = Constants.LAST_LOCATION
+                {
+                    let parkLocation = CLLocation(latitude: data.value.coords.latitude, longitude: data.value.coords.longitude)
+                    let distance = location.distance(from: parkLocation)
+                    let distanceVal = distance*0.000621371 // meters to miles
+                    let val = round(10*distanceVal)/Double(10)
+                    cell.distanceLabel.text = String(val) + " mi away"
+                    distances[cell.parkName.text!] = distanceVal
+                }
+                else {
+                    cell.distanceLabel.isHidden = true
+                }
             }
         }
         
@@ -54,6 +74,11 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
+        if filterCells.count == 0
+        {
+            return 52
+        }
+        
         return 97
     }
     
@@ -64,11 +89,21 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        if filterCells.count == 0
+        {
+            return 1
+        }
+        
         return filterCells.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        if filterCells.count == 0
+        {
+            return tableView.dequeueReusableCell(withIdentifier: "NoParksCell")!
+        }
+        
         return filterCells[(indexPath as NSIndexPath).row]
     }
     
@@ -135,5 +170,11 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         }
         
         self.tableView.reloadData()
+    }
+    
+    func setAmenities(_ selectedAmenities: [String])
+    {
+        self.isAmenitySearch = true
+        self.selectedAmenities = selectedAmenities
     }
 }

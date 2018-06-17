@@ -115,9 +115,10 @@ class AmenityController: UIViewController
         if selectedAmenities.count > 0
         {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let destController = (mainStoryboard.instantiateViewController(withIdentifier: "AmenitySearchNavigation") as! UINavigationController).viewControllers[0] as! AmenitySearchController
+            let menuNavigation = self.navigationController as! MenuNavigation
+            let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkSearchController") as! ParkSearchController
             destController.setAmenities(selectedAmenities)
-            self.present(destController.navigationController!, animated: true, completion: nil)
+            menuNavigation.pushViewController(destController, animated: true)
         }
     }
 }
