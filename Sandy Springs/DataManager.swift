@@ -45,8 +45,10 @@ class DataManager
                                 if version != storedVersion
                                 {
                                     print("Downloading new data from server")
+                                    Operations.setNetworkActivity(true)
                                     try remoteLoadData(fileData: data)
                                     asyncLoadExtraImages(remote: true)
+                                    Operations.setNetworkActivity(false)
                                     return true
                                 }
                                 else {
@@ -76,8 +78,11 @@ class DataManager
                 {
                     if let data = try? Data(contentsOf: url)
                     {
+                        print("Downloading initial copy of data from server")
+                        Operations.setNetworkActivity(true)
                         try remoteLoadData(fileData: data)
                         asyncLoadExtraImages(remote: true)
+                        Operations.setNetworkActivity(false)
                     }
                 }
             } catch {
@@ -169,6 +174,7 @@ class DataManager
         {
             let localURL = URL(fileURLWithPath: cacheDir + image)
             let remoteURL = URL(string: Constants.DATA_URL + image)
+            Operations.setNetworkActivity(true)
             
             do {
                 if let downloadURL = remoteURL
@@ -183,6 +189,8 @@ class DataManager
             } catch {
                 print("Failed to reload missing secondary image")
             }
+            
+            Operations.setNetworkActivity(false)
         }
     }
     
