@@ -106,6 +106,8 @@ class DataManager
             
             if let top = raw as? NSDictionary
             {
+                try loadBackgrounds(data: top, remote: false)
+                
                 if let parks = top["parks"] as? NSArray
                 {
                     for obj in parks
@@ -114,6 +116,45 @@ class DataManager
                         {
                             let parkObj = ParkData.initPark(park)
                             try loadImages(park: parkObj, cacheDir: cacheDir, primary: true, remote: false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private class func loadBackgrounds(data: NSDictionary, remote: Bool) throws
+    {
+        if let backgrounds = data["backgrounds"] as? NSArray
+        {
+            for obj in backgrounds
+            {
+                if let image = obj as? String
+                {
+                    let cacheDir = getCachePath()
+                    let dir = remote ? Constants.DATA_URL : cacheDir
+                    let testURL = remote ? URL(string: dir + image) : URL(fileURLWithPath: dir + image)
+                    
+                    if !remote
+                    {
+                        // if we're loading a secondary image locally, make sure it exists
+                        checkMissingImage(cacheDir: cacheDir, image: image)
+                    }
+                    
+                    if let url = testURL
+                    {
+                        if let data = try? Data(contentsOf: url)
+                        {
+                            if remote
+                            {
+                                let localFile = cacheDir + image
+                                try data.write(to: URL(fileURLWithPath: localFile))
+                            }
+                            
+                            if let loadedImage = UIImage(data: data)
+                            {
+                                MenuController.backgrounds.append(loadedImage)
+                            }
                         }
                     }
                 }
@@ -153,6 +194,8 @@ class DataManager
         
         if let top = raw as? NSDictionary
         {
+            try loadBackgrounds(data: top, remote: true)
+            
             if let parks = top["parks"] as? NSArray
             {
                 for obj in parks

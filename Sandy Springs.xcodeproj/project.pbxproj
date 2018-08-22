@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1106AD42203A1B2A009B6F5D /* background_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1106AD41203A1B2A009B6F5D /* background_3.png */; };
 		110A557B1B42EDF100BE2C30 /* logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 110A557A1B42EDF100BE2C30 /* logo.jpeg */; };
 		113CDC531A9769390024DBC7 /* ParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113CDC521A9769390024DBC7 /* ParkController.swift */; };
 		113D89F520AD1E1300A2552F /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113D89F420AD1E1300A2552F /* AboutController.swift */; };
 		113D89F720AD22C900A2552F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 113D89F620AD22C900A2552F /* about.html */; };
 		113F090F202F88A6008DA047 /* logo_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F090E202F88A6008DA047 /* logo_alpha.png */; };
-		113F0919202F8C83008DA047 /* background_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F0916202F8C82008DA047 /* background_0.png */; };
-		113F091A202F8C83008DA047 /* background_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F0917202F8C82008DA047 /* background_2.png */; };
-		113F091B202F8C83008DA047 /* background_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F0918202F8C82008DA047 /* background_1.png */; };
 		113F6DC519F8762600CE4B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113F6DC419F8762600CE4B16 /* AppDelegate.swift */; };
 		113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCA19F8762600CE4B16 /* Main.storyboard */; };
 		113F6DCE19F8762600CE4B16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F6DCD19F8762600CE4B16 /* Images.xcassets */; };
@@ -80,15 +76,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1106AD41203A1B2A009B6F5D /* background_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_3.png; sourceTree = "<group>"; };
 		110A557A1B42EDF100BE2C30 /* logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpeg; sourceTree = "<group>"; };
 		113CDC521A9769390024DBC7 /* ParkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkController.swift; sourceTree = "<group>"; };
 		113D89F420AD1E1300A2552F /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		113D89F620AD22C900A2552F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		113F090E202F88A6008DA047 /* logo_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_alpha.png; sourceTree = "<group>"; };
-		113F0916202F8C82008DA047 /* background_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_0.png; sourceTree = "<group>"; };
-		113F0917202F8C82008DA047 /* background_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_2.png; sourceTree = "<group>"; };
-		113F0918202F8C82008DA047 /* background_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_1.png; sourceTree = "<group>"; };
 		113F6DBF19F8762600CE4B16 /* Sandy Springs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sandy Springs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F6DC319F8762600CE4B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113F6DC419F8762600CE4B16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,7 +203,6 @@
 			children = (
 				113D89F620AD22C900A2552F /* about.html */,
 				11A55E742039FD5100BD878C /* Amenities */,
-				11A55E732039FD4800BD878C /* Backgrounds */,
 				11E75FF0203DF8D9003F79F4 /* Icons */,
 				110A557A1B42EDF100BE2C30 /* logo.jpeg */,
 				113F090E202F88A6008DA047 /* logo_alpha.png */,
@@ -300,17 +291,6 @@
 				117CB83E1D1594C200F263D3 /* ParkData.swift */,
 			);
 			name = Base;
-			sourceTree = "<group>";
-		};
-		11A55E732039FD4800BD878C /* Backgrounds */ = {
-			isa = PBXGroup;
-			children = (
-				1106AD41203A1B2A009B6F5D /* background_3.png */,
-				113F0916202F8C82008DA047 /* background_0.png */,
-				113F0918202F8C82008DA047 /* background_1.png */,
-				113F0917202F8C82008DA047 /* background_2.png */,
-			);
-			name = Backgrounds;
 			sourceTree = "<group>";
 		};
 		11A55E742039FD5100BD878C /* Amenities */ = {
@@ -459,20 +439,16 @@
 				11A55E952039FD8600BD878C /* restrooms.png in Resources */,
 				11A55E902039FD8600BD878C /* pavilion.png in Resources */,
 				11A55E962039FD8600BD878C /* basketball.png in Resources */,
-				1106AD42203A1B2A009B6F5D /* background_3.png in Resources */,
-				113F0919202F8C83008DA047 /* background_0.png in Resources */,
 				11A55E872039FD8600BD878C /* dog_park.png in Resources */,
 				11A55E922039FD8600BD878C /* garden.png in Resources */,
 				113F6DCC19F8762600CE4B16 /* Main.storyboard in Resources */,
 				11A55E912039FD8600BD878C /* boat_ramp.png in Resources */,
 				11B841CE1D1247740009782C /* heart_filled.png in Resources */,
 				119A51C420125E5B00ABAE55 /* down.png in Resources */,
-				113F091A202F8C83008DA047 /* background_2.png in Resources */,
 				11A55E882039FD8600BD878C /* greenhouse.png in Resources */,
 				110A557B1B42EDF100BE2C30 /* logo.jpeg in Resources */,
 				11A55E8B2039FD8600BD878C /* sports_field.png in Resources */,
 				11E75FEF203DF8CE003F79F4 /* mail.png in Resources */,
-				113F091B202F8C83008DA047 /* background_1.png in Resources */,
 				113F090F202F88A6008DA047 /* logo_alpha.png in Resources */,
 				11A55E862039FD8600BD878C /* trails.png in Resources */,
 				11A55E8F2039FD8600BD878C /* gymnastics.png in Resources */,

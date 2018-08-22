@@ -20,6 +20,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var amenitySearchButton: UIButton!
     
+    static var backgrounds = [UIImage]()
+    
     var imageView: UIImageView!
     var backgroundIndex: Int = 0
     var timer: Timer!
@@ -97,7 +99,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         amenitySearchButton.layer.cornerRadius = 10
         
         //background image
-        imageView = UIImageView(image: UIImage(named: "background_0.png"))
+        imageView = UIImageView(image: MenuController.backgrounds[0])
         imageView.frame = view.frame
         self.view.addSubview(imageView)
         
@@ -135,8 +137,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func updateBackground()
     {
-        backgroundIndex = (backgroundIndex+1)%4
-        let newImage = UIImage(named: "background_" + String(backgroundIndex) + ".png")
+        backgroundIndex = (backgroundIndex+1)%MenuController.backgrounds.count
+        let newImage = MenuController.backgrounds[backgroundIndex]
         UIView.transition(with: imageView, duration: 2, options: .transitionCrossDissolve, animations: {self.imageView.image = newImage}, completion: nil)
     }
     
