@@ -8,12 +8,11 @@
 
 import UIKit
 
-class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
-{
+class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate {
+    
     var tableController = MenuTableController()
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: tableController, menuPosition: .right)
@@ -24,19 +23,13 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
     }
     
-    @objc func onTap(_ sender: UITapGestureRecognizer?)
-    {
-        if sideMenu!.menuPosition == .left
-        {
-            if sender!.location(in: self.view).x > sideMenu!.menuWidth
-            {
+    @objc func onTap(_ sender: UITapGestureRecognizer?) {
+        if sideMenu!.menuPosition == .left {
+            if sender!.location(in: self.view).x > sideMenu!.menuWidth {
                 hideSideMenuView()
             }
-        }
-        else if sideMenu!.menuPosition == .right
-        {
-            if sender!.location(in: self.view).x < self.view.frame.width-sideMenu!.menuWidth
-            {
+        } else if sideMenu!.menuPosition == .right {
+            if sender!.location(in: self.view).x < self.view.frame.width-sideMenu!.menuWidth {
                 hideSideMenuView()
             }
         }
@@ -44,13 +37,11 @@ class MenuNavigation: ENSideMenuNavigationController, ENSideMenuDelegate
         sender!.cancelsTouchesInView = false
     }
     
-    func sideMenuWillClose()
-    {
+    func sideMenuWillClose() {
         DispatchQueue.global(qos: .background).async {
             usleep(1000*1000)
             DispatchQueue.main.async {
-                if self.topViewController is ParkController
-                {
+                if self.topViewController is ParkController {
                     (self.topViewController as! ParkController).loadMap()
                 }
             }

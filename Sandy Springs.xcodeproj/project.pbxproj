@@ -384,7 +384,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = aidancbrady;
 				TargetAttributes = {
 					113F6DBE19F8762600CE4B16 = {
@@ -412,7 +412,7 @@
 			};
 			buildConfigurationList = 113F6DBA19F8762600CE4B16 /* Build configuration list for PBXProject "Sandy Springs" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

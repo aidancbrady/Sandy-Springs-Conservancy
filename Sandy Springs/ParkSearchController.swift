@@ -10,8 +10,8 @@ import Foundation
 import CoreLocation
 import UIKit
 
-class ParkSearchController: UITableViewController, UISearchBarDelegate
-{
+class ParkSearchController: UITableViewController, UISearchBarDelegate {
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var allCells: [ParkCell] = [ParkCell]()
@@ -21,31 +21,25 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
     var selectedAmenities: [String] = [String]()
     var isAmenitySearch = false
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         //show nav bar
         navigationController!.navigationBar.isHidden = false
         
-        for data in ParkController.Parks.parkData
-        {
+        for data in ParkController.Parks.parkData {
             var valid = true
             
-            if isAmenitySearch
-            {
-                for amenity in selectedAmenities
-                {
-                    if !data.value.amenities.contains(amenity)
-                    {
+            if isAmenitySearch {
+                for amenity in selectedAmenities {
+                    if !data.value.amenities.contains(amenity) {
                         valid = false
                         break
                     }
                 }
             }
             
-            if valid
-            {
+            if valid {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ParkCell") as! ParkCell
                 cell.parkImage.image = data.value.images[0]
                 cell.parkName.text = data.value.parkName
@@ -53,16 +47,14 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
                 allCells.append(cell)
                 filterCells.append(cell)
                 
-                if let location = Constants.LAST_LOCATION
-                {
+                if let location = Constants.LAST_LOCATION {
                     let parkLocation = CLLocation(latitude: data.value.coords.latitude, longitude: data.value.coords.longitude)
                     let distance = location.distance(from: parkLocation)
                     let distanceVal = distance*0.000621371 // meters to miles
                     let val = round(10*distanceVal)/Double(10)
                     cell.distanceLabel.text = String(val) + " mi away"
                     distances[cell.parkName.text!] = distanceVal
-                }
-                else {
+                } else {
                     cell.distanceLabel.isHidden = true
                 }
             }
@@ -72,45 +64,36 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         updateResults()
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        if filterCells.count == 0
-        {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if filterCells.count == 0 {
             return 52
         }
         
         return 97
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if filterCells.count == 0
-        {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if filterCells.count == 0 {
             return 1
         }
         
         return filterCells.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        if filterCells.count == 0
-        {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if filterCells.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "NoParksCell")!
         }
         
         return filterCells[(indexPath as NSIndexPath).row]
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        if filterCells.count == 0
-        {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if filterCells.count == 0 {
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }
@@ -122,46 +105,35 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         destController.parkName = filterCells[(indexPath as NSIndexPath).row].parkName.text
         
         hideSideMenuView()
-        
         menuNavigation.pushViewController(destController, animated: true)
-        
         Utilities.loadPark(menuNavigation)
     }
     
-    @IBAction func onMenuPressed(_ sender: Any)
-    {
+    @IBAction func onMenuPressed(_ sender: Any) {
         toggleSideMenuView()
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
-    {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         updateResults()
     }
     
-    func updateResults()
-    {
+    func updateResults() {
         let searchText = searchBar.text!
         
-        if searchText.count == 0
-        {
+        if searchText.count == 0 {
             filterCells = allCells
-        }
-        else {
+        } else {
             filterCells = [ParkCell]()
             
-            for parkCell in allCells
-            {
+            for parkCell in allCells {
                 let name = parkCell.parkName.text!.lowercased() as String
-                
-                if name.range(of: searchText.trim().lowercased()) != nil
-                {
+                if name.range(of: searchText.trim().lowercased()) != nil {
                     filterCells.append(parkCell)
                 }
             }
         }
         
-        if filterCells.count > 0 && !filterCells[0].distanceLabel.isHidden
-        {
+        if filterCells.count > 0 && !filterCells[0].distanceLabel.isHidden {
             filterCells.sort() { (cell1, cell2) in
                 let distance1 = self.distances[cell1.parkName.text!]!
                 let distance2 = self.distances[cell2.parkName.text!]!
@@ -172,8 +144,7 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate
         self.tableView.reloadData()
     }
     
-    func setAmenities(_ selectedAmenities: [String])
-    {
+    func setAmenities(_ selectedAmenities: [String]) {
         self.isAmenitySearch = true
         self.selectedAmenities = selectedAmenities
     }

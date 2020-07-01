@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class WelcomeController: UIViewController
-{
+class WelcomeController: UIViewController {
+    
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var menuLabel: UILabel!
@@ -19,8 +19,7 @@ class WelcomeController: UIViewController
     @IBOutlet weak var contactIcon: UIImageView!
     @IBOutlet weak var dismissButton: UIButton!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         let viewStretch = max(0, (view.frame.height/view.frame.width)-1.75)
@@ -47,8 +46,7 @@ class WelcomeController: UIViewController
         dismissButton.layer.cornerRadius = 10
     }
     
-    @IBAction func dismissPressed(_ sender: Any)
-    {
+    @IBAction func dismissPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 }

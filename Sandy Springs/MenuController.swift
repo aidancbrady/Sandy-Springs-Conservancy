@@ -10,8 +10,8 @@ import UIKit
 import CoreLocation
 import UserNotifications
 
-class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var favoritesTable: UITableView!
@@ -29,26 +29,24 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var defFavoritesY: CGFloat = 0
     var updatingTable = false
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         //hide nav bar
         navigationController!.navigationBar.isHidden = true
         favoritesTable.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool)
-    {
+    override func viewWillDisappear(_ animated: Bool) {
         //show nav bar
         navigationController?.navigationBar.isHidden = false
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         let viewStretch = max(0, (view.frame.height/view.frame.width)-1.75)
         let startBoost = viewStretch*160
-        let bottomHeight = CGFloat(16+42+16+42+16+32)+(viewStretch*80)
+        let heightNum = 16+42+16+42+16+32
+        let bottomHeight = CGFloat(heightNum)+(viewStretch*80)
         var topPadding = UIApplication.shared.keyWindow!.safeAreaInsets.top
         
         if topPadding == 0 {
@@ -127,49 +125,38 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Utilities.checkFirstLaunch(controller: self)
     }
     
-    @objc func logoPressed()
-    {
-        if let url = URL(string: Constants.WEBSITE)
-        {
+    @objc func logoPressed() {
+        if let url = URL(string: Constants.WEBSITE) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
-    @objc func updateBackground()
-    {
+    @objc func updateBackground() {
         backgroundIndex = (backgroundIndex+1)%MenuController.backgrounds.count
         let newImage = MenuController.backgrounds[backgroundIndex]
         UIView.transition(with: imageView, duration: 2, options: .transitionCrossDissolve, animations: {self.imageView.image = newImage}, completion: nil)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 52
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if Utilities.favorites.count == 0 && !updatingTable
-        {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if Utilities.favorites.count == 0 && !updatingTable {
             return 1
         }
         
         return Utilities.favorites.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        if Utilities.favorites.count > 0
-        {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if Utilities.favorites.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell") as! FavoriteCell
-            
             cell.parkTitle.text = Utilities.favorites[(indexPath as NSIndexPath).row]
-            
             return cell
         }
         else {
@@ -177,16 +164,13 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-    {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
         UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        if Utilities.favorites.count == 0
-        {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if Utilities.favorites.count == 0 {
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }
@@ -204,15 +188,12 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Utilities.loadPark(menuNavigation)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
-    {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return Utilities.favorites.count > 0
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
-        if editingStyle == .delete
-        {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             Utilities.toggleFavorite(Utilities.favorites[indexPath.row])
             
             updatingTable = true
@@ -225,8 +206,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    @IBAction func favoritesPressed(_ sender: Any)
-    {
+    @IBAction func favoritesPressed(_ sender: Any) {
         UIView.animate(withDuration: 0.5, animations: {
             //toggle favorites
             self.favoritesActive = !self.favoritesActive
@@ -245,29 +225,25 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
     
-    @IBAction func parkListPressed(_ sender: AnyObject)
-    {
+    @IBAction func parkListPressed(_ sender: AnyObject) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkSearchController") as! ParkSearchController
         menuNavigation.pushViewController(destController, animated: true)
     }
     
-    @IBAction func amenitySearchPressed(_ sender: AnyObject)
-    {
+    @IBAction func amenitySearchPressed(_ sender: AnyObject) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "AmenityController") as! AmenityController
         menuNavigation.pushViewController(destController, animated: true)
     }
     
-    @IBAction func menuPressed(_ sender: AnyObject)
-    {
+    @IBAction func menuPressed(_ sender: AnyObject) {
         toggleSideMenuView()
     }
     
-    @IBAction func mapPressed(_ sender: AnyObject)
-    {
+    @IBAction func mapPressed(_ sender: AnyObject) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let menuNavigation = self.navigationController as! MenuNavigation
         let destController = mainStoryboard.instantiateViewController(withIdentifier: "MapController") as! MapController

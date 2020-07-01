@@ -9,16 +9,15 @@
 import UIKit
 import MessageUI
 
-class MenuTableController: UITableViewController, MFMailComposeViewControllerDelegate
-{
+class MenuTableController: UITableViewController, MFMailComposeViewControllerDelegate {
+    
     var menuData: [(String, Bool, String)] = [(String, Bool, String)]()
     var parkData: [(String, Bool, String)] = [(String, Bool, String)]()
     var displayedData: [(String, Bool, String)] = [(String, Bool, String)]()
     var dropdownActive = false
     var dropdownImage: UIImageView?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.contentInset = UIEdgeInsetsMake(24.0, 0, 0, 0)
@@ -37,49 +36,40 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         menuData.append(("Donate", true, "donate"))
         menuData.append(("Contact & Support", true, "contact"))
         
-        for data in ParkController.Parks.parkData
-        {
+        for data in ParkController.Parks.parkData {
             parkData.append((data.0, false, "ParkController"))
         }
         
-        for data in menuData
-        {
-            if data.1
-            {
+        for data in menuData {
+            if data.1 {
                 displayedData.append(data)
             }
         }
     }
     
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
-    {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
         hideSideMenuView()
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return displayedData[(indexPath as NSIndexPath).row].1 ? 48 : 36
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedData.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = displayedData[(indexPath as NSIndexPath).row]
         let cellType = data.2 == "dropdown" ? "dropdownCell" : "cell"
         var cell = tableView.dequeueReusableCell(withIdentifier: cellType)
 
-        if cell == nil
-        {
+        if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellType)
             cell!.backgroundColor = UIColor.clear
             cell!.textLabel?.textColor = UIColor.darkGray
@@ -87,8 +77,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
             selectedBackgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
             
-            if cellType == "dropdownCell"
-            {
+            if cellType == "dropdownCell" {
                 let size = cell!.frame.height/2
                 let yStart = cell!.frame.height/2 - size/2 + 2
                 let imageView = UIImageView(frame: CGRect(x: cell!.contentView.frame.maxX-size-35, y: cell!.frame.minY + yStart, width: size, height: size))
@@ -101,23 +90,19 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         
         cell!.textLabel?.text = data.1 ? data.0 : (" " + data.0)
         
-        if data.1
-        {
+        if data.1 {
             cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        }
-        else {
+        } else {
             cell!.textLabel?.font = UIFont.systemFont(ofSize: 15)
         }
 
         return cell!
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = (indexPath as NSIndexPath).row
         
-        if displayedData[selectedItem].2 == "dropdown"
-        {
+        if displayedData[selectedItem].2 == "dropdown" {
             dropdownActive = !dropdownActive
             
             let range = selectedItem+1...selectedItem+parkData.count
@@ -125,14 +110,12 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
             dropdownImage?.image = UIImage(named: dropdownActive ? "up" : "down")
             tableView.beginUpdates()
             
-            if dropdownActive
-            {
+            if dropdownActive {
                 tableView.cellForRow(at: indexPath)!.textLabel!.text = "Hide Parks"
                 displayedData[selectedItem].0 = "Hide Parks"
                 displayedData.insert(contentsOf: parkData, at: selectedItem+1)
                 tableView.insertRows(at: paths, with: .top)
-            }
-            else {
+            } else {
                 tableView.cellForRow(at: indexPath)!.textLabel!.text = "Show Parks"
                 displayedData[selectedItem].0 = "Show Parks"
                 displayedData.removeSubrange(range)
@@ -144,10 +127,8 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
             
             return
         }
-        else if displayedData[selectedItem].2 == "contact"
-        {
-            if MFMailComposeViewController.canSendMail()
-            {
+        else if displayedData[selectedItem].2 == "contact" {
+            if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
                 mail.setToRecipients([Constants.DEV_EMAIL])
@@ -157,11 +138,8 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
             }
             
             return
-        }
-        else if displayedData[selectedItem].2 == "donate"
-        {
-            if let url = URL(string: Constants.DONATE_SITE)
-            {
+        } else if displayedData[selectedItem].2 == "donate" {
+            if let url = URL(string: Constants.DONATE_SITE) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             
@@ -174,8 +152,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let destController = mainStoryboard.instantiateViewController(withIdentifier: displayedData[selectedItem].2) as UIViewController
         
-        if destController is ParkController
-        {
+        if destController is ParkController {
             let park = destController as! ParkController
             
             park.parkName = displayedData[selectedItem].0
@@ -183,11 +160,9 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if displayedData[selectedItem].2 == "MenuController"
-        {
+        if displayedData[selectedItem].2 == "MenuController" {
             sideMenuController()?.setContentViewController(destController)
-        }
-        else {
+        } else {
             sideMenuController()?.present(destController)
         }
     }

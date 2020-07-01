@@ -17,21 +17,16 @@ class AmenityController: UIViewController
     var amenityList: [String] = [String]()
     var selectedAmenities: [String] = [String]()
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         //show nav bar
         navigationController!.navigationBar.isHidden = false
         
-        if amenityList.count == 0
-        {
-            for data in ParkController.Parks.parkData
-            {
-                for amenity in data.1.amenities
-                {
-                    if(!amenityList.contains(amenity))
-                    {
+        if amenityList.count == 0 {
+            for data in ParkController.Parks.parkData {
+                for amenity in data.1.amenities {
+                    if(!amenityList.contains(amenity)) {
                         amenityList.append(amenity)
                     }
                 }
@@ -53,14 +48,11 @@ class AmenityController: UIViewController
         
         let amenityView = UIView(frame: CGRect(x: view.frame.minX, y: titleLabel.frame.maxY + 8, width: view.frame.width, height: CGFloat(rows*110) - 10))
         
-        for i in 0..<rows
-        {
-            for j in 0..<perRow
-            {
+        for i in 0..<rows {
+            for j in 0..<perRow {
                 let index = i*perRow + j
                 
-                if index > amenityList.count-1
-                {
+                if index > amenityList.count-1 {
                     break
                 }
                 
@@ -78,24 +70,20 @@ class AmenityController: UIViewController
         searchButton.isEnabled = false
     }
     
-    @objc func onAmenityTapped(_ sender: UITapGestureRecognizer?)
-    {
+    @objc func onAmenityTapped(_ sender: UITapGestureRecognizer?) {
         let amenityView = sender!.view as! AmenityView
         
-        if selectedAmenities.contains(amenityView.amenityName)
-        {
+        if selectedAmenities.contains(amenityView.amenityName) {
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
                 amenityView.backgroundColor = nil
             })
             
             selectedAmenities.removeObject(amenityView.amenityName)
             
-            if selectedAmenities.count == 0
-            {
+            if selectedAmenities.count == 0 {
                 searchButton.isEnabled = false
             }
-        }
-        else {
+        } else {
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
                 amenityView.backgroundColor = UIColor.groupTableViewBackground
             })
@@ -105,15 +93,12 @@ class AmenityController: UIViewController
         }
     }
     
-    @IBAction func menuPressed(_ sender: AnyObject)
-    {
+    @IBAction func menuPressed(_ sender: AnyObject) {
         toggleSideMenuView()
     }
     
-    @IBAction func searchPressed(_ sender: AnyObject)
-    {
-        if selectedAmenities.count > 0
-        {
+    @IBAction func searchPressed(_ sender: AnyObject) {
+        if selectedAmenities.count > 0 {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let menuNavigation = self.navigationController as! MenuNavigation
             let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkSearchController") as! ParkSearchController

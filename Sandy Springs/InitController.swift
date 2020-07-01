@@ -8,15 +8,14 @@
 
 import UIKit
 
-class InitController: UIViewController
-{
+class InitController: UIViewController {
+    
     @IBOutlet weak var downloadLabel: UILabel!
     @IBOutlet weak var downloadActivity: UIActivityIndicatorView!
     
     var notificationOpen: String?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         Utilities.loadFavorites()
@@ -31,18 +30,15 @@ class InitController: UIViewController
             let success = DataManager.loadData()
             
             DispatchQueue.main.async {
-                if !success
-                {
+                if !success {
                     ParkController.Parks.parkData.removeAll()
                     
                     self.downloadLabel.text = "Download failed."
                     self.downloadActivity.stopAnimating()
-                }
-                else {
+                } else {
                    self.performSegue(withIdentifier: "download_complete", sender: self)
                     
-                    if let parkName = self.notificationOpen
-                    {
+                    if let parkName = self.notificationOpen {
                         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
                         let menuNavigation = self.presentedViewController as! MenuNavigation
@@ -50,9 +46,7 @@ class InitController: UIViewController
                         destController.parkName = parkName
                         
                         menuNavigation.pushViewController(destController, animated: true)
-                        
                         Utilities.loadPark(menuNavigation)
-                        
                         self.notificationOpen = nil
                     }
                 }

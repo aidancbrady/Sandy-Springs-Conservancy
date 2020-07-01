@@ -9,21 +9,19 @@
 import Foundation
 import UIKit
 
-class AboutController: UIViewController
-{
+class AboutController: UIViewController {
+    
     @IBOutlet weak var textView: UITextView!
     
     static var html : NSAttributedString?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         //show nav bar
         navigationController!.navigationBar.isHidden = false
         
-        if AboutController.html == nil
-        {
+        if AboutController.html == nil {
             AboutController.html = loadHTML()
         }
         
@@ -33,8 +31,7 @@ class AboutController: UIViewController
         image.frame = CGRect(x: self.view.frame.width/2-size/2, y: top + 15, width: size, height: size)
         self.view.addSubview(image)
         
-        if let htmlText = AboutController.html
-        {
+        if let htmlText = AboutController.html {
             textView.frame = CGRect(x: 5, y: image.frame.maxY + 15, width: view.frame.width-10, height: view.frame.height - (image.frame.maxY + 15))
             textView.attributedText = htmlText
             textView.isScrollEnabled = true
@@ -43,8 +40,7 @@ class AboutController: UIViewController
         }
     }
     
-    func loadHTML() -> NSAttributedString?
-    {
+    func loadHTML() -> NSAttributedString? {
         if let url = Bundle.main.url(forResource: "about", withExtension: "html") {
             do {
                 let data = try Data(contentsOf: url)

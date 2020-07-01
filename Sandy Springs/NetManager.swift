@@ -7,11 +7,10 @@
 //
 import Foundation
 
-class NetManager
-{
+class NetManager {
+    
     @discardableResult
-    class func sendData(_ str:String) -> String?
-    {
+    class func sendData(_ str:String) -> String? {
         Operations.setNetworkActivity(true)
         
         var inputStream:InputStream?
@@ -31,53 +30,43 @@ class NetManager
         var bytes = inputStream!.read(&buffer, maxLength: 1024)
         let data = NSMutableData(bytes: &buffer, length: bytes)
         
-        while inputStream!.hasBytesAvailable
-        {
+        while inputStream!.hasBytesAvailable {
             let read = inputStream!.read(&buffer, maxLength: 1024)
             bytes += read
             data.append(&buffer, length: read)
         }
         
         inputStream?.close()
-        
         Operations.setNetworkActivity(false)
         
-        if let str = NSString(bytes: data.bytes, length: bytes, encoding: String.Encoding.utf8.rawValue)
-        {
+        if let str = NSString(bytes: data.bytes, length: bytes, encoding: String.Encoding.utf8.rawValue) {
             return str as String
         }
         
         return nil
     }
     
-    class func sendDeviceID(deviceID: String)
-    {
+    class func sendDeviceID(deviceID: String) {
         DispatchQueue.global(qos: .background).async {
             let str = compileMsg("PUSHID", deviceID)
             
-            if let ret = sendData(str)
-            {
+            if let ret = sendData(str) {
                 print("Server responded with msg: " + ret.replacingOccurrences(of: "\n", with: ""))
-            }
-            else {
+            } else {
                 print("Failed to send device ID to server")
             }
         }
     }
 }
 
-func compileMsg(_ msg:String...) -> String
-{
+func compileMsg(_ msg:String...) -> String {
     var ret = ""
     
-    if msg.count > 0
-    {
-        for index in 0...msg.count-1
-        {
+    if msg.count > 0 {
+        for index in 0...msg.count-1 {
             ret += msg[index]
             
-            if index < msg.count-1
-            {
+            if index < msg.count-1 {
                 ret += Constants.SPLITTER
             }
         }
