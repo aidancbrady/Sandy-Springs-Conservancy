@@ -29,8 +29,8 @@ class Utilities {
                 topController = presentedViewController
             }
             
-            if topController.childViewControllers.count > 0 {
-                topController = topController.childViewControllers[topController.childViewControllers.count-1]
+            if topController.children.count > 0 {
+                topController = topController.children[topController.children.count-1]
             }
             
             return topController
@@ -111,7 +111,7 @@ class Utilities {
 
 extension Array where Element: Equatable {
     mutating func removeObject(_ object : Iterator.Element) {
-        if let index = self.index(of: object) {
+        if let index = self.firstIndex(of: object) {
             self.remove(at: index)
         }
     }

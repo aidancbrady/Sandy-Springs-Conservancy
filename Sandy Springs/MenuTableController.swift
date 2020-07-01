@@ -20,7 +20,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.contentInset = UIEdgeInsetsMake(24.0, 0, 0, 0)
+        tableView.contentInset = UIEdgeInsets.init(top: 24.0, left: 0, bottom: 0, right: 0)
         tableView.scrollsToTop = false
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
@@ -70,7 +70,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         var cell = tableView.dequeueReusableCell(withIdentifier: cellType)
 
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellType)
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellType)
             cell!.backgroundColor = UIColor.clear
             cell!.textLabel?.textColor = UIColor.darkGray
             let selectedBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: cell!.frame.size.width, height: cell!.frame.size.height))
@@ -140,7 +140,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
             return
         } else if displayedData[selectedItem].2 == "donate" {
             if let url = URL(string: Constants.DONATE_SITE) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url)
             }
             
             tableView.deselectRow(at: indexPath, animated: true)

@@ -107,8 +107,8 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         blurredEffectView.alpha = 0.7
         blurredEffectView.frame = imageView.bounds
         view.addSubview(blurredEffectView)
-        view.sendSubview(toBack: blurredEffectView)
-        view.sendSubview(toBack: imageView)
+        view.sendSubviewToBack(blurredEffectView)
+        view.sendSubviewToBack(imageView)
         
         //circle around logo
         let logoRadius = logoImage.frame.width/2
@@ -127,7 +127,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func logoPressed() {
         if let url = URL(string: Constants.WEBSITE) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url)
         }
     }
     
@@ -192,7 +192,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return Utilities.favorites.count > 0
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             Utilities.toggleFavorite(Utilities.favorites[indexPath.row])
             

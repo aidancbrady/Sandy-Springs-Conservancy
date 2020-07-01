@@ -118,7 +118,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         mapView.isHidden = true
         
-        let region = MKCoordinateRegionMake(park.coords, MKCoordinateSpanMake(self.mapView.region.span.longitudeDelta/8192, self.mapView.region.span.latitudeDelta/8192))
+        let region = MKCoordinateRegion.init(center: park.coords, span: MKCoordinateSpan.init(latitudeDelta: self.mapView.region.span.longitudeDelta/8192, longitudeDelta: self.mapView.region.span.latitudeDelta/8192))
         let point = MKPointAnnotation()
         
         point.coordinate = park.coords
@@ -134,7 +134,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.isHidden = false
         mapView.alpha = 0.1
         
-        UIView.transition(with: view, duration: 0.4, options: UIViewAnimationOptions.curveEaseOut, animations: {() in
+        UIView.transition(with: view, duration: 0.4, options: UIView.AnimationOptions.curveEaseOut, animations: {() in
             self.mapView.alpha = 1
         }, completion: {b in
             return
@@ -148,7 +148,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func updateFavoriteButton(_ favorite: Bool) {
         let btnFavourite = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         btnFavourite.addTarget(self, action: #selector(onFavoriteToggle), for: .touchUpInside)
-        btnFavourite.setImage(UIImage(named: favorite ? "heart_filled" : "heart_empty")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        btnFavourite.setImage(UIImage(named: favorite ? "heart_filled" : "heart_empty")!.withRenderingMode(.alwaysTemplate), for: UIControl.State())
         btnFavourite.imageEdgeInsets = favoriteEdge
         
         let rightButton = UIBarButtonItem(customView: btnFavourite)
@@ -198,7 +198,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let url = URL(string: "tel://" + number) {
             let alertController = UIAlertController(title: "Confirm", message: "Call " + parkName + "?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Call", style: .default, handler: {action in
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url)
             })
             let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             

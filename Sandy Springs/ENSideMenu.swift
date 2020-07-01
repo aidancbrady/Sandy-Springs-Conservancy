@@ -35,22 +35,22 @@ public enum ENSideMenuPosition : Int
 
 public extension UIViewController
 {
-    public func toggleSideMenuView()
+    func toggleSideMenuView()
     {
         sideMenuController()?.sideMenu?.toggleMenu()
     }
     
-    public func hideSideMenuView()
+    func hideSideMenuView()
     {
         sideMenuController()?.sideMenu?.hideSideMenu()
     }
     
-    public func showSideMenuView()
+    func showSideMenuView()
     {
         sideMenuController()?.sideMenu?.showSideMenu()
     }
     
-    public func sideMenuController() -> ENSideMenuProtocol? {
+    func sideMenuController() -> ENSideMenuProtocol? {
         var iteration : UIViewController? = self.parent
         
         if iteration == nil
@@ -116,12 +116,12 @@ open class ENSideMenu : NSObject
         
         // Add right swipe gesture recognizer
         let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ENSideMenu.handleGesture(_:)))
-        rightSwipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirection.right
+        rightSwipeGestureRecognizer.direction =  UISwipeGestureRecognizer.Direction.right
         sourceView.addGestureRecognizer(rightSwipeGestureRecognizer)
         
         // Add left swipe gesture recognizer
         let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ENSideMenu.handleGesture(_:)))
-        leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.left
+        leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizer.Direction.left
         
         if menuPosition == .left
         {
