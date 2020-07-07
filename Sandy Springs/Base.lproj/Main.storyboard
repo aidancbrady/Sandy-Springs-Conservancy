@@ -13,8 +13,8 @@
             <objects>
                 <viewController storyboardIdentifier="AmenityController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Qr-4h-Po3" customClass="AmenityController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="70B-fh-MN6"/>
-                        <viewControllerLayoutGuide type="bottom" id="y4C-li-dz9"/>
+                        <viewControllerLayoutGuide type="top" id="wGj-n0-tPR"/>
+                        <viewControllerLayoutGuide type="bottom" id="rni-hB-jr9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vIU-Yz-63F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -43,8 +43,8 @@
             <objects>
                 <viewController storyboardIdentifier="MenuController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yoa-KF-bcC" customClass="MenuController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FRO-FG-HIJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="AeM-tM-3Ls"/>
+                        <viewControllerLayoutGuide type="top" id="j1K-45-W1L"/>
+                        <viewControllerLayoutGuide type="bottom" id="W3Z-Am-kNU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gkw-CX-z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -186,8 +186,8 @@
             <objects>
                 <viewController storyboardIdentifier="MapController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KdH-dH-hSR" customClass="MapController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="etd-pI-6Ay"/>
-                        <viewControllerLayoutGuide type="bottom" id="2IX-Xp-WoF"/>
+                        <viewControllerLayoutGuide type="top" id="6sr-VY-sgv"/>
+                        <viewControllerLayoutGuide type="bottom" id="DDz-W7-xEa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="i3f-h9-2QC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -217,8 +217,8 @@
             <objects>
                 <viewController storyboardIdentifier="ParkController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kZT-FK-6mG" customClass="ParkController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gUf-ew-rPw"/>
-                        <viewControllerLayoutGuide type="bottom" id="K4D-Zz-CW4"/>
+                        <viewControllerLayoutGuide type="top" id="W1h-4O-oQz"/>
+                        <viewControllerLayoutGuide type="bottom" id="4c4-il-pvf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BRa-O5-fZl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -298,46 +298,63 @@
             <objects>
                 <viewController storyboardIdentifier="WelcomeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0KH-Jd-VlQ" customClass="WelcomeController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yDF-5x-IZ4"/>
-                        <viewControllerLayoutGuide type="bottom" id="0OE-yn-JuK"/>
+                        <viewControllerLayoutGuide type="top" id="gPZ-2j-XSK"/>
+                        <viewControllerLayoutGuide type="bottom" id="WIg-DV-01H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zbg-C4-ir4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_alpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="S1i-xq-Fgw">
-                                <rect key="frame" x="107" y="57" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_alpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="S1i-xq-Fgw">
+                                <rect key="frame" x="100" y="50" width="175" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S1i-xq-Fgw" secondAttribute="height" multiplier="1:1" id="UfT-EF-d0b"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-eX-oDj">
-                                <rect key="frame" x="81" y="274" width="212" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-eX-oDj">
+                                <rect key="frame" x="127" y="265" width="121" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe from the right at any time to show the side menu." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBZ-7m-G2f">
-                                <rect key="frame" x="36" y="344" width="202" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe from the right at any time to show the side menu." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBZ-7m-G2f">
+                                <rect key="frame" x="36" y="344" width="210" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="KuG-lA-jmz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Aidan if you have any questions." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bn3-FA-7gX">
-                                <rect key="frame" x="36" y="455" width="202" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Aidan if you have any questions." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bn3-FA-7gX">
+                                <rect key="frame" x="36" y="472" width="211" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Mhs-k3-nLY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mail.png" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-pz-RTq">
-                                <rect key="frame" x="276" y="459" width="65" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail.png" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-pz-RTq">
+                                <rect key="frame" x="285" y="472" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="A7D-VX-2od"/>
+                                    <constraint firstAttribute="width" constant="60" id="fx2-30-Au7"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWS-Ih-TVO">
-                                <rect key="frame" x="16" y="600" width="343" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-nU-e6B">
+                                <rect key="frame" x="275" y="344" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Jug-9q-Wxo"/>
+                                    <constraint firstAttribute="height" constant="80" id="Ya2-aO-6rX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWS-Ih-TVO">
+                                <rect key="frame" x="31" y="587" width="313" height="40"/>
                                 <color key="backgroundColor" red="0.1052830369" green="0.3981598985" blue="0.13425043110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="D0q-Ah-Uuq"/>
+                                </constraints>
                                 <state key="normal" title="Dismiss">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -345,12 +362,30 @@
                                     <action selector="dismissPressed:" destination="0KH-Jd-VlQ" eventType="touchUpInside" id="63w-I5-r8g"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swipe_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-nU-e6B">
-                                <rect key="frame" x="267" y="336" width="82" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PWS-Ih-TVO" firstAttribute="centerX" secondItem="Zbg-C4-ir4" secondAttribute="centerX" id="1rM-KW-FZX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PWS-Ih-TVO" secondAttribute="trailing" constant="15" id="1xV-Jc-MYQ"/>
+                            <constraint firstAttribute="trailing" secondItem="uh7-pz-RTq" secondAttribute="trailing" constant="30" id="2sC-66-PqD"/>
+                            <constraint firstItem="CBZ-7m-G2f" firstAttribute="leading" secondItem="Zbg-C4-ir4" secondAttribute="leadingMargin" constant="20" id="6kQ-0I-ga2"/>
+                            <constraint firstItem="mHG-eX-oDj" firstAttribute="top" secondItem="S1i-xq-Fgw" secondAttribute="bottom" constant="40" id="7gT-Sd-lif"/>
+                            <constraint firstItem="uh7-pz-RTq" firstAttribute="leading" secondItem="Bn3-FA-7gX" secondAttribute="trailing" constant="38" id="B58-70-uJr"/>
+                            <constraint firstItem="9Em-nU-e6B" firstAttribute="leading" secondItem="CBZ-7m-G2f" secondAttribute="trailing" constant="29" id="DRg-Vz-RFW"/>
+                            <constraint firstItem="WIg-DV-01H" firstAttribute="top" secondItem="PWS-Ih-TVO" secondAttribute="bottom" constant="20" id="E2u-WL-ofj"/>
+                            <constraint firstAttribute="trailing" secondItem="9Em-nU-e6B" secondAttribute="trailing" constant="20" id="Nqw-73-smV"/>
+                            <constraint firstItem="S1i-xq-Fgw" firstAttribute="top" secondItem="gPZ-2j-XSK" secondAttribute="bottom" constant="50" id="PSL-f8-M9i"/>
+                            <constraint firstItem="uh7-pz-RTq" firstAttribute="centerY" secondItem="Bn3-FA-7gX" secondAttribute="centerY" id="XRZ-xN-YJ0"/>
+                            <constraint firstItem="PWS-Ih-TVO" firstAttribute="leading" secondItem="Zbg-C4-ir4" secondAttribute="leadingMargin" constant="15" id="Xlc-aO-rwm"/>
+                            <constraint firstItem="CBZ-7m-G2f" firstAttribute="top" secondItem="mHG-eX-oDj" secondAttribute="bottom" constant="45.5" id="chQ-3S-aOE"/>
+                            <constraint firstAttribute="trailing" secondItem="S1i-xq-Fgw" secondAttribute="trailing" constant="100" id="chh-7s-vZx"/>
+                            <constraint firstItem="9Em-nU-e6B" firstAttribute="centerY" secondItem="CBZ-7m-G2f" secondAttribute="centerY" id="gd8-a6-s8s"/>
+                            <constraint firstItem="9Em-nU-e6B" firstAttribute="top" secondItem="mHG-eX-oDj" secondAttribute="bottom" constant="45.5" id="glp-8w-muB"/>
+                            <constraint firstItem="Bn3-FA-7gX" firstAttribute="top" secondItem="CBZ-7m-G2f" secondAttribute="bottom" constant="48" id="hGU-jx-HiC"/>
+                            <constraint firstItem="S1i-xq-Fgw" firstAttribute="centerX" secondItem="Zbg-C4-ir4" secondAttribute="centerX" id="i4C-bm-oe8"/>
+                            <constraint firstItem="Bn3-FA-7gX" firstAttribute="leading" secondItem="Zbg-C4-ir4" secondAttribute="leadingMargin" constant="20" id="rRU-Wg-Vs5"/>
+                            <constraint firstItem="mHG-eX-oDj" firstAttribute="centerX" secondItem="Zbg-C4-ir4" secondAttribute="centerX" id="y1s-d9-AKP"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="contactIcon" destination="uh7-pz-RTq" id="Jue-kQ-SKl"/>
@@ -364,15 +399,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBX-Y8-FxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="0.0"/>
+            <point key="canvasLocation" x="1384.8" y="-0.44977511244377816"/>
         </scene>
         <!--About-->
         <scene sceneID="yGK-GF-IAI">
             <objects>
                 <viewController storyboardIdentifier="AboutController" modalPresentationStyle="fullScreen" id="YDP-Hh-gkY" customClass="AboutController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EkZ-t5-ThW"/>
-                        <viewControllerLayoutGuide type="bottom" id="PhG-Yo-72v"/>
+                        <viewControllerLayoutGuide type="top" id="Mle-Mf-NHu"/>
+                        <viewControllerLayoutGuide type="bottom" id="xeY-qx-8Jn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OMz-f4-eWw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -510,8 +545,8 @@
             <objects>
                 <viewController id="gg0-PB-s9v" customClass="InitController" customModule="Sandy_Springs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cIn-pq-Rll"/>
-                        <viewControllerLayoutGuide type="bottom" id="fVY-Lr-1iQ"/>
+                        <viewControllerLayoutGuide type="top" id="ZBI-TY-QRh"/>
+                        <viewControllerLayoutGuide type="bottom" id="5LL-Db-C8m"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mvG-Lo-ov6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
