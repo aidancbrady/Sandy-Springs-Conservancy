@@ -42,7 +42,7 @@ class WelcomeController: UIViewController {
         contactIcon.frame = CGRect(x: view.frame.maxX - 32 - menuIcon.frame.width + 10, y: contactLabel.frame.minY + 10, width: contactIcon.frame.width, height: contactIcon.frame.height)
         contactIcon.image = contactIcon.image?.withRenderingMode(.alwaysTemplate)
         
-        dismissButton.frame = CGRect(x: view.frame.minX + 16, y: view.frame.maxY - 48 - 16 - viewStretch*80, width: view.frame.width - 32, height: 48)
+        dismissButton.frame = CGRect(x: view.frame.minX + 16, y: view.frame.maxY - 48 - 16 - 32 - viewStretch*80, width: view.frame.width - 32, height: 48)
         dismissButton.layer.cornerRadius = 10
     }
     

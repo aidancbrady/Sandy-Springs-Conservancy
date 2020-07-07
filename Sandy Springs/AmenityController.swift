@@ -37,7 +37,7 @@ class AmenityController: UIViewController
         let titleLabel = UILabel(frame: CGRect(x: scroll.frame.minX, y: scroll.frame.minY + 16, width: scroll.frame.width, height: 20))
         titleLabel.text = "Tap desired amenities:"
         titleLabel.textAlignment = NSTextAlignment.center
-        titleLabel.textColor = UIColor.darkGray
+        titleLabel.textColor = UIColor.systemGray
         scroll.addSubview(titleLabel)
         
         //Amenity layout
@@ -85,7 +85,11 @@ class AmenityController: UIViewController
             }
         } else {
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                amenityView.backgroundColor = UIColor.groupTableViewBackground
+                if #available(iOS 13.0, *) {
+                    amenityView.backgroundColor = UIColor.systemFill
+                } else {
+                    amenityView.backgroundColor = UIColor.groupTableViewBackground
+                }
             })
             
             selectedAmenities.append(amenityView.amenityName)

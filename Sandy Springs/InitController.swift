@@ -23,6 +23,7 @@ class InitController: UIViewController {
         downloadLabel.frame = CGRect(x: view.frame.maxX/2 - downloadLabel.frame.width/2, y: (view.frame.maxY/2 - downloadLabel.frame.height/2) - 8, width: downloadLabel.frame.width, height: downloadLabel.frame.height)
         downloadActivity.frame = CGRect(x: view.frame.maxX/2 - downloadActivity.frame.width/2, y: downloadLabel.frame.maxY + 8, width: downloadActivity.frame.width, height: downloadActivity.frame.height)
         
+        downloadActivity.color = UIColor.systemGray
         downloadActivity.startAnimating()
         downloadActivity.hidesWhenStopped = true
         

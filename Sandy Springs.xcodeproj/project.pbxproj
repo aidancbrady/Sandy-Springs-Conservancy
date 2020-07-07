@@ -28,7 +28,6 @@
 		119A51C320125E5B00ABAE55 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C120125E5B00ABAE55 /* up.png */; };
 		119A51C420125E5B00ABAE55 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 119A51C220125E5B00ABAE55 /* down.png */; };
 		119A51C62012947600ABAE55 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C52012947600ABAE55 /* DataManager.swift */; };
-		119A51C92012BAD000ABAE55 /* NetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51C82012BAD000ABAE55 /* NetManager.swift */; };
 		119A51CB2012BAEC00ABAE55 /* OperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */; };
 		119A51D22012D38E00ABAE55 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A51D12012D38E00ABAE55 /* Constants.swift */; };
 		11A55E862039FD8600BD878C /* trails.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A55E752039FD8500BD878C /* trails.png */; };
@@ -101,8 +100,6 @@
 		119A51C120125E5B00ABAE55 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		119A51C220125E5B00ABAE55 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		119A51C52012947600ABAE55 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sandy Springs.entitlements"; sourceTree = "<group>"; };
-		119A51C82012BAD000ABAE55 /* NetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetManager.swift; sourceTree = "<group>"; };
 		119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsManager.swift; sourceTree = "<group>"; };
 		119A51D12012D38E00ABAE55 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11A55E752039FD8500BD878C /* trails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trails.png; sourceTree = "<group>"; };
@@ -183,7 +180,6 @@
 		113F6DC119F8762600CE4B16 /* Sandy Springs */ = {
 			isa = PBXGroup;
 			children = (
-				119A51C72012B30300ABAE55 /* Sandy Springs.entitlements */,
 				113F6DCD19F8762600CE4B16 /* Images.xcassets */,
 				113F6DCA19F8762600CE4B16 /* Main.storyboard */,
 				113F6DCF19F8762600CE4B16 /* LaunchScreen.xib */,
@@ -280,7 +276,6 @@
 				11B841D01D1248C40009782C /* Utilities.swift */,
 				119A51C52012947600ABAE55 /* DataManager.swift */,
 				119A51CA2012BAEC00ABAE55 /* OperationsManager.swift */,
-				119A51C82012BAD000ABAE55 /* NetManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -500,7 +495,6 @@
 				11B841D31D1262CF0009782C /* MapController.swift in Sources */,
 				11E75FEB203DEE1C003F79F4 /* WelcomeController.swift in Sources */,
 				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
-				119A51C92012BAD000ABAE55 /* NetManager.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
 				119A51C02011E22400ABAE55 /* ParkSearchController.swift in Sources */,
 			);
@@ -655,6 +649,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
@@ -675,6 +670,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";

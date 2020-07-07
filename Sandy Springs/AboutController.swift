@@ -26,7 +26,7 @@ class AboutController: UIViewController {
         }
         
         let top = 50 + UIApplication.shared.keyWindow!.safeAreaInsets.top
-        let image = UIImageView(image: UIImage(named: "logo.jpeg"))
+        let image = UIImageView(image: UIImage(named: "logo_alpha.png"))
         let size = self.view.frame.width/3
         image.frame = CGRect(x: self.view.frame.width/2-size/2, y: top + 15, width: size, height: size)
         self.view.addSubview(image)
@@ -37,7 +37,15 @@ class AboutController: UIViewController {
             textView.isScrollEnabled = true
             textView.isEditable = false
             textView.contentMode = .scaleToFill
+            textView.textColor = isDark() ? UIColor.white : UIColor.black
         }
+    }
+    
+    func isDark() -> Bool {
+        if #available(iOS 13.0, *) {
+            return UITraitCollection.current.userInterfaceStyle == .dark
+        }
+        return false
     }
     
     func loadHTML() -> NSAttributedString? {

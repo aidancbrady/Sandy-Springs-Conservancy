@@ -25,11 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             (granted, error) in
         }
         
-        application.registerForRemoteNotifications()
-        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
@@ -63,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if !setLocationNotifications {
             let accepted = (status == CLAuthorizationStatus.authorizedAlways)
-            
             if accepted {
                 ParkController.Parks.initLocationUpdates()
                 print("Set up location notifications")
@@ -73,18 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             
             setLocationNotifications = true
         }
-    }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Successfully registered notification service.")
-        
-        let deviceID = deviceToken.hexString()
-            .replacingOccurrences(of: "<", with: "", options: [], range: nil)
-            .replacingOccurrences(of: ">", with: "", options: [], range: nil)
-            .replacingOccurrences(of: " ", with: "", options: [], range: nil)
-        
-        print("Sending device ID: " + deviceID)
-        NetManager.sendDeviceID(deviceID: deviceID)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
