@@ -649,7 +649,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
@@ -657,6 +657,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.sandy-springs-conservancy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -670,7 +671,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
@@ -679,6 +680,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.sandy-springs-conservancy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

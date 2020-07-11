@@ -90,6 +90,7 @@ class DataManager {
             let raw: Any? = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             
             if let top = raw as? NSDictionary {
+                loadProperties(data: top)
                 try loadBackgrounds(data: top, remote: false)
                 
                 if let parks = top["parks"] as? NSArray {
@@ -162,6 +163,7 @@ class DataManager {
         let raw: Any? = try JSONSerialization.jsonObject(with: fileData, options: .mutableContainers)
         
         if let top = raw as? NSDictionary {
+            loadProperties(data: top)
             try loadBackgrounds(data: top, remote: true)
             
             if let parks = top["parks"] as? NSArray {
@@ -172,6 +174,15 @@ class DataManager {
                     }
                 }
             }
+        }
+    }
+    
+    private class func loadProperties(data: NSDictionary) {
+        if let website_url = data["website_url"] as? String {
+            Constants.WEBSITE = website_url
+        }
+        if let donate_url = data["donate_url"] as? String {
+            Constants.DONATE_SITE = donate_url
         }
     }
     

@@ -17,8 +17,8 @@ class Constants
     static var DEV_EMAIL = "me@aidancbrady.com"
     
     // sandy springs info
-    static var WEBSITE = "https://sandyspringsconservancy.org"
-    static var DONATE_SITE = "https://sandyspringsconservancy.org/join-us/donate/"
+    static var WEBSITE = "https://www.sandyspringsconservancy.org"
+    static var DONATE_SITE = "https://www.sandyspringsconservancy.org/waystodonate/"
     
     // last location recieved from location services
     static var LAST_LOCATION: CLLocation?

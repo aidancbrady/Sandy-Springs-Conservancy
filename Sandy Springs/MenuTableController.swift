@@ -89,6 +89,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         }
         
         cell!.textLabel?.text = data.1 ? data.0 : (" " + data.0)
+        cell!.textLabel?.textColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.9)
         
         if data.1 {
             cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
