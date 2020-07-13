@@ -122,6 +122,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //update background images
         timer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateBackground), userInfo: nil, repeats: true)
         
+        AppDelegate.getInstance().onLaunch()
         Utilities.checkFirstLaunch(controller: self)
     }
     

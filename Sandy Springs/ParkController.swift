@@ -217,17 +217,20 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         static var parkData = [String: ParkData]()
         
         static func initLocationUpdates() {
+            // first clear notifications so we don't have duplicates
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             for data in parkData {
-                let region = CLCircularRegion(center: data.1.coords, radius: 150, identifier: data.0)
+                let region = CLCircularRegion(center: data.1.coords, radius: 500, identifier: data.0)
                 region.notifyOnEntry = true
-                region.notifyOnExit = false
+                region.notifyOnExit = true
                 let content = UNMutableNotificationContent()
                 content.title = "You're Near " + data.value.parkName
                 content.body = "Tap for more details."
                 content.userInfo = ["PARK":data.key]
+                content.sound = UNNotificationSound.default
                 let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-                let identifier = data.value.parkName.replacingOccurrences(of: " ", with: "")
-                let request = UNNotificationRequest(identifier: identifier + "_region_notification", content: content, trigger: trigger)
+                let identifier = data.value.parkName.replacingOccurrences(of: " ", with: "_")
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request) { (error) in
                     if let error = error {
                         print("Error requesting notification: (\(error), \(error.localizedDescription))")
