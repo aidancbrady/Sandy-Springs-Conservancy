@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         locationManager.delegate = self
         
         locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
         locationManager.pausesLocationUpdatesAutomatically = false
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if !setLocationNotifications {
-            let accepted = (status == CLAuthorizationStatus.authorizedAlways)
+            let accepted = (status == CLAuthorizationStatus.authorizedWhenInUse)
             if accepted {
                 ParkController.Parks.initLocationUpdates()
                 print("Set up location notifications")

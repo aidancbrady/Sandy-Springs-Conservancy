@@ -649,7 +649,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
@@ -671,7 +671,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
