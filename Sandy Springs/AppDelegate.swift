@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
-        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
