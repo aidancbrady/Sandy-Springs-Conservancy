@@ -92,7 +92,7 @@ class ParkData {
             }
         }
         
-        ParkController.Parks.parkData[park.parkName] = park
+        Constants.parkData[park.parkName] = park
         return park
     }
 }

@@ -22,4 +22,6 @@ class Constants
     
     // last location recieved from location services
     static var LAST_LOCATION: CLLocation?
+    
+    static var parkData = [String: ParkData]()
 }

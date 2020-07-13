@@ -32,7 +32,7 @@ class InitController: UIViewController {
             
             DispatchQueue.main.async {
                 if !success {
-                    ParkController.Parks.parkData.removeAll()
+                    Constants.parkData.removeAll()
                     
                     self.downloadLabel.text = "Download failed."
                     self.downloadActivity.stopAnimating()

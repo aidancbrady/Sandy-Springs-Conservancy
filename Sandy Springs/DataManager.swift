@@ -213,7 +213,7 @@ class DataManager {
         let cacheDir = getCachePath()
         DispatchQueue.global(qos: .background).async {
             do {
-                for park in ParkController.Parks.parkData {
+                for park in Constants.parkData {
                     try loadImages(park: park.value, cacheDir: cacheDir, primary: false, remote: remote)
                 }
                 

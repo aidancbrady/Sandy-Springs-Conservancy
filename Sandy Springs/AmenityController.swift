@@ -24,7 +24,7 @@ class AmenityController: UIViewController
         navigationController!.navigationBar.isHidden = false
         
         if amenityList.count == 0 {
-            for data in ParkController.Parks.parkData {
+            for data in Constants.parkData {
                 for amenity in data.1.amenities {
                     if(!amenityList.contains(amenity)) {
                         amenityList.append(amenity)

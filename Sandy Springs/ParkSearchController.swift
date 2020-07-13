@@ -27,7 +27,7 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate {
         //show nav bar
         navigationController!.navigationBar.isHidden = false
         
-        for data in ParkController.Parks.parkData {
+        for data in Constants.parkData {
             var valid = true
             
             if isAmenitySearch {

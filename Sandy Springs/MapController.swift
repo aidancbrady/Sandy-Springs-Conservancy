@@ -28,7 +28,7 @@ class MapController: UIViewController, MKMapViewDelegate {
         
         let region = MKCoordinateRegion.init(center: CLLocationCoordinate2DMake(centerCoordLat, centerCoordLong), span: MKCoordinateSpan.init(latitudeDelta: self.mapView.region.span.longitudeDelta/1024, longitudeDelta: self.mapView.region.span.latitudeDelta/1024))
         
-        for data in ParkController.Parks.parkData {
+        for data in Constants.parkData {
             let point = MKPointAnnotation()
             
             point.coordinate = data.1.coords

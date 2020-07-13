@@ -36,7 +36,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         menuData.append(("Donate", true, "donate"))
         menuData.append(("Contact & Support", true, "contact"))
         
-        for data in ParkController.Parks.parkData {
+        for data in Constants.parkData {
             parkData.append((data.0, false, "ParkController"))
         }
         
