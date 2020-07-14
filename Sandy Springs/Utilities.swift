@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SystemConfiguration
 
 class Utilities {
     
@@ -106,6 +107,13 @@ class Utilities {
             
             UserDefaults.standard.set(true, forKey: "prevLaunch")
         }
+    }
+    
+    static func isConnected() -> Bool {
+        let reachability = SCNetworkReachabilityCreateWithName(nil, "app.sandyspringsconservancy.org")!
+        var flags = SCNetworkReachabilityFlags(rawValue: 0)
+        SCNetworkReachabilityGetFlags(reachability, &flags)
+        return flags.contains(.reachable)
     }
 }
 

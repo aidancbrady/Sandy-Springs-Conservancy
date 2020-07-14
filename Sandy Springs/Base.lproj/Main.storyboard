@@ -364,7 +364,6 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="PWS-Ih-TVO" firstAttribute="centerX" secondItem="Zbg-C4-ir4" secondAttribute="centerX" id="1rM-KW-FZX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PWS-Ih-TVO" secondAttribute="trailing" constant="15" id="1xV-Jc-MYQ"/>
                             <constraint firstAttribute="trailing" secondItem="uh7-pz-RTq" secondAttribute="trailing" constant="30" id="2sC-66-PqD"/>
                             <constraint firstItem="CBZ-7m-G2f" firstAttribute="leading" secondItem="Zbg-C4-ir4" secondAttribute="leadingMargin" constant="20" id="6kQ-0I-ga2"/>

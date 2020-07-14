@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InitController: UIViewController {
+class InitController: UIViewController, DataManagerDelegate {
     
     @IBOutlet weak var downloadLabel: UILabel!
     @IBOutlet weak var downloadActivity: UIActivityIndicatorView!
@@ -28,7 +28,7 @@ class InitController: UIViewController {
         downloadActivity.hidesWhenStopped = true
         
         DispatchQueue.global(qos: .background).async {
-            let success = DataManager.loadData()
+            let success = DataManager(delegate: self).loadData()
             
             DispatchQueue.main.async {
                 if !success {
@@ -54,6 +54,9 @@ class InitController: UIViewController {
                 }
             }
         }
+    }
+    
+    func progressCallback(progress: Double) {
     }
 }
 

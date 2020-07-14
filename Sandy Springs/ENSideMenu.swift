@@ -8,8 +8,7 @@
 
 import UIKit
 
-@objc public protocol ENSideMenuDelegate
-{
+@objc public protocol ENSideMenuDelegate {
     @objc optional func sideMenuWillOpen()
     @objc optional func sideMenuWillClose()
 }

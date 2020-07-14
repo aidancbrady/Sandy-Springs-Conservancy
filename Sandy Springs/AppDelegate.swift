@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         center.delegate = self
         center.requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) {
             (granted, error) in
+            if granted {
+                print("Successfully authorized with notification center")
+            } else {
+                print("Failed to authorize with notification center")
+            }
         }
         return true
     }

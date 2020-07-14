@@ -93,7 +93,7 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let amenityView = UIView(frame: CGRect(x: view.frame.minX, y: phoneTitleLabel.frame.maxY + 8, width: view.frame.width, height: CGFloat(rows*110) - 10))
         if #available(iOS 13.0, *) {
-            amenityView.backgroundColor = UIColor.systemGray6
+            amenityView.backgroundColor = UIColor.systemGray5
         } else {
             amenityView.backgroundColor = UIColor.groupTableViewBackground
         }
