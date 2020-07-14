@@ -571,20 +571,30 @@
                                     <constraint firstAttribute="height" constant="160" id="gzb-zp-hLB"/>
                                 </constraints>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-ia-T81">
+                                <rect key="frame" x="155.5" y="429" width="64" height="30"/>
+                                <state key="normal" title="Try Again"/>
+                                <connections>
+                                    <action selector="onRetryPressed:" destination="gg0-PB-s9v" eventType="touchUpInside" id="uEa-JV-86h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Jty-Xk-cYQ" firstAttribute="top" secondItem="ZBI-TY-QRh" secondAttribute="bottom" constant="160" id="3aE-OU-n2Q"/>
                             <constraint firstItem="4VO-wL-eKC" firstAttribute="top" secondItem="2jK-eE-d7t" secondAttribute="bottom" constant="50" id="A9T-eW-FT4"/>
+                            <constraint firstItem="UGa-ia-T81" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="Hcy-87-7XM"/>
                             <constraint firstItem="4VO-wL-eKC" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="JSb-2O-crP"/>
                             <constraint firstItem="2jK-eE-d7t" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="VNf-ur-Hif"/>
                             <constraint firstItem="2jK-eE-d7t" firstAttribute="top" secondItem="ZBI-TY-QRh" secondAttribute="bottom" constant="150" id="X8m-Ti-0LF"/>
+                            <constraint firstItem="UGa-ia-T81" firstAttribute="top" secondItem="4VO-wL-eKC" secondAttribute="bottom" constant="8" id="r5k-BT-cZc"/>
                             <constraint firstItem="Jty-Xk-cYQ" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="wTI-Sz-FmK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="downloadLabel" destination="4VO-wL-eKC" id="Blh-Er-3eL"/>
                         <outlet property="progressView" destination="2jK-eE-d7t" id="xbd-CW-KyL"/>
+                        <outlet property="retryButton" destination="UGa-ia-T81" id="adI-cL-MoT"/>
                         <segue destination="mbg-3e-FFn" kind="modal" identifier="download_complete" id="r3I-GS-haY"/>
                     </connections>
                 </viewController>

@@ -30,12 +30,11 @@ class DataManager {
     func loadData() -> Bool {
         // reset park cache
         Constants.parkData.removeAll()
-        
         if let storedVersion = getStoredVersion() {
             print("Cache has data version \(storedVersion)")
             if connected {
                 if let url = URL(string: Constants.DATA_URL + Constants.DATA_FILE), let data = try? Data(contentsOf: url) {
-                    if let remoteJSON = Utilities.parseJSON(data: data), let remoteVersion = getVersion(json: remoteJSON) {
+                    if let remoteJSON = data.parseJSON(), let remoteVersion = getVersion(json: remoteJSON) {
                         if storedVersion != remoteVersion {
                             print("Fetching updated data copy...")
                             return remoteLoadData(fileData: data)
@@ -56,7 +55,7 @@ class DataManager {
     }
     
     private func localLoadData() -> Bool {
-        if let data = Utilities.parseJSON(url: URL(fileURLWithPath: cacheFile)) {
+        if let data = URL(fileURLWithPath: cacheFile).parseJSON() {
             loadProperties(data: data)
             loadBackgrounds(data: data)
             loadParks(data: data)
@@ -77,7 +76,7 @@ class DataManager {
             return false
         }
         
-        if let data = Utilities.parseJSON(url: cacheURL) {
+        if let data = cacheURL.parseJSON() {
             loadProperties(data: data)
             loadBackgrounds(data: data)
             loadParks(data: data)
@@ -176,7 +175,7 @@ class DataManager {
     }
     
     private func getStoredVersion() -> Double? {
-        if let json = Utilities.parseJSON(url: URL(fileURLWithPath: cacheFile)) {
+        if let json = URL(fileURLWithPath: cacheFile).parseJSON() {
             return getVersion(json: json)
         }
         return nil

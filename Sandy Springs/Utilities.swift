@@ -110,24 +110,10 @@ class Utilities {
     }
     
     static func isConnected() -> Bool {
-        let reachability = SCNetworkReachabilityCreateWithName(nil, "app.sandyspringsconservancy.org")!
+        let reachability = SCNetworkReachabilityCreateWithName(nil, Constants.DATA_URL)!
         var flags = SCNetworkReachabilityFlags(rawValue: 0)
         SCNetworkReachabilityGetFlags(reachability, &flags)
         return flags.contains(.reachable)
-    }
-    
-    static func parseJSON(url: URL) -> NSDictionary? {
-        if let data = try? Data(contentsOf: url) {
-            return parseJSON(data: data)
-        }
-        return nil
-    }
-    
-    static func parseJSON(data: Data) -> NSDictionary? {
-        if let top = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary {
-            return top
-        }
-        return nil
     }
 }
 
@@ -145,11 +131,27 @@ extension String {
     }
 }
 
+extension URL {
+    func parseJSON() -> NSDictionary? {
+        if let data = try? Data(contentsOf: self) {
+            return data.parseJSON()
+        }
+        return nil
+    }
+}
+
 extension Data {
     func hexString() -> String {
         return self.reduce("") { string, byte in
             string + String(format: "%02X", byte)
         }
+    }
+    
+    func parseJSON() -> NSDictionary? {
+        if let top = try? JSONSerialization.jsonObject(with: self, options: .mutableContainers) as? NSDictionary {
+            return top
+        }
+        return nil
     }
 }
 

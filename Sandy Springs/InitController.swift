@@ -12,6 +12,7 @@ class InitController: UIViewController, DataManagerDelegate {
     
     @IBOutlet weak var downloadLabel: UILabel!
     @IBOutlet weak var progressView: CircularProgressView!
+    @IBOutlet weak var retryButton: UIButton!
     
     var notificationOpen: String?
     
@@ -22,6 +23,13 @@ class InitController: UIViewController, DataManagerDelegate {
         
         downloadLabel.frame = CGRect(x: view.frame.maxX/2 - downloadLabel.frame.width/2, y: (view.frame.maxY/2 - downloadLabel.frame.height/2) - 8, width: downloadLabel.frame.width, height: downloadLabel.frame.height)
         
+        onError()
+    }
+    
+    func initiate() {
+        retryButton.isHidden = true
+        downloadLabel.text = "Downloading Park List..."
+        progressView.setProgress(value: 0, animate: true)
         progressView.progressColor = view.tintColor
         if #available(iOS 13.0, *) {
             progressView.trackColor = UIColor.secondarySystemBackground
@@ -34,32 +42,50 @@ class InitController: UIViewController, DataManagerDelegate {
             
             DispatchQueue.main.async {
                 if !success {
-                    Constants.parkData.removeAll()
-                    
-                    self.downloadLabel.text = "Download failed."
+                    self.onError()
                 } else {
-                    AppDelegate.getInstance().initLocationServices()
-                    self.performSegue(withIdentifier: "download_complete", sender: self)
-                    
-                    if let parkName = self.notificationOpen {
-                        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
-                        let menuNavigation = self.presentedViewController as! MenuNavigation
-                        
-                        destController.parkName = parkName
-                        
-                        menuNavigation.present(destController)
-                        Utilities.loadPark(menuNavigation)
-                        self.notificationOpen = nil
-                    }
+                    self.onSuccess()
                 }
             }
         }
     }
     
+    func onSuccess() {
+        AppDelegate.getInstance().initLocationServices()
+        self.performSegue(withIdentifier: "download_complete", sender: self)
+        
+        if let parkName = self.notificationOpen {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let destController = mainStoryboard.instantiateViewController(withIdentifier: "ParkController") as! ParkController
+            let menuNavigation = self.presentedViewController as! MenuNavigation
+            
+            destController.parkName = parkName
+            
+            menuNavigation.present(destController)
+            Utilities.loadPark(menuNavigation)
+            self.notificationOpen = nil
+        }
+    }
+    
+    func onError() {
+        Constants.parkData.removeAll()
+        self.downloadLabel.text = "Download failed."
+        self.retryButton.isHidden = false
+        self.progressView.setProgress(value: 1, animate: true)
+        if #available(iOS 13.0, *) {
+            self.progressView.progressColor = UIColor.systemRed
+        } else {
+            self.progressView.progressColor = UIColor.red
+        }
+    }
+    
+    @IBAction func onRetryPressed(_ sender: Any) {
+        initiate()
+    }
+    
     func progressCallback(progress: Double) {
         DispatchQueue.main.async {
-            self.progressView.setProgress(duration: 0, value: Float(progress))
+            self.progressView.setProgress(value: Float(progress), animate: false)
         }
     }
 }

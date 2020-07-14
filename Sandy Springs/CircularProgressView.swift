@@ -48,13 +48,14 @@ class CircularProgressView : UIView {
         layer.addSublayer(progressLayer)
     }
     
-    func setProgress(duration: TimeInterval, value: Float) {
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.duration = duration
-        animation.fromValue = progressLayer.strokeEnd
-        animation.toValue = value
-        animation.timingFunction = CAMediaTimingFunction(name: .default)
+    func setProgress(value: Float, animate: Bool) {
         progressLayer.strokeEnd = CGFloat(value)
-        progressLayer.add(animation, forKey: "progress")
+        if animate {
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = progressLayer.strokeEnd
+            animation.toValue = value
+            animation.timingFunction = CAMediaTimingFunction(name: .default)
+            progressLayer.add(animation, forKey: "progress")
+        }
     }
 }
