@@ -550,29 +550,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Downloading Park List..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VO-wL-eKC">
-                                <rect key="frame" x="68" y="245" width="184" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Park List..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VO-wL-eKC">
+                                <rect key="frame" x="95.5" y="400" width="184" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5a6-8P-7A6">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jK-eE-d7t" customClass="CircularProgressView" customModule="Sandy_Springs" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="150" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="08n-1v-ibW"/>
+                                    <constraint firstAttribute="height" constant="200" id="7DK-Zz-pUr"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="park_leaf.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jty-Xk-cYQ">
+                                <rect key="frame" x="107.5" y="160" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="CwN-fu-TPd"/>
+                                    <constraint firstAttribute="height" constant="160" id="gzb-zp-hLB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Jty-Xk-cYQ" firstAttribute="top" secondItem="ZBI-TY-QRh" secondAttribute="bottom" constant="160" id="3aE-OU-n2Q"/>
+                            <constraint firstItem="4VO-wL-eKC" firstAttribute="top" secondItem="2jK-eE-d7t" secondAttribute="bottom" constant="50" id="A9T-eW-FT4"/>
+                            <constraint firstItem="4VO-wL-eKC" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="JSb-2O-crP"/>
+                            <constraint firstItem="2jK-eE-d7t" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="VNf-ur-Hif"/>
+                            <constraint firstItem="2jK-eE-d7t" firstAttribute="top" secondItem="ZBI-TY-QRh" secondAttribute="bottom" constant="150" id="X8m-Ti-0LF"/>
+                            <constraint firstItem="Jty-Xk-cYQ" firstAttribute="centerX" secondItem="mvG-Lo-ov6" secondAttribute="centerX" id="wTI-Sz-FmK"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="downloadActivity" destination="5a6-8P-7A6" id="piN-H3-L7q"/>
                         <outlet property="downloadLabel" destination="4VO-wL-eKC" id="Blh-Er-3eL"/>
+                        <outlet property="progressView" destination="2jK-eE-d7t" id="xbd-CW-KyL"/>
                         <segue destination="mbg-3e-FFn" kind="modal" identifier="download_complete" id="r3I-GS-haY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5k-mO-7Iy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1103" y="0.0"/>
+            <point key="canvasLocation" x="-1103.2" y="-0.44977511244377816"/>
         </scene>
         <!--Menu Navigation-->
         <scene sceneID="Emx-3o-Zxq">

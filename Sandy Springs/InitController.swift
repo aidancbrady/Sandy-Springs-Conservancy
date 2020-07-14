@@ -11,7 +11,7 @@ import UIKit
 class InitController: UIViewController, DataManagerDelegate {
     
     @IBOutlet weak var downloadLabel: UILabel!
-    @IBOutlet weak var downloadActivity: UIActivityIndicatorView!
+    @IBOutlet weak var progressView: CircularProgressView!
     
     var notificationOpen: String?
     
@@ -21,11 +21,13 @@ class InitController: UIViewController, DataManagerDelegate {
         Utilities.loadFavorites()
         
         downloadLabel.frame = CGRect(x: view.frame.maxX/2 - downloadLabel.frame.width/2, y: (view.frame.maxY/2 - downloadLabel.frame.height/2) - 8, width: downloadLabel.frame.width, height: downloadLabel.frame.height)
-        downloadActivity.frame = CGRect(x: view.frame.maxX/2 - downloadActivity.frame.width/2, y: downloadLabel.frame.maxY + 8, width: downloadActivity.frame.width, height: downloadActivity.frame.height)
         
-        downloadActivity.color = UIColor.systemGray
-        downloadActivity.startAnimating()
-        downloadActivity.hidesWhenStopped = true
+        progressView.progressColor = view.tintColor
+        if #available(iOS 13.0, *) {
+            progressView.trackColor = UIColor.secondarySystemBackground
+        } else {
+            progressView.trackColor = UIColor.gray
+        }
         
         DispatchQueue.global(qos: .background).async {
             let success = DataManager(delegate: self).loadData()
@@ -35,7 +37,6 @@ class InitController: UIViewController, DataManagerDelegate {
                     Constants.parkData.removeAll()
                     
                     self.downloadLabel.text = "Download failed."
-                    self.downloadActivity.stopAnimating()
                 } else {
                     AppDelegate.getInstance().initLocationServices()
                     self.performSegue(withIdentifier: "download_complete", sender: self)
@@ -57,6 +58,9 @@ class InitController: UIViewController, DataManagerDelegate {
     }
     
     func progressCallback(progress: Double) {
+        DispatchQueue.main.async {
+            self.progressView.setProgress(duration: 0, value: Float(progress))
+        }
     }
 }
 

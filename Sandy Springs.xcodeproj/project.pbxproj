@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		110A557B1B42EDF100BE2C30 /* logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 110A557A1B42EDF100BE2C30 /* logo.jpeg */; };
+		111FF72024BE11AF008BA1EF /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111FF71F24BE11AF008BA1EF /* CircularProgressView.swift */; };
+		111FF72324BE11E1008BA1EF /* AmenityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111FF72224BE11E1008BA1EF /* AmenityView.swift */; };
 		113CDC531A9769390024DBC7 /* ParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113CDC521A9769390024DBC7 /* ParkController.swift */; };
 		113D89F520AD1E1300A2552F /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113D89F420AD1E1300A2552F /* AboutController.swift */; };
 		113D89F720AD22C900A2552F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 113D89F620AD22C900A2552F /* about.html */; };
@@ -76,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		110A557A1B42EDF100BE2C30 /* logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpeg; sourceTree = "<group>"; };
+		111FF71F24BE11AF008BA1EF /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		111FF72224BE11E1008BA1EF /* AmenityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmenityView.swift; sourceTree = "<group>"; };
 		113CDC521A9769390024DBC7 /* ParkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkController.swift; sourceTree = "<group>"; };
 		113D89F420AD1E1300A2552F /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		113D89F620AD22C900A2552F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
@@ -157,6 +161,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		111FF72124BE11B6008BA1EF /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				111FF71F24BE11AF008BA1EF /* CircularProgressView.swift */,
+				111FF72224BE11E1008BA1EF /* AmenityView.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		113F6DB619F8762600CE4B16 = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				119A51CE2012D20600ABAE55 /* Cells */,
+				111FF72124BE11B6008BA1EF /* Custom */,
 				11AEAE051A767796008414A9 /* MenuNavigation.swift */,
 				11AEAE071A7677D7008414A9 /* MenuTableController.swift */,
 				11AEAE091A7679BC008414A9 /* MenuController.swift */,
@@ -496,7 +510,9 @@
 				11E75FEB203DEE1C003F79F4 /* WelcomeController.swift in Sources */,
 				119A51BC2011B25E00ABAE55 /* MarqueeLabel.swift in Sources */,
 				11C52D201B4C559C007A2380 /* InitController.swift in Sources */,
+				111FF72324BE11E1008BA1EF /* AmenityView.swift in Sources */,
 				119A51C02011E22400ABAE55 /* ParkListController.swift in Sources */,
+				111FF72024BE11AF008BA1EF /* CircularProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,12 +665,12 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.sandy-springs-conservancy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -672,13 +688,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Sandy Springs/Sandy Springs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 53;
+				CURRENT_PROJECT_VERSION = 54;
 				DEVELOPMENT_TEAM = VBY56UWVE3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sandy Springs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aidancbrady.sandy-springs-conservancy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

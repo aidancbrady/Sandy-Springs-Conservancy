@@ -42,21 +42,21 @@ class AmenityController: UIViewController
         
         //Amenity layout
         let margins = 20
-        let amenityWidth = view.frame.width-CGFloat(margins*2)
-        let perRow = Int(amenityWidth/110)
-        let rows = Int(ceil(Float(amenityList.count)/Float(perRow)))
+        let amenityWidth = view.frame.width - CGFloat(margins * 2)
+        let perRow = Int(amenityWidth / 110)
+        let rows = Int(ceil(Float(amenityList.count) / Float(perRow)))
         
         let amenityView = UIView(frame: CGRect(x: view.frame.minX, y: titleLabel.frame.maxY + 8, width: view.frame.width, height: CGFloat(rows * 110) - 10))
         
         for i in 0..<rows {
             for j in 0..<perRow {
-                let index = i*perRow + j
+                let index = i * perRow + j
                 
-                if index > amenityList.count-1 {
+                if index > amenityList.count - 1 {
                     break
                 }
                 
-                let startX = (Int(amenityWidth)/perRow)/2 - 110/2
+                let startX = (Int(amenityWidth)/perRow) / 2 - 110 / 2
                 let amenity = AmenityView(amenityName: amenityList[index], xPos: margins + (Int(amenityWidth) / perRow) * j + startX, yPos: 115 * i)
                 amenity.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onAmenityTapped)))
                 amenityView.addSubview(amenity)

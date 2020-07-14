@@ -30,12 +30,12 @@ class DataManager {
     func loadData() -> Bool {
         // reset park cache
         Constants.parkData.removeAll()
-        let connected = Utilities.isConnected()
         
         if let storedVersion = getStoredVersion() {
+            print("Cache has data version \(storedVersion)")
             if connected {
                 if let url = URL(string: Constants.DATA_URL + Constants.DATA_FILE), let data = try? Data(contentsOf: url) {
-                    if let remoteJSON = parseJSON(data: data), let remoteVersion = getVersion(json: remoteJSON) {
+                    if let remoteJSON = Utilities.parseJSON(data: data), let remoteVersion = getVersion(json: remoteJSON) {
                         if storedVersion != remoteVersion {
                             print("Fetching updated data copy...")
                             return remoteLoadData(fileData: data)
@@ -56,7 +56,7 @@ class DataManager {
     }
     
     private func localLoadData() -> Bool {
-        if let data = parseJSON(url: URL(fileURLWithPath: cacheFile)) {
+        if let data = Utilities.parseJSON(url: URL(fileURLWithPath: cacheFile)) {
             loadProperties(data: data)
             loadBackgrounds(data: data)
             loadParks(data: data)
@@ -77,7 +77,7 @@ class DataManager {
             return false
         }
         
-        if let data = parseJSON(url: cacheURL) {
+        if let data = Utilities.parseJSON(url: cacheURL) {
             loadProperties(data: data)
             loadBackgrounds(data: data)
             loadParks(data: data)
@@ -98,6 +98,7 @@ class DataManager {
                 }
                 count = count + 1
             }
+            delegate.progressCallback(progress: 1)
         }
     }
     
@@ -138,8 +139,6 @@ class DataManager {
                         try data.write(to: localURL)
                     }
                 }
-                 
-                print("Loaded image '" + image + "'")
             } catch {
                 print("Failed to load image '" + image + "'")
             }
@@ -165,12 +164,10 @@ class DataManager {
             
             if primary || didInitial {
                 downloadIfNeeded(image: image)
-                
                 if let data = try? Data(contentsOf: url), let loadedImage = UIImage(data: data) {
                     park.images.append(loadedImage)
                 }
             }
-            
             if primary {
                 return
             }
@@ -179,7 +176,7 @@ class DataManager {
     }
     
     private func getStoredVersion() -> Double? {
-        if let json = parseJSON(url: URL(fileURLWithPath: cacheFile)) {
+        if let json = Utilities.parseJSON(url: URL(fileURLWithPath: cacheFile)) {
             return getVersion(json: json)
         }
         return nil
@@ -192,20 +189,6 @@ class DataManager {
         return nil
     }
     
-    private func parseJSON(url: URL) -> NSDictionary? {
-        if let data = try? Data(contentsOf: url) {
-            return parseJSON(data: data)
-        }
-        return nil
-    }
-    
-    private func parseJSON(data: Data) -> NSDictionary? {
-        if let top = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary {
-            return top
-        }
-        return nil
-    }
-    
     private class func getCachePath() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         let cacheDir = paths.first!
@@ -214,20 +197,12 @@ class DataManager {
     
     private func resetCache() throws {
         var isDir = ObjCBool(true)
-        let manager = FileManager.default
         
-        if manager.fileExists(atPath: cacheDir, isDirectory: &isDir) {
-            let enumerator = manager.enumerator(atPath: cacheDir)!
-            // clear stored files
-            for case let fileURL as URL in enumerator {
-                try manager.removeItem(at: fileURL)
-            }
+        if FileManager.default.fileExists(atPath: cacheDir, isDirectory: &isDir) {
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: cacheDir))
             print("Cleared old files")
         }
-        else {
-            try manager.createDirectory(at: URL(fileURLWithPath: cacheDir), withIntermediateDirectories: true, attributes: nil)
-            print("Created data directory")
-        }
+        try FileManager.default.createDirectory(at: URL(fileURLWithPath: cacheDir), withIntermediateDirectories: true, attributes: nil)
     }
 }
 

@@ -115,6 +115,20 @@ class Utilities {
         SCNetworkReachabilityGetFlags(reachability, &flags)
         return flags.contains(.reachable)
     }
+    
+    static func parseJSON(url: URL) -> NSDictionary? {
+        if let data = try? Data(contentsOf: url) {
+            return parseJSON(data: data)
+        }
+        return nil
+    }
+    
+    static func parseJSON(data: Data) -> NSDictionary? {
+        if let top = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary {
+            return top
+        }
+        return nil
+    }
 }
 
 extension Array where Element: Equatable {

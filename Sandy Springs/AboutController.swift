@@ -28,7 +28,7 @@ class AboutController: UIViewController {
         let top = 50 + UIApplication.shared.keyWindow!.safeAreaInsets.top
         let image = UIImageView(image: UIImage(named: "logo_alpha.png"))
         let size = self.view.frame.width/3
-        image.frame = CGRect(x: self.view.frame.width/2-size/2, y: top + 15, width: size, height: size)
+        image.frame = CGRect(x: self.view.frame.width / 2 - size / 2, y: top + 15, width: size, height: size)
         self.view.addSubview(image)
         
         if let htmlText = AboutController.html {
