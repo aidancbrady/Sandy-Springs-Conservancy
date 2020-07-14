@@ -37,7 +37,8 @@ class InitController: UIViewController {
                     self.downloadLabel.text = "Download failed."
                     self.downloadActivity.stopAnimating()
                 } else {
-                   self.performSegue(withIdentifier: "download_complete", sender: self)
+                    AppDelegate.getInstance().initLocationServices()
+                    self.performSegue(withIdentifier: "download_complete", sender: self)
                     
                     if let parkName = self.notificationOpen {
                         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -46,7 +47,7 @@ class InitController: UIViewController {
                         
                         destController.parkName = parkName
                         
-                        menuNavigation.pushViewController(destController, animated: true)
+                        menuNavigation.present(destController)
                         Utilities.loadPark(menuNavigation)
                         self.notificationOpen = nil
                     }
