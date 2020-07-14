@@ -92,7 +92,11 @@ class ParkController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let rows = Int(ceil(Float(park.amenities.count)/Float(perRow)))
         
         let amenityView = UIView(frame: CGRect(x: view.frame.minX, y: phoneTitleLabel.frame.maxY + 8, width: view.frame.width, height: CGFloat(rows*110) - 10))
-        amenityView.backgroundColor = UIColor.groupTableViewBackground
+        if #available(iOS 13.0, *) {
+            amenityView.backgroundColor = UIColor.systemGray6
+        } else {
+            amenityView.backgroundColor = UIColor.groupTableViewBackground
+        }
         
         for i in 0..<rows {
             for j in 0..<perRow {
@@ -236,6 +240,7 @@ class AmenityView: UIView {
         amenityLabel.text = amenityName
         amenityLabel.textAlignment = NSTextAlignment.center
         amenityLabel.font = UIFont.systemFont(ofSize: 15)
+        self.layer.cornerRadius = 8
         addSubview(amenityLabel)
     }
     

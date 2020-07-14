@@ -22,7 +22,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     static var backgrounds = [UIImage]()
     
-    var imageView: UIImageView!
+    var backgroundView: UIImageView!
     var backgroundIndex: Int = 0
     var timer: Timer!
     var favoritesActive = false
@@ -64,6 +64,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         menuButton.layer.cornerRadius = 10
         menuButton.layer.borderWidth = 1
         menuButton.layer.borderColor = menuButton.titleLabel!.textColor.cgColor
+        menuButton.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         
         //button borders
         favoritesButton.layer.borderWidth = 1
@@ -95,21 +96,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         amenitySearchButton.frame = CGRect(x: view.frame.minX + 16, y: parkListButton.frame.maxY + 8, width: view.frame.width - 32, height: 42)
         amenitySearchButton.layer.cornerRadius = 10
-        
-        //background image
-        imageView = UIImageView(image: MenuController.backgrounds[0])
-        imageView.frame = view.frame
-        self.view.addSubview(imageView)
-        
-        //background blur
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.alpha = 0.7
-        blurredEffectView.frame = imageView.bounds
-        view.addSubview(blurredEffectView)
-        view.sendSubviewToBack(blurredEffectView)
-        view.sendSubviewToBack(imageView)
-        
+                
         //circle around logo
         let logoRadius = logoImage.frame.width/2
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: logoImage.frame.minX+logoRadius, y: logoImage.frame.minY+logoRadius+2), radius: logoRadius+10, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi*2), clockwise: true)
@@ -117,7 +104,23 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         circleLayer.path = circlePath.cgPath
         circleLayer.strokeColor = UIColor.white.withAlphaComponent(0.7).cgColor
         circleLayer.fillColor = UIColor.white.withAlphaComponent(0.4).cgColor
+        circleLayer.zPosition = 10
+        circleLayer.shadowOpacity = 0.5
+        circleLayer.shadowRadius = 4
+        
+        //background blur
+        let blurredEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        blurredEffectView.alpha = 0.7
+        blurredEffectView.frame = view.frame
         blurredEffectView.layer.addSublayer(circleLayer)
+        view.addSubview(blurredEffectView)
+        view.sendSubviewToBack(blurredEffectView)
+        
+        //background image
+        backgroundView = UIImageView(image: MenuController.backgrounds[0])
+        backgroundView.frame = view.frame
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
         
         //update background images
         timer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(updateBackground), userInfo: nil, repeats: true)
@@ -134,7 +137,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc func updateBackground() {
         backgroundIndex = (backgroundIndex+1)%MenuController.backgrounds.count
         let newImage = MenuController.backgrounds[backgroundIndex]
-        UIView.transition(with: imageView, duration: 2, options: .transitionCrossDissolve, animations: {self.imageView.image = newImage}, completion: nil)
+        UIView.transition(with: backgroundView, duration: 2, options: .transitionCrossDissolve, animations: {self.backgroundView.image = newImage}, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

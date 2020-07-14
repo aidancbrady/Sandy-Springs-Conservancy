@@ -91,7 +91,11 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
         }
         
         cell!.textLabel?.text = data.1 ? data.0 : (" " + data.0)
-        cell!.textLabel?.textColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.9)
+        if #available(iOS 13.0, *) {
+            cell!.textLabel?.textColor = UIColor.secondaryLabel
+        } else {
+            cell!.textLabel?.textColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.9)
+        }
         
         if data.1 {
             cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -129,8 +133,7 @@ class MenuTableController: UITableViewController, MFMailComposeViewControllerDel
             tableView.deselectRow(at: indexPath, animated: true)
             
             return
-        }
-        else if displayedData[selectedItem].2 == "contact" {
+        } else if displayedData[selectedItem].2 == "contact" {
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
