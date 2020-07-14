@@ -50,8 +50,8 @@ class ParkSearchController: UITableViewController, UISearchBarDelegate {
                 if let location = Constants.LAST_LOCATION {
                     let parkLocation = CLLocation(latitude: data.value.coords.latitude, longitude: data.value.coords.longitude)
                     let distance = location.distance(from: parkLocation)
-                    let distanceVal = distance*0.000621371 // meters to miles
-                    let val = round(10*distanceVal)/Double(10)
+                    let distanceVal = distance * 0.000621371 // meters to miles
+                    let val = round(10 * distanceVal) / Double(10)
                     cell.distanceLabel.text = String(val) + " mi away"
                     distances[cell.parkName.text!] = distanceVal
                 } else {
